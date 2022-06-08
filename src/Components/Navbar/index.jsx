@@ -28,7 +28,7 @@ const Navbar = ({ path }) => {
           }  m-6`}
         >
           <Logo {...(path === "register" && { color: "white" })} />
-          <ul className="flex mx-64">
+          <ul className="flex mx-[60px]">
             {navItems.map((item, idx) => (
               <li key={idx} className="flex items-center mx-2">
                 <div className="my-auto">
