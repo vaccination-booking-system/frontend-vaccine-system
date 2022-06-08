@@ -38,7 +38,11 @@ function Login() {
 
   return (
     <>
-      <Navbar path="login" />
+      <div className="flex justify-center">
+        <div className="absolute w-[987px] z-20 justify-center">
+          <Navbar path="login" />
+        </div>
+      </div>
       <div className="h-[100vh] flex justify-center items-center">
         <div className="w-[60%] h-[100%] flex justify-center items-center">
           <div className="w-[435px] h-[456px]">
