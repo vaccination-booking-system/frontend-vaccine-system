@@ -81,7 +81,7 @@ const Register = () => {
                             style={{ width: "370px", height: "50px" }}
                             value={name}
                             title="Isikan Nama Lengkap Anda"
-                            onChange={e => handleInputChange(e)}
+                            onChange={event => handleInputChange(event)}
                             autoComplete="off"
                           />
                         </div>
@@ -99,7 +99,7 @@ const Register = () => {
                             style={{ width: "370px", height: "50px" }}
                             value={nik}
                             title="Isikan NIK Anda"
-                            onChange={e => handleInputChange(e)}
+                            onChange={event => handleInputChange(event)}
                             maxLength={16}
                             autoComplete="off"
                           />
@@ -122,7 +122,7 @@ const Register = () => {
                             style={{ width: "370px", height: "50px" }}
                             value={phoneNumber}
                             title="Isikan Nomor Telepon Anda"
-                            onChange={e => handleInputChange(e)}
+                            onChange={event => handleInputChange(event)}
                             maxLength={13}
                             autoComplete="off"
                           />
@@ -141,7 +141,7 @@ const Register = () => {
                             style={{ width: "370px", height: "50px" }}
                             value={password}
                             title="Isikan Password Anda"
-                            onChange={e => handleInputChange(e)}
+                            onChange={event => handleInputChange(event)}
                           />
                         </div>
                       </div>
