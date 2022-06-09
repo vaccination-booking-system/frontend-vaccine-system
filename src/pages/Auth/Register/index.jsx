@@ -36,18 +36,17 @@ const Register = () => {
     console.log(phoneNumber);
     console.log(password);
   };
+
   return (
     <>
       <div>
-        {" "}
         {/* ini div navbar atau header */}
         <Navbar path="register" />
       </div>
-      <div className="flex flex-col justify-center items-center h-[100vh]">
-        {" "}
+      <div className="flex flex-col justify-center items-center h-[790px]">
         {/* ini div table form */}
         <div className="h-[50%] w-[96%] bg-cover rounded-[15px] my-6 bg-bottom" style={{ backgroundImage: `url(${BackgroundRegister})` }}>
-          <div className="absolute bg-[#4FAEE5] w-[96%] h-[47%] opacity-40 rounded-[15px] z-10"></div>
+          <div className="md:h-[34.5%] absolute bg-[#4FAEE5] w-[96%] lg:h-[47%] opacity-40 rounded-[15px] z-10"></div>
           <div className="flex justify-center z-20">
             <div className="my-[70px] z-30">
               <div className="text-white text-center">
