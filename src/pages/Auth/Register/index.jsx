@@ -43,12 +43,12 @@ const Register = () => {
         {/* ini div navbar atau header */}
         <Navbar path="register" />
       </div>
-      <div className="flex flex-col justify-center items-center h-[790px]">
+      <div className="flex flex-col justify-center items-center h-[790px] p-6">
         {/* ini div table form */}
-        <div className="h-[50%] w-[96%] bg-cover rounded-[15px] my-6 bg-bottom" style={{ backgroundImage: `url(${BackgroundRegister})` }}>
-          <div className="md:h-[34.5%] absolute bg-[#4FAEE5] w-[96%] lg:h-[47%] opacity-40 rounded-[15px] z-10"></div>
+        <div className="h-[50%] w-[100%] bg-cover rounded-[15px] bg-bottom relative" style={{ backgroundImage: `url(${BackgroundRegister})` }}>
+          <div className="absolute bg-[#4FAEE5] w-[100%] h-[100%] opacity-40 rounded-[15px] z-10"></div>
           <div className="flex justify-center z-20">
-            <div className="my-[70px] z-30">
+            <div className="my-[65px] z-30">
               <div className="text-white text-center">
                 <div className="font-bold text-[32px]">Welcome!</div>
                 <div className="w-[333px]">
@@ -59,14 +59,14 @@ const Register = () => {
           </div>
         </div>
         <div className="h-[50%] bg-white w-[100%]"></div>
-        <div className="z-20 drop-shadow-md absolute mt-[160px]">
+        <div className="z-20 drop-shadow-md absolute mt-[130px]">
           <Card>
-            <div className="w-[896px] h-[500px]">
-              <div className="font-bold pl-[50px] pt-[75px] text-[25px]">Buat Akun Baru</div>
+            <div className="">
+              <div className="font-bold px-[50px] pt-[75px] text-[25px]">Buat Akun Baru</div>
               <div>
                 <form onSubmit={handleSubmit}>
                   <div>
-                    <div className="flex gap-x-12 pl-[50px] pt-[42px]">
+                    <div className="flex gap-x-12 px-[50px] pt-[42px]">
                       <div>
                         <div>
                           <label htmlFor="nameForm">Name</label>
