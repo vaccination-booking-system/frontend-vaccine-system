@@ -2,48 +2,46 @@ import React, { useState } from "react";
 import Navbar from "../../../Components/Navbar";
 
 function Login() {
-  const emptyLoginForm = {
+  const [loginValue, setLoginValue] = useState({
     nik: "",
     password: "",
-  };
-  const [data, setData] = useState(emptyLoginForm);
-  const regex = /^[0-9]*$/;
+  });
+
+  const { nik, password } = loginValue;
+
   const [errMsg, setErrMsg] = useState("");
+
   const handleInput = e => {
     const name = e.target.name;
     const value = e.target.value;
-
     if (name === "nik") {
-      if (regex.test(value)) {
+      const regexNik = /^[0-9]*$/;
+      if (regexNik.test(value)) {
         setErrMsg("");
       } else {
         setErrMsg("NIK harus berupa angka ya mniez !!!!");
       }
     }
-    setData({
-      ...data,
+    setLoginValue({
+      ...loginValue,
       [name]: value,
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (errMsg !== "") {
+    if (errMsg !== "" || nik.length !== 16) {
       alert("ada data yang tidak sesuai");
     } else {
       alert("Login berhasil");
-      console.log(data);
+      console.log(loginValue);
     }
   };
 
   return (
     <>
-      <div className="flex justify-center">
-        <div className="absolute w-[987px] z-20 justify-center">
-          <Navbar path="login" />
-        </div>
-      </div>
-      <div className="h-[100vh] flex justify-center items-center">
+      <Navbar path="login" />
+      <div className="h-[790px] flex justify-center items-center">
         <div className="w-[60%] h-[100%] flex justify-center items-center">
           <div className="w-[435px] h-[456px]">
             <h1 className="text-[32px] font-bold">Welcome Back</h1>
@@ -58,10 +56,10 @@ function Login() {
                   name="nik"
                   maxLength={16}
                   required
-                  value={data.nik}
+                  value={nik}
                   onChange={handleInput}
                   autoComplete="off"
-                ></input>
+                />
               </div>
               <div className="flex flex-col mt-[27.67px]">
                 <label>Password</label>
@@ -70,10 +68,10 @@ function Login() {
                   placeholder="Your password"
                   type="password"
                   name="password"
-                  value={data.password}
+                  value={password}
                   onChange={handleInput}
                   required
-                ></input>
+                />
               </div>
               <div className="mt-[22px]">
                 <label className="inline-flex relative items-center cursor-pointer">
@@ -99,8 +97,8 @@ function Login() {
           </div>
         </div>
         <div className="w-[40%] h-[100%]">
-          <div className="bg-[url('https://img.freepik.com/free-photo/smiling-young-female-doctor-holding-clipboard-hospital_231208-13041.jpg?w=740&t=st=1654606849~exp=1654607449~hmac=34b2675bebad072295fb6a7ec5e3084ff03e8cc43f85c5e11202b217634d9b15')] w-[100%] h-[85%] rounded-bl-[25px] bg-cover bg-center">
-            <div className="absolute bg-[#4FAEE5] w-[40%] h-[85%] rounded-bl-[25px] opacity-40 z-10"></div>
+          <div className=" relative bg-[url('https://img.freepik.com/free-photo/smiling-young-female-doctor-holding-clipboard-hospital_231208-13041.jpg?w=740&t=st=1654606849~exp=1654607449~hmac=34b2675bebad072295fb6a7ec5e3084ff03e8cc43f85c5e11202b217634d9b15')] w-[100%] h-[85%] rounded-bl-[25px] bg-cover bg-center">
+            <div className="absolute bg-[#4FAEE5] w-[100%] h-[100%] rounded-bl-[25px] opacity-40 z-10"></div>
           </div>
         </div>
       </div>
