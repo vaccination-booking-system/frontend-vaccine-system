@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BackgroundRegister from "../../../assets/images/background-register.jpg";
 import Navbar from "../../../Components/Navbar";
 import Card from "../../../Components/Card";
+import axios from "axios";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -11,9 +12,6 @@ const Register = () => {
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    //console.log(event);
-    /* name = name atribut yang ada pada tag input */
-    /* value = value atribut pada tag input */
 
     if (name === "nameForm") {
       setName(value);
@@ -31,10 +29,6 @@ const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(name);
-    console.log(nik);
-    console.log(phoneNumber);
-    console.log(password);
   };
 
   return (
