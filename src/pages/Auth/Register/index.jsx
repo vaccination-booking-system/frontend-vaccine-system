@@ -230,7 +230,7 @@ const Register = () => {
                           minLength={8}
                           autoComplete="off"
                         />
-                        <div className="absolute inset-y-[40%] right-5" onClick={() => setShowPassword(!showPassword)}>
+                        <div className="absolute inset-y-[40%] right-5 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
                           {showPassword ? <FaEyeSlash /> : <IoEyeSharp />}
                         </div>
                       </div>
