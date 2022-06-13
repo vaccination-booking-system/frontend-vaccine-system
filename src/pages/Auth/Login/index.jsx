@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../../../Components/Navbar";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [loginValue, setLoginValue] = useState({
@@ -19,7 +20,7 @@ function Login() {
       if (regexNik.test(value)) {
         setErrMsg("");
       } else {
-        setErrMsg("NIK harus berupa angka ya mniez !!!!");
+        setErrMsg("NIK Tidak Valid");
       }
     }
     setLoginValue({
@@ -50,7 +51,9 @@ function Login() {
               <div className="flex flex-col mt-[36.89px]">
                 <label>NIK</label>
                 <input
-                  className="h-[51.24px] rounded-[15px] border-solid border-2 border-[#E2E8F0] pl-[20px]"
+                  className={`${
+                    errMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
+                  } h-[51.24px] rounded-[15px] border-solid border-2 border-[#E2E8F0] pl-[20px]`}
                   placeholder="Your NIK"
                   type="text"
                   name="nik"
@@ -60,6 +63,7 @@ function Login() {
                   onChange={handleInput}
                   autoComplete="off"
                 />
+                <span className="text-red-500 text-xs">{errMsg}</span>
               </div>
               <div className="flex flex-col mt-[27.67px]">
                 <label>Password</label>
@@ -81,15 +85,13 @@ function Login() {
                 </label>
               </div>
               <div className="mt-[18.89px]">
-                <span className="text-red-500">{errMsg}</span>
-                <br />
                 <input className="h-[46.12px] w-[100%] bg-slate-900 text-white rounded-[8px]" type="submit" value="SIGN IN" />
               </div>
               <div className="mt-[22.55px]">
                 <p className="text-center text-neutral-300">
                   Don't have an account ?
                   <a className="font-bold text-neutral-400" href="#">
-                    Sign Up
+                    <Link to="/register">Sign Up</Link>
                   </a>
                 </p>
               </div>
