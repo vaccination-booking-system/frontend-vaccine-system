@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../../../Components/Navbar";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [loginValue, setLoginValue] = useState({
@@ -90,7 +91,7 @@ function Login() {
                 <p className="text-center text-neutral-300">
                   Don't have an account ?
                   <a className="font-bold text-neutral-400" href="#">
-                    Sign Up
+                    <Link to="/register">Sign Up</Link>
                   </a>
                 </p>
               </div>
