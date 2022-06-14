@@ -1,13 +1,36 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const PathContext = createContext();
 
 const usePath = () => useContext(PathContext);
 
 const PathContextProvider = ({ children }) => {
+  const { pathname } = useLocation();
+
+  console.log(pathname);
   const [anchorPath, setAnchorPath] = useState("");
 
   const [pathArr, setPathArr] = useState([]);
+
+  const splitPathname = () => {
+    let pathNameArr = pathname.split("/");
+    pathNameArr.shift();
+    pathNameArr.reverse();
+    setPathArr(pathNameArr);
+  };
+
+  useEffect(() => {
+    splitPathname();
+  }, [pathname]);
+
+  useEffect(() => {
+    if (pathArr !== []) {
+      setAnchorPath(
+        pathArr.find(path => path === "dashboard" || path === "vaccination-bookings" || path === "add-family-member" || path === "ticket-vaccine")
+      );
+    }
+  }, [pathArr]);
 
   const value = {
     anchorPath,

@@ -5,6 +5,7 @@ import Logo from "../Logo";
 import { CardIcon, ChartIcon, HomeIcon, KeyIcon } from "../Icons";
 
 import { Link, useLocation } from "react-router-dom";
+
 import { usePath } from "../../context/PathContext";
 
 const sidebarItems = [
@@ -30,28 +31,7 @@ const sidebarItems = [
 ];
 
 const Sidebar = () => {
-  const { pathname } = useLocation();
-
-  const { anchorPath, setAnchorPath, pathArr, setPathArr } = usePath();
-
-  const splitPathname = () => {
-    let pathNameArr = pathname.split("/");
-    pathNameArr.shift();
-    pathNameArr.reverse();
-    setPathArr(pathNameArr);
-  };
-
-  useEffect(() => {
-    splitPathname();
-  }, []);
-
-  useEffect(() => {
-    if (pathArr !== []) {
-      setAnchorPath(
-        pathArr.find(path => path === "dashboard" || path === "vaccination-bookings" || path === "add-family-member" || path === "ticket-vaccine")
-      );
-    }
-  }, [pathArr]);
+  const { anchorPath } = usePath();
 
   return (
     <section className="w-[276px] h-[100vh] bg-slate-100 p-8">
