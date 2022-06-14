@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Navbar } from "../../../Components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
 
 function Login() {
   const [loginValue, setLoginValue] = useState({
@@ -11,22 +13,27 @@ function Login() {
   const { nik, password } = loginValue;
 
   const [errMsg, setErrMsg] = useState("");
+  const [nikOrPassIncorrectMsg, setNikOrPassIncorrectMsg] = useState("");
+
+  const navigate = useNavigate();
 
   const handleInput = e => {
     const name = e.target.name;
     const value = e.target.value;
-    if (name === "nik") {
-      const regexNik = /^[0-9]*$/;
-      if (regexNik.test(value)) {
-        setErrMsg("");
-      } else {
-        setErrMsg("NIK Tidak Valid");
-      }
-    }
     setLoginValue({
       ...loginValue,
       [name]: value,
     });
+    if (name === "nik") {
+      const regexNik = /^[0-9]*$/;
+      if ((value.length > 0 && value.length < 16) || !regexNik.test(value)) {
+        setErrMsg("NIK Tidak Valid");
+      } else {
+        if (value.length === 0 || value.length === 16) {
+          setErrMsg("");
+        }
+      }
+    }
   };
 
   const handleSubmit = e => {
@@ -34,10 +41,35 @@ function Login() {
     if (errMsg !== "" || nik.length !== 16) {
       alert("ada data yang tidak sesuai");
     } else {
-      alert("Login berhasil");
-      console.log(loginValue);
+      axios
+        .post(`${process.env.REACT_APP_API_BASE_URL}/auth/login`, {
+          nik,
+          password,
+        })
+        .then(function (response) {
+          navigate("/dashboard");
+          localStorage.setItem("accessToken", response.data.data.accessToken);
+        })
+        .catch(function (error) {
+          if (error.response.data.message === "INVALID_CREDENTIALS") {
+            setNikOrPassIncorrectMsg("NIK atau Password Salah");
+          }
+        });
     }
   };
+  useEffect(() => {
+    if (nik !== "" || password !== "") {
+      setNikOrPassIncorrectMsg("");
+    }
+  }, [nik, password]);
+
+  useEffect(() => {
+    if (nikOrPassIncorrectMsg !== "") {
+      setTimeout(() => {
+        setNikOrPassIncorrectMsg("");
+      }, 5000);
+    }
+  }, [nikOrPassIncorrectMsg]);
 
   return (
     <>
@@ -77,6 +109,7 @@ function Login() {
                   required
                 />
               </div>
+              <span className="text-xs text-red-500">{nikOrPassIncorrectMsg}</span>
               <div className="mt-[22px]">
                 <label className="inline-flex relative items-center cursor-pointer">
                   <input type="checkbox" value="" id="default-toggle" className="sr-only peer" />
@@ -85,14 +118,14 @@ function Login() {
                 </label>
               </div>
               <div className="mt-[18.89px]">
-                <input className="h-[46.12px] w-[100%] bg-slate-900 text-white rounded-[8px]" type="submit" value="SIGN IN" />
+                <input className="h-[46.12px] w-[100%] bg-slate-900 text-white rounded-[8px] cursor-pointer" type="submit" value="SIGN IN" />
               </div>
               <div className="mt-[22.55px]">
                 <p className="text-center text-neutral-300">
                   Don't have an account ?
-                  <div className="font-bold text-neutral-400">
+                  <span className="font-bold text-neutral-400">
                     <Link to="/register">Sign Up</Link>
-                  </div>
+                  </span>
                 </p>
               </div>
             </form>
