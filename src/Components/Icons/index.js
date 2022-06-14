@@ -1,6 +1,9 @@
 import CubeIcon from "./Cube";
-import { ProfileIcon } from "./Profile";
+import ProfileIcon from "./Profile";
 import ImageIcon from "./Image";
 import KeyIcon from "./Key";
+import ChartIcon from "./Chart";
+import CardIcon from "./Card";
+import HomeIcon from "./Home";
 
-export { CubeIcon, ProfileIcon, ImageIcon, KeyIcon };
+export { CubeIcon, ProfileIcon, ImageIcon, KeyIcon, ChartIcon, CardIcon, HomeIcon };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../../../Components/Navbar";
+import { Navbar } from "../../../Components";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -90,9 +90,9 @@ function Login() {
               <div className="mt-[22.55px]">
                 <p className="text-center text-neutral-300">
                   Don't have an account ?
-                  <a className="font-bold text-neutral-400" href="#">
+                  <div className="font-bold text-neutral-400">
                     <Link to="/register">Sign Up</Link>
-                  </a>
+                  </div>
                 </p>
               </div>
             </form>
