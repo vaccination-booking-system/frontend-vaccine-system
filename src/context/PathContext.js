@@ -8,7 +8,6 @@ const usePath = () => useContext(PathContext);
 const PathContextProvider = ({ children }) => {
   const { pathname } = useLocation();
 
-  console.log(pathname);
   const [anchorPath, setAnchorPath] = useState("");
 
   const [pathArr, setPathArr] = useState([]);

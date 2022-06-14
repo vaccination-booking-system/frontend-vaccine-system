@@ -1,8 +1,8 @@
 import React from "react";
-import { Sidebar } from "../../../Components";
+import { Layout, Sidebar } from "../../../Components";
 
 const AddFamilyMemberPage = () => {
-  return <Sidebar />;
+  return <Layout>Add Family Member</Layout>;
 };
 
 export default AddFamilyMemberPage;

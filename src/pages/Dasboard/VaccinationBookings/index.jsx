@@ -1,8 +1,8 @@
 import React from "react";
-import { Sidebar } from "../../../Components";
+import { Layout } from "../../../Components";
 
 const VaccinationBookingsPage = () => {
-  return <Sidebar />;
+  return <Layout>Vaccination booking</Layout>;
 };
 
 export default VaccinationBookingsPage;

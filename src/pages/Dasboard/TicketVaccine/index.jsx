@@ -1,8 +1,8 @@
 import React from "react";
-import { Sidebar } from "../../../Components";
+import { Layout } from "../../../Components";
 
 const TicketVaccinePage = () => {
-  return <Sidebar />;
+  return <Layout>Ticket Vaccine</Layout>;
 };
 
 export default TicketVaccinePage;
