@@ -5,6 +5,7 @@ import Logo from "../Logo";
 import { CardIcon, ChartIcon, HomeIcon, KeyIcon } from "../Icons";
 
 import { Link, useLocation } from "react-router-dom";
+import { usePath } from "../../context/PathContext";
 
 const sidebarItems = [
   { text: "Dashboard", icon: ({ color, size }) => <HomeIcon color={color} size={size} />, path: "/dashboard", anchor: "dashboard" },
@@ -31,9 +32,7 @@ const sidebarItems = [
 const Sidebar = () => {
   const { pathname } = useLocation();
 
-  const [pathArr, setPathArr] = useState([]);
-
-  const [anchorPath, setAnchorPath] = useState("");
+  const { anchorPath, setAnchorPath, pathArr, setPathArr } = usePath();
 
   const splitPathname = () => {
     let pathNameArr = pathname.split("/");
