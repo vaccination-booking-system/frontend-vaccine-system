@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackgroundRegister from "../../../assets/images/background-register.jpg";
-import Navbar from "../../../Components/Navbar";
-import Card from "../../../Components/Card";
+import { Navbar } from "../../../Components";
+import { Card } from "../../../Components";
 import axios from "axios";
 import { IoEyeSharp } from "react-icons/io5";
 import { FaEyeSlash } from "react-icons/fa";
@@ -19,6 +19,21 @@ const Register = () => {
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
+
+  const checkIsFormError = () => {
+    return (
+      name === "" ||
+      nik === "" ||
+      phoneNumber === "" ||
+      password === "" ||
+      nikErrorMsg !== "" ||
+      phoneNumberErrorMsg !== "" ||
+      nameErrorMsg !== "" ||
+      passwordErrorMsg !== ""
+    );
+  };
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -52,7 +67,6 @@ const Register = () => {
 
   const checkNama = value => {
     const regexNama = /^[a-z ]*$/gim;
-    /* console.log(regexNama.test(value)); */
     if ((value.length === 0 || value !== "") && regexNama.test(value)) {
       setNameErroMsg("");
     } else if (value !== "" && !regexNama.test(value)) {
@@ -68,14 +82,12 @@ const Register = () => {
       setPhoneNumberErrorMsg("Inputan harus berupa angka");
     } else {
       if (regexPhone.test(value)) {
-        /* console.log("test 1"); */
         setPhoneNumberErrorMsg("");
         if (value.length < 12) {
           setPhoneNumberErrorMsg("Nomor HP kurang");
         }
       } else {
         if (value.length === 0) {
-          /* console.log("test 2"); */
           setPhoneNumberErrorMsg("");
         } else {
           setPhoneNumberErrorMsg("Input dimulai dengan 08");
@@ -87,17 +99,14 @@ const Register = () => {
   const checkPassword = value => {
     const regexPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$-_*#?&\s])[A-Za-z\d@$!#-_?&\s]{0,}$/gm;
     if (value.length < 8) {
-      /* console.log("tes 1"); */
       setPasswordErrorMsg("minimal 8 karakter");
       if (!regexPassword.test(value)) {
-        /* console.log("test 2"); */
         setPasswordErrorMsg("Minimal 1 Huruf besar, dan terdapat 1 Angka");
       }
       if (regexPassword.test(value)) {
         setPasswordErrorMsg(" ");
       }
     } else if (value.length > 7 && regexPassword.test(value)) {
-      /* console.log("test 3"); */
       setPasswordErrorMsg("");
     }
     if (value.length === 0) {
@@ -107,6 +116,25 @@ const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    axios
+      .post(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, {
+        name,
+        phone_number: phoneNumber,
+        nik,
+        password,
+      })
+      .then(function (response) {
+        navigate("/dashboard");
+        localStorage.setItem("accessToken", response.data.data.accessToken);
+      })
+      .catch(function (error) {
+        if (error.response.data.message === "ALREADY_EXIST") {
+          setNikErrorMsg("NIK sudah terdaftar.");
+        }
+        if (error.response.data.message === "INVALID_NIK") {
+          setNikErrorMsg("NIK Tidak Valid.");
+        }
+      });
   };
 
   return (
@@ -153,6 +181,7 @@ const Register = () => {
                           title="Isikan Nama Lengkap Anda"
                           onChange={event => handleInputChange(event)}
                           autoComplete="off"
+                          required
                         />
                       </div>
                       <div className="pl-2 pt-1">
@@ -177,6 +206,7 @@ const Register = () => {
                           onChange={event => handleInputChange(event)}
                           maxLength={16}
                           autoComplete="off"
+                          required
                         />
                       </div>
                       <div className="pl-2 pt-1">
@@ -205,6 +235,7 @@ const Register = () => {
                           onChange={event => handleInputChange(event)}
                           maxLength={13}
                           autoComplete="off"
+                          required
                         />
                       </div>
                       <div className="pl-2 pt-1">
@@ -229,8 +260,9 @@ const Register = () => {
                           onChange={event => handleInputChange(event)}
                           minLength={8}
                           autoComplete="off"
+                          required
                         />
-                        <div className="absolute inset-y-[40%] right-5" onClick={() => setShowPassword(!showPassword)}>
+                        <div className="absolute inset-y-[40%] right-5 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
                           {showPassword ? <FaEyeSlash /> : <IoEyeSharp />}
                         </div>
                       </div>
@@ -241,8 +273,13 @@ const Register = () => {
                   </div>
                 </div>
                 <div className="flex justify-center pt-[50px]">
-                  <button className="bg-black w-[370px] h-[45px] rounded-[12px] border-2 border-[#E2E8F0]" type="submit">
-                    <div className="text-white text-[10px] font-bold">DAFTAR</div>
+                  <button
+                    className={`${
+                      checkIsFormError() ? "cursor-not-allowed bg-[#CACACA]" : "bg-black"
+                    } w-[370px] h-[45px] rounded-[12px] border-2 border-[#E2E8F0]`}
+                    type="submit"
+                  >
+                    <div className={`${checkIsFormError() ? "text-black" : "text-white"} text-[10px] font-bold`}>DAFTAR</div>
                   </button>
                 </div>
               </form>

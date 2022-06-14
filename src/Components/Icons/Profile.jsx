@@ -1,8 +1,8 @@
 import React from "react";
 
-const ProfileIcon = ({ color }) => {
+const ProfileIcon = ({ color, size }) => {
   return (
-    <svg width="18" height="18" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={size} height={size} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_371_4155)">
         <path
           d="M7.39658 1.44557C6.9785 0.99418 6.39455 0.745605 5.75002 0.745605C5.10205 0.745605 4.51617 0.992676 4.10002 1.44127C3.67936 1.8948 3.4744 2.51119 3.52252 3.17678C3.61791 4.4899 4.61715 5.5581 5.75002 5.5581C6.88289 5.5581 7.88041 4.49012 7.9773 3.17721C8.02607 2.51764 7.81982 1.90254 7.39658 1.44557Z"
@@ -24,6 +24,7 @@ const ProfileIcon = ({ color }) => {
 
 ProfileIcon.defaultProps = {
   color: "#2D3748",
+  size: 18,
 };
 
-export { ProfileIcon };
+export default ProfileIcon;
