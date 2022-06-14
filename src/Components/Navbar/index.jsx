@@ -6,10 +6,10 @@ import PropsTypes from "prop-types";
 import { CubeIcon, ProfileIcon, ImageIcon, KeyIcon } from "../Icons";
 
 const navItems = [
-  { text: "Dashboard", icon: ({ color }) => <CubeIcon color={color} />, alt: "dashboard-icon" },
-  { text: "About", icon: ({ color }) => <ProfileIcon color={color} />, alt: "about-icon" },
-  { text: "Gallery", icon: ({ color }) => <ImageIcon color={color} />, alt: "gallery-icon" },
-  { text: "Contact Us", icon: ({ color }) => <KeyIcon color={color} />, alt: "contact-icon" },
+  { text: "Dashboard", icon: ({ color }) => <CubeIcon color={color} /> },
+  { text: "About", icon: ({ color }) => <ProfileIcon color={color} /> },
+  { text: "Gallery", icon: ({ color }) => <ImageIcon color={color} /> },
+  { text: "Contact Us", icon: ({ color }) => <KeyIcon color={color} /> },
 ];
 
 /**
