@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BackgroundRegister from "../../../assets/images/background-register.jpg";
-import Navbar from "../../../Components/Navbar";
-import Card from "../../../Components/Card";
+import { Navbar } from "../../../Components";
+import { Card } from "../../../Components";
 import axios from "axios";
 import { IoEyeSharp } from "react-icons/io5";
 import { FaEyeSlash } from "react-icons/fa";
