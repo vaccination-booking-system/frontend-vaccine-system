@@ -118,7 +118,7 @@ const Register = () => {
   const handleSubmit = e => {
     e.preventDefault();
     axiosInstance
-      .post("/auth/register", {
+      .post("/api/v1/auth/register", {
         name,
         phone_number: phoneNumber,
         nik,
