@@ -117,7 +117,7 @@ const Register = () => {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, {
+      .post("/api/v1/auth/register", {
         name,
         phone_number: phoneNumber,
         nik,
