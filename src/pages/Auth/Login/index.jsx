@@ -3,6 +3,7 @@ import { Navbar } from "../../../Components";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import axiosInstance from "../../../network/apis";
 
 function Login() {
   const [loginValue, setLoginValue] = useState({
@@ -41,8 +42,8 @@ function Login() {
     if (errMsg !== "" || nik.length !== 16) {
       alert("ada data yang tidak sesuai");
     } else {
-      axios
-        .post("/api/v1/auth/login", {
+      axiosInstance
+        .post("/auth/login", {
           nik,
           password,
         })
