@@ -42,7 +42,7 @@ function Login() {
       alert("ada data yang tidak sesuai");
     } else {
       axios
-        .post(`${process.env.REACT_APP_API_BASE_URL}/auth/login`, {
+        .post("/api/v1/auth/login", {
           nik,
           password,
         })
