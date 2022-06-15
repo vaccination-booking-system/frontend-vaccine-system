@@ -1,44 +1,58 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { PathContextProvider } from "./context/PathContext";
 import { AddFamilyMemberPage, Dashboard, Login, Register, TicketVaccinePage, VaccinationBookingsPage } from "./pages";
+import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        }
+      />
       <Route path="/dashboard">
         <Route
           index
           element={
-            <PathContextProvider>
+            <AuthRoute>
               <Dashboard />
-            </PathContextProvider>
+            </AuthRoute>
           }
         />
         <Route
           path="vaccination-bookings"
           element={
-            <PathContextProvider>
+            <AuthRoute>
               <VaccinationBookingsPage />
-            </PathContextProvider>
+            </AuthRoute>
           }
         />
         <Route
           path="add-family-member"
           element={
-            <PathContextProvider>
+            <AuthRoute>
               <AddFamilyMemberPage />
-            </PathContextProvider>
+            </AuthRoute>
           }
         />
         <Route
           path="ticket-vaccine"
           element={
-            <PathContextProvider>
+            <AuthRoute>
               <TicketVaccinePage />
-            </PathContextProvider>
+            </AuthRoute>
           }
         />
       </Route>

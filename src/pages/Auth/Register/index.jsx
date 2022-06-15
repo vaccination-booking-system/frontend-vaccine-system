@@ -124,8 +124,8 @@ const Register = () => {
         password,
       })
       .then(function (response) {
-        navigate("/dashboard");
         localStorage.setItem("accessToken", response.data.data.accessToken);
+        navigate("/dashboard");
       })
       .catch(function (error) {
         if (error.response.data.message === "ALREADY_EXIST") {
@@ -159,68 +159,60 @@ const Register = () => {
         <div className="h-[50%] bg-white w-[100%]"></div>
         <div className="z-20 drop-shadow-md absolute mt-[130px]">
           <Card>
-            <div className="font-bold px-[50px] pt-[75px] text-[25px]">Buat Akun Baru</div>
-            <div>
+            <div className="py-12">
+              <h1 className="font-bold px-[50px] text-[25px]">Buat Akun Baru</h1>
               <form onSubmit={handleSubmit}>
-                <div>
-                  <div className="flex gap-x-12 px-[50px] pt-[42px]">
-                    <div>
-                      <div>
-                        <label htmlFor="nameForm">Name</label>
-                      </div>
-                      <div className="pt-[6px]">
-                        <input
-                          type="text"
-                          placeholder="Your Full Name"
-                          name="nameForm"
-                          className={`${
-                            nameErrorMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
-                          } rounded-[15px] pl-[20px] border-2 border-[#E2E8F0]`}
-                          style={{ width: "370px", height: "50px" }}
-                          value={name}
-                          title="Isikan Nama Lengkap Anda"
-                          onChange={event => handleInputChange(event)}
-                          autoComplete="off"
-                          required
-                        />
-                      </div>
-                      <div className="pl-2 pt-1">
-                        <div className="text-xs text-red-700">{nameErrorMsg}</div>
-                      </div>
+                <div className="flex gap-x-12 px-[50px] pt-[42px]">
+                  <div>
+                    <label htmlFor="nameForm">Name</label>
+                    <div className="pt-[6px]">
+                      <input
+                        type="text"
+                        placeholder="Your Full Name"
+                        name="nameForm"
+                        className={`${
+                          nameErrorMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
+                        } rounded-[15px] pl-[20px] border-2 border-[#E2E8F0]`}
+                        style={{ width: "370px", height: "50px" }}
+                        value={name}
+                        title="Isikan Nama Lengkap Anda"
+                        onChange={event => handleInputChange(event)}
+                        autoComplete="off"
+                        required
+                      />
                     </div>
-                    <div>
-                      <div>
-                        <label htmlFor="nikForm">Nomor Induk Kependudukan</label>
-                      </div>
-                      <div className="pt-[6px]">
-                        <input
-                          type="text"
-                          placeholder="Your NIK"
-                          name="nikForm"
-                          className={`${
-                            nikErrorMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
-                          } rounded-[15px] pl-[20px] border-2 border-[#E2E8F0]`}
-                          style={{ width: "370px", height: "50px" }}
-                          value={nik}
-                          title="Isikan NIK Anda"
-                          onChange={event => handleInputChange(event)}
-                          maxLength={16}
-                          autoComplete="off"
-                          required
-                        />
-                      </div>
-                      <div className="pl-2 pt-1">
-                        <div className="text-xs text-red-700">{nikErrorMsg}</div>
-                      </div>
+                    <div className="pl-2 pt-1">
+                      <div className="text-xs text-red-700">{nameErrorMsg}</div>
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="nikForm">Nomor Induk Kependudukan</label>
+                    <div className="pt-[6px]">
+                      <input
+                        type="text"
+                        placeholder="Your NIK"
+                        name="nikForm"
+                        className={`${
+                          nikErrorMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
+                        } rounded-[15px] pl-[20px] border-2 border-[#E2E8F0]`}
+                        style={{ width: "370px", height: "50px" }}
+                        value={nik}
+                        title="Isikan NIK Anda"
+                        onChange={event => handleInputChange(event)}
+                        maxLength={16}
+                        autoComplete="off"
+                        required
+                      />
+                    </div>
+                    <div className="pl-2 pt-1">
+                      <div className="text-xs text-red-700">{nikErrorMsg}</div>
                     </div>
                   </div>
                 </div>
                 <div>
                   <div className="flex gap-x-12 pl-[50px] pt-[24px]">
                     <div>
-                      <div>
-                        <label htmlFor="number_phoneForm">Nomor Telepon</label>
-                      </div>
+                      <label htmlFor="number_phoneForm">Nomor Telepon</label>
                       <div className="pt-[6px]">
                         <input
                           type="text"
@@ -243,9 +235,7 @@ const Register = () => {
                       </div>
                     </div>
                     <div>
-                      <div>
-                        <label htmlFor="passwordForm">Password</label>
-                      </div>
+                      <label htmlFor="passwordForm">Password</label>
                       <div className="pt-[6px] relative ">
                         <input
                           type={showPassword ? "text" : "password"}
@@ -286,7 +276,6 @@ const Register = () => {
               <div className="text-[14px] flex justify-center gap-1 pt-6">
                 <div className="text-[#A0AEC0]">Already have an account? </div>
                 <div className="font-bold text-[#C4C4C4]">
-                  {/* <a href="#">Sign In</a> */}
                   <Link to="/login">Sign In</Link>
                 </div>
               </div>
