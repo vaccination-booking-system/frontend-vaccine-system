@@ -124,8 +124,8 @@ const Register = () => {
         password,
       })
       .then(function (response) {
-        navigate("/dashboard");
         localStorage.setItem("accessToken", response.data.data.accessToken);
+        navigate("/dashboard");
       })
       .catch(function (error) {
         if (error.response.data.message === "ALREADY_EXIST") {

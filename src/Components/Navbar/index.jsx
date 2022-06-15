@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../Logo";
+import { Logo } from "../";
 import PropsTypes from "prop-types";
 
 // Navbar Icons

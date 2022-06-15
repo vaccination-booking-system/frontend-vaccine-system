@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // Components
-import Logo from "../Logo";
+import { Logo } from "../";
 import { CardIcon, ChartIcon, HomeIcon, KeyIcon } from "../Icons";
 
 import { Link, useLocation } from "react-router-dom";
