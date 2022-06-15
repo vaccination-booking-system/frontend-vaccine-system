@@ -43,7 +43,7 @@ function Login() {
       alert("ada data yang tidak sesuai");
     } else {
       axiosInstance
-        .post("/auth/login", {
+        .post("/api/v1/auth/login", {
           nik,
           password,
         })
