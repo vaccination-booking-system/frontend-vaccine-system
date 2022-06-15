@@ -4,12 +4,13 @@ import PropsTypes from "prop-types";
 
 // Navbar Icons
 import { CubeIcon, ProfileIcon, ImageIcon, KeyIcon } from "../Icons";
+import { Link } from "react-router-dom";
 
 const navItems = [
-  { text: "Dashboard", icon: ({ color }) => <CubeIcon color={color} /> },
-  { text: "About", icon: ({ color }) => <ProfileIcon color={color} /> },
-  { text: "Gallery", icon: ({ color }) => <ImageIcon color={color} /> },
-  { text: "Contact Us", icon: ({ color }) => <KeyIcon color={color} /> },
+  { text: "Home", icon: ({ color }) => <CubeIcon color={color} />, path: "/" },
+  { text: "About", icon: ({ color }) => <ProfileIcon color={color} />, path: "/about" },
+  { text: "Gallery", icon: ({ color }) => <ImageIcon color={color} />, path: "/gallery" },
+  { text: "Contact Us", icon: ({ color }) => <KeyIcon color={color} />, path: "/contact-us" },
 ];
 
 /**
@@ -27,24 +28,28 @@ const Navbar = ({ path }) => {
         }  m-6`}
       >
         <Logo {...(path === "register" && { color: "white" })} />
-        <ul className="flex mx-[60px]">
+        <ul className="flex mx-[120px]">
           {navItems.map((item, idx) => (
-            <li key={idx} className="flex items-center mx-2">
-              <div className="my-auto">
-                <item.icon {...(path === "register" && { color: "white" })} />
-              </div>
-              <p className="mx-2">{item.text}</p>
+            <li key={idx} className="mx-2">
+              <Link to={item.path} className="flex items-center">
+                <div className="my-auto">
+                  <item.icon {...(path === "register" && { color: "white" })} />
+                </div>
+                <p className="mx-2">{item.text}</p>
+              </Link>
             </li>
           ))}
         </ul>
         <div>
-          <button
-            className={`${
-              path === "register" ? "text-[#151928] bg-white" : path === "login" && "text-white bg-[#151928]"
-            } py-2 px-10 rounded-full text-[12px] font-bold`}
-          >
-            SIGN IN
-          </button>
+          <Link to={path === "register" ? "/login" : "/register"}>
+            <button
+              className={`${
+                path === "register" ? "text-[#151928] bg-white" : path === "login" && "text-white bg-[#151928]"
+              } py-2 px-10 rounded-full text-[12px] font-bold`}
+            >
+              {path === "register" ? "SIGN IN" : "SIGN UP"}
+            </button>
+          </Link>
         </div>
       </div>
     </div>
