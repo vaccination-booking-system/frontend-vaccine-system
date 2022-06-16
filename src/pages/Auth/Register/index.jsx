@@ -6,6 +6,7 @@ import { Card } from "../../../Components";
 import axios from "axios";
 import { IoEyeSharp } from "react-icons/io5";
 import { FaEyeSlash } from "react-icons/fa";
+import axiosInstance from "../../../network/apis";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -116,8 +117,8 @@ const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, {
+    axiosInstance
+      .post("/api/v1/auth/register", {
         name,
         phone_number: phoneNumber,
         nik,
