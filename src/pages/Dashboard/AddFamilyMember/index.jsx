@@ -13,7 +13,6 @@ const AddFamilyMemberPage = () => {
           <Layout>
             <div className="bg-[#DBF5FE] rounded-[15px]">
               <div className="pl-[15px]">
-                {" "}
                 {/* Ini Div Header */}
                 <div className="pb-[5px] pt-[20px]">
                   <span className="text-xs font-semibold text-[#B3B3B3]">Booking Vaccine / Status </span>
@@ -23,17 +22,14 @@ const AddFamilyMemberPage = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-[130px]">
-              <div className="">
+            <div className="mt-[100px]">
+              <div>
                 <Card>
-                  <div className="pt-2 px-[45px]">
-                    {" "}
+                  <div className="px-[45px] my-[30px]">
                     {/* ini div tampung semua konten */}
                     <div className="bg-[#9ED7F9] h-[128px] rounded-[18px]">
-                      {" "}
                       {/* ini div untuk profil anda */}
                       <div className="pl-[21px]">
-                        {" "}
                         {/* ini div wrap semua isi profil */}
                         <div className="pt-[23px]">
                           <span className="font-bold text-lg">Profil Anda</span>
@@ -47,13 +43,11 @@ const AddFamilyMemberPage = () => {
                       </div>
                     </div>
                     <div className="mt-[22px] p-">
-                      {" "}
                       {/* ini div mulai dari profil anggota */}
                       <div className="pb-[23.5px]">
                         <p className="font-bold text-[25px] leading-[1.3]">Profil Anggota</p>
                       </div>
                       <div>
-                        {" "}
                         {/* ini div tampung list nama */}
                         <ul className="list-decimal pl-[15px]">
                           <li className="pb-[25px]">
@@ -99,8 +93,7 @@ const AddFamilyMemberPage = () => {
                         </ul>
                       </div>
                     </div>
-                    <div className="flex justify-center mt-[50px]">
-                      {" "}
+                    <div className="flex justify-center">
                       {/* ini div button */}
                       <button className="bg-black w-[370px] h-[45px] rounded-[12px]">
                         <div className="text-white font-bold text-xs">+ TAMBAH ANGGOTA</div>
