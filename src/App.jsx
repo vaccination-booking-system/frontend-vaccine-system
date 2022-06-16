@@ -1,26 +1,20 @@
 import React from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
-import { Layout } from "./Components";
-import {
-  AddFamilyMemberPage,
-  Dashboard,
-  Login,
-  Register,
-  TicketVaccinePage,
-  VaccinationBookingsPage,
-  BookingsSKPage,
-  BookingsMemberPage,
-  BookingsStatusPage,
-  BookingsKategoriPage,
-  BookingsJadwalPage,
-  BookingsIdentitasPage,
-  AddMembers,
-} from "./pages";
+import { Route, Routes } from "react-router-dom";
+import { AddFamilyMemberPage, Dashboard, Login, Register, TicketVaccinePage, VaccinationBookingsPage } from "./pages";
+import LandingPage from "./pages/LandingPage";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
   return (
     <Routes>
+      <Route
+        path="/"
+        element={
+          <PublicRoute>
+            <LandingPage />
+          </PublicRoute>
+        }
+      />
       <Route
         path="/login"
         element={
