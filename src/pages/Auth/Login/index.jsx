@@ -13,12 +13,15 @@ function Login() {
 
   const { nik, password } = loginValue;
 
-  const [errMsg, setErrMsg] = useState("");
+  const [nikErrMsg, setNikErrMsg] = useState("");
   const [nikOrPassIncorrectMsg, setNikOrPassIncorrectMsg] = useState("");
+  const [passErrMsg, setPassErrMsg] = useState("");
 
   const navigate = useNavigate();
 
   const handleInput = e => {
+    setNikErrMsg("");
+    setPassErrMsg("");
     const name = e.target.name;
     const value = e.target.value;
     setLoginValue({
@@ -28,10 +31,10 @@ function Login() {
     if (name === "nik") {
       const regexNik = /^[0-9]*$/;
       if ((value.length > 0 && value.length < 16) || !regexNik.test(value)) {
-        setErrMsg("NIK Tidak Valid");
+        setNikErrMsg("NIK Tidak Valid");
       } else {
         if (value.length === 0 || value.length === 16) {
-          setErrMsg("");
+          setNikErrMsg("");
         }
       }
     }
@@ -39,23 +42,32 @@ function Login() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (errMsg !== "" || nik.length !== 16) {
-      alert("ada data yang tidak sesuai");
+    if (nik === "" && password === "") {
+      setNikErrMsg("NIK Tidak Boleh Kosong");
+      setPassErrMsg("Password Tidak Boleh Kosong");
+    } else if (nik === "") {
+      setNikErrMsg("NIK Tidak Boleh Kosong");
+    } else if (password === "") {
+      setPassErrMsg("Password Tidak Boleh Kosong");
     } else {
-      axiosInstance
-        .post("/api/v1/auth/login", {
-          nik,
-          password,
-        })
-        .then(function (response) {
-          localStorage.setItem("accessToken", response.data.data.accessToken);
-          navigate("/dashboard");
-        })
-        .catch(function (error) {
-          if (error.response.data.message === "INVALID_CREDENTIALS") {
-            setNikOrPassIncorrectMsg("NIK atau Password Salah");
-          }
-        });
+      if (passErrMsg !== "" || nikErrMsg !== "" || nik.length !== 16) {
+        alert("ada data yang tidak sesuai");
+      } else {
+        axiosInstance
+          .post("/api/v1/auth/login", {
+            nik,
+            password,
+          })
+          .then(function (response) {
+            localStorage.setItem("accessToken", response.data.data.accessToken);
+            navigate("/dashboard");
+          })
+          .catch(function (error) {
+            if (error.response.data.message === "INVALID_CREDENTIALS") {
+              setNikOrPassIncorrectMsg("NIK atau Password Salah");
+            }
+          });
+      }
     }
   };
   useEffect(() => {
@@ -85,31 +97,32 @@ function Login() {
                 <label>NIK</label>
                 <input
                   className={`${
-                    errMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
+                    nikErrMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
                   } h-[51.24px] rounded-[15px] border-solid border-2 border-[#E2E8F0] pl-[20px]`}
                   placeholder="Your NIK"
                   type="text"
                   name="nik"
                   maxLength={16}
-                  required
                   value={nik}
                   onChange={handleInput}
                   autoComplete="off"
                 />
-                <span className="text-red-500 text-xs">{errMsg}</span>
+                <span className="text-red-500 text-xs">{nikErrMsg}</span>
               </div>
               <div className="flex flex-col mt-[27.67px]">
                 <label>Password</label>
                 <input
-                  className="h-[51.24px] rounded-[15px] border-solid border-2 border-[#E2E8F0] pl-[20px]"
+                  className={`${
+                    passErrMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
+                  } h-[51.24px] rounded-[15px] border-solid border-2 border-[#E2E8F0] pl-[20px]`}
                   placeholder="Your password"
                   type="password"
                   name="password"
                   value={password}
                   onChange={handleInput}
-                  required
                 />
               </div>
+              <span className="text-xs text-red-500">{passErrMsg}</span>
               <span className="text-xs text-red-500">{nikOrPassIncorrectMsg}</span>
               <div className="mt-[22px]">
                 <label className="inline-flex relative items-center cursor-pointer">
