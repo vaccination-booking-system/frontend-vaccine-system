@@ -50,9 +50,8 @@ function Login() {
     } else if (password === "") {
       setPassErrMsg("Password Tidak Boleh Kosong");
     } else {
-      if (passErrMsg !== "" || nikErrMsg !== "" || nik.length !== 16) {
-        alert("ada data yang tidak sesuai");
-      } else {
+      if (passErrMsg !== "" || nikErrMsg !== "" || nik.length !== 16) return;
+      else {
         axiosInstance
           .post("/api/v1/auth/login", {
             nik,
