@@ -1,11 +1,17 @@
-import React from "react";
+import styled from "@emotion/styled";
 
-const Card = ({ children, bgColor }) => {
-  return <div className={`bg-[${bgColor}] rounded-[15px] p-4`}>{children}</div>;
-};
+const Card = styled("div")`
+  background-color: ${props => props.bg};
+  border-radius: ${props => props.rounded};
+  padding: ${props => props.padding};
+  opacity: ${props => props.opacity};
+`;
 
 Card.defaultProps = {
-  bgColor: "white",
+  bg: "white",
+  rounded: "16px",
+  padding: "16px",
+  opacity: null,
 };
 
 export default Card;
