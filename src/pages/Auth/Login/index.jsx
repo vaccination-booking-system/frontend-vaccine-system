@@ -12,7 +12,7 @@ function Login() {
   });
 
   const { nik, password } = loginValue;
-
+  const regexNik = /^[0-9]*$/;
   const [nikErrMsg, setNikErrMsg] = useState("");
   const [nikOrPassIncorrectMsg, setNikOrPassIncorrectMsg] = useState("");
   const [passErrMsg, setPassErrMsg] = useState("");
@@ -20,33 +20,26 @@ function Login() {
   const navigate = useNavigate();
 
   const handleInput = e => {
-    setNikErrMsg("");
-    setPassErrMsg("");
     const name = e.target.name;
     const value = e.target.value;
     setLoginValue({
       ...loginValue,
       [name]: value,
     });
-    if (name === "nik") {
-      const regexNik = /^[0-9]*$/;
-      if ((value.length > 0 && value.length < 16) || !regexNik.test(value)) {
-        setNikErrMsg("NIK Tidak Valid");
-      } else {
-        if (value.length === 0 || value.length === 16) {
-          setNikErrMsg("");
-        }
-      }
-    }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+    setNikErrMsg("");
+    setPassErrMsg("");
+    setNikOrPassIncorrectMsg("");
     if (nik === "" && password === "") {
       setNikErrMsg("NIK Tidak Boleh Kosong");
       setPassErrMsg("Password Tidak Boleh Kosong");
     } else if (nik === "") {
       setNikErrMsg("NIK Tidak Boleh Kosong");
+    } else if ((nik.length > 0 && nik.length < 16) || !regexNik.test(nik)) {
+      setNikErrMsg("NIK Tidak Valid");
     } else if (password === "") {
       setPassErrMsg("Password Tidak Boleh Kosong");
     } else {
@@ -108,8 +101,10 @@ function Login() {
                   onChange={handleInput}
                 />
               </div>
-              <span className="text-xs text-red-500">{passErrMsg}</span>
-              <span className="text-xs text-red-500">{nikOrPassIncorrectMsg}</span>
+              <span className="text-xs text-red-500">
+                {passErrMsg}
+                {nikOrPassIncorrectMsg}
+              </span>
               <div className="mt-[22px]">
                 <label className="inline-flex relative items-center cursor-pointer">
                   <input type="checkbox" value="" id="default-toggle" className="sr-only peer" />
