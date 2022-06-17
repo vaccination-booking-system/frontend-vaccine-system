@@ -51,13 +51,13 @@ const Dashboard = () => {
       <div className="flex my-20">
         {serviceItems.map((item, idx) => {
           return (
-            <div className="p-4" key={idx}>
+            <Card key={idx} margin="0 1rem">
               <h1 className="font-bold text-lg">{item.heading}</h1>
               <p className="my-2">{item.desc}</p>
               <Link to={item.path}>
                 <button className="border-2 py-2 px-8 rounded-md text-xs font-bold text-gray-400">Click</button>
               </Link>
-            </div>
+            </Card>
           );
         })}
       </div>
