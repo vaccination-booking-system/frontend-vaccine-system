@@ -5,6 +5,7 @@ import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Footer from "../../Components/Footer";
 
 const AddFamilyMemberPage = () => {
   const [isClicked, setIsClicked] = useState(false);
