@@ -55,9 +55,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <div className="relative z-50">
-        <ProfileBar name="Muhammad Ridwan" email="ridwan@gmail.com" />
-      </div>
+      <ProfileBar name="Muhammad Ridwan" email="ridwan@gmail.com" />
       <div className="my-4">
         <Card>
           <div>
