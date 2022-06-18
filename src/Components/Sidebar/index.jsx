@@ -13,25 +13,25 @@ const sidebarItems = [
   {
     text: "Vaccination Bookings",
     icon: ({ color, size }) => <ChartIcon color={color} size={size} />,
-    path: "/dashboard/vaccination-bookings",
+    path: "/vaccination-bookings",
     anchor: "vaccination-bookings",
   },
   {
     text: "Add Familiy Member",
     icon: ({ color, size }) => <CardIcon color={color} size={size} />,
-    path: "/dashboard/add-family-member",
+    path: "/add-family-member",
     anchor: "add-family-member",
   },
   {
     text: "Profile",
     icon: ({ color, size }) => <HelpIcon color={color} size={size} />,
-    path: "/dashboard/profile",
+    path: "/profile",
     anchor: "profile",
   },
   {
     text: "Ticket Vaccine",
     icon: ({ color, size }) => <KeyIcon color={color} size={size} />,
-    path: "/dashboard/ticket-vaccine",
+    path: "/ticket-vaccine",
     anchor: "ticket-vaccine",
   },
 ];
