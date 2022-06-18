@@ -6,5 +6,6 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Layout from "./Layout";
 import ProfileBar from "./ProfileBar";
+import Modal from "./Modal";
 
-export { Button, Card, Logo, CubeIcon, ImageIcon, KeyIcon, ProfileIcon, Navbar, Sidebar, Layout, LogoWithoutText, LogoutIcon, ProfileBar };
+export { Button, Card, Logo, CubeIcon, ImageIcon, KeyIcon, ProfileIcon, Navbar, Sidebar, Layout, LogoWithoutText, LogoutIcon, ProfileBar, Modal };

@@ -47,7 +47,7 @@ const Sidebar = () => {
   };
 
   return (
-    <section className="h-[100vh] px-4 py-8 flex flex-col justify-between">
+    <section className="h-[100vh] bg-white px-4 py-8 flex flex-col justify-between">
       <div>
         <div className="flex justify-center">
           <LogoWithoutText />

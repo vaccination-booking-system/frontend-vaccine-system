@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Layout, Card, ProfileBar, Button } from "../../Components";
+import { Layout, Card, ProfileBar, Button, Modal } from "../../Components";
 
 import { useJwt } from "react-jwt";
 import { Link } from "react-router-dom";
@@ -62,7 +62,7 @@ const Dashboard = () => {
             <h1 className="font-bold text-lg">Layanan Kesehatan</h1>
             <p>Layanan Kesehatan Terbaik</p>
           </div>
-          <div className="flex my-8">
+          <div className="flex mt-4">
             {serviceItems.map((item, idx) => {
               return (
                 <Card key={idx} margin={idx > 0 && idx < serviceItems.length - 1 ? "0 6rem" : null}>
