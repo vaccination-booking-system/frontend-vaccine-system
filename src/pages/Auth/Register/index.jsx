@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BackgroundRegister from "../../../assets/images/background-register.jpg";
-import { Navbar } from "../../../Components";
+import { Button, Navbar } from "../../../Components";
 import { Card } from "../../../Components";
 import axios from "axios";
 import { IoEyeSharp } from "react-icons/io5";
@@ -142,7 +142,7 @@ const Register = () => {
     <>
       {/* ini div navbar atau header */}
       <Navbar path="register" />
-      <div className="flex flex-col justify-center items-center h-[790px] p-6">
+      <div className="flex flex-col justify-center items-center h-[720px] p-6">
         {/* ini div table form */}
         <div className="h-[50%] w-[100%] bg-cover rounded-[15px] bg-bottom relative" style={{ backgroundImage: `url(${BackgroundRegister})` }}>
           <div className="absolute bg-[#4FAEE5] w-[100%] h-[100%] opacity-40 rounded-[15px] z-10"></div>
@@ -158,9 +158,9 @@ const Register = () => {
           </div>
         </div>
         <div className="h-[50%] bg-white w-[100%]"></div>
-        <div className="z-20 drop-shadow-md absolute mt-[130px]">
-          <Card>
-            <div className="py-12">
+        <div className="z-20 drop-shadow-md absolute mt-[180px]">
+          <Card padding="48px 0px">
+            <div>
               <h1 className="font-bold px-[50px] text-[25px]">Buat Akun Baru</h1>
               <form onSubmit={handleSubmit}>
                 <div className="flex gap-x-12 px-[50px] pt-[42px]">
@@ -264,14 +264,15 @@ const Register = () => {
                   </div>
                 </div>
                 <div className="flex justify-center pt-[50px]">
-                  <button
-                    className={`${
-                      checkIsFormError() ? "cursor-not-allowed bg-[#CACACA]" : "bg-black"
-                    } w-[370px] h-[45px] rounded-[12px] border-2 border-[#E2E8F0]`}
-                    type="submit"
+                  <Button
+                    btnSize="lg"
+                    cursor={checkIsFormError() ? "not-allowed" : null}
+                    bg={checkIsFormError() ? "#CACACA" : "black"}
+                    color={checkIsFormError() ? "black" : "white"}
+                    fontSize="12px"
                   >
-                    <div className={`${checkIsFormError() ? "text-black" : "text-white"} text-[10px] font-bold`}>DAFTAR</div>
-                  </button>
+                    DAFTAR
+                  </Button>
                 </div>
               </form>
               <div className="text-[14px] flex justify-center gap-1 pt-6">
