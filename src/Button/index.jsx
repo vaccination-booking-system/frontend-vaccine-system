@@ -10,6 +10,7 @@ const Button = styled("button")`
   padding: ${({ btnSize }) =>
     btnSize === "sm" || btnSize === "full" ? ".5rem" : btnSize === "md" ? ".5rem 3rem" : btnSize === "lg" && ".5rem 10rem"};
   border-radius: ${({ rounded }) => rounded};
+  cursor: ${({ cursor }) => cursor};
 `;
 
 Button.defaultProps = {
@@ -20,6 +21,7 @@ Button.defaultProps = {
   fontWeight: "700",
   rounded: ".5rem",
   btnSize: "sm",
+  cursor: null,
 };
 
 export default Button;
