@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Layout, Sidebar } from "../../../Components";
+import { Button, Card, Layout, Sidebar } from "../../Components";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";

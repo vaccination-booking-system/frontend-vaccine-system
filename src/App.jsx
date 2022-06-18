@@ -22,51 +22,48 @@ const App = () => {
           </PublicRoute>
         }
       />
-      <Route path="/dashboard">
+      <Route
+        path="/dashboard"
+        element={
+          <AuthRoute>
+            <Dashboard />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/vaccination-bookings"
+        element={
+          <AuthRoute>
+            <VaccinationBookingsPage />
+          </AuthRoute>
+        }
+      />
+      <Route path="/add-family-member">
         <Route
           index
           element={
             <AuthRoute>
-              <Dashboard />
+              <AddFamilyMemberPage />
             </AuthRoute>
           }
         />
         <Route
-          path="vaccination-bookings"
+          path="add"
           element={
             <AuthRoute>
-              <VaccinationBookingsPage />
-            </AuthRoute>
-          }
-        />
-        <Route path="add-family-member">
-          <Route
-            index
-            element={
-              <AuthRoute>
-                <AddFamilyMemberPage />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path="add"
-            element={
-              <AuthRoute>
-                <AddMembers />
-              </AuthRoute>
-            }
-          />
-        </Route>
-
-        <Route
-          path="ticket-vaccine"
-          element={
-            <AuthRoute>
-              <TicketVaccinePage />
+              <AddMembers />
             </AuthRoute>
           }
         />
       </Route>
+      <Route
+        path="/ticket-vaccine"
+        element={
+          <AuthRoute>
+            <TicketVaccinePage />
+          </AuthRoute>
+        }
+      />
     </Routes>
   );
 };
