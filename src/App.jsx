@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { AddFamilyMemberPage, Dashboard, Login, Register, TicketVaccinePage, VaccinationBookingsPage } from "./pages";
+import { AddFamilyMemberPage, Dashboard, Login, Register, TicketVaccinePage, VaccinationBookingsPage, AddMembers } from "./pages";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -39,14 +39,25 @@ const App = () => {
             </AuthRoute>
           }
         />
-        <Route
-          path="add-family-member"
-          element={
-            <AuthRoute>
-              <AddFamilyMemberPage />
-            </AuthRoute>
-          }
-        />
+        <Route path="add-family-member">
+          <Route
+            index
+            element={
+              <AuthRoute>
+                <AddFamilyMemberPage />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="add"
+            element={
+              <AuthRoute>
+                <AddMembers />
+              </AuthRoute>
+            }
+          />
+        </Route>
+
         <Route
           path="ticket-vaccine"
           element={
