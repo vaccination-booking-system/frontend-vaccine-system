@@ -65,8 +65,8 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="flex justify-center">
-        <div className="cursor-pointer" onClick={() => handleLogout()}>
-          <LogoutIcon color="#DDD" size={24} />
+        <div className="cursor-pointer p-2 rounded-md hover:bg-[#DBF5FE] bg-" onClick={() => handleLogout()}>
+          <LogoutIcon color="rgb(203, 213, 225)" size={24} />
         </div>
       </div>
     </section>

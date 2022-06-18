@@ -1,4 +1,4 @@
-import Button from "../Button";
+import Button from "./Button";
 import Card from "./Card";
 import { Logo, LogoWithoutText } from "./Logo";
 import { CubeIcon, ImageIcon, KeyIcon, ProfileIcon, LogoutIcon } from "./Icons";
