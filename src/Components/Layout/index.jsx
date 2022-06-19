@@ -1,11 +1,18 @@
 import React from "react";
 import { Sidebar } from "../";
+import Footer from "../Footer";
 
 const Layout = ({ children }) => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="h-[100vh] overflow-y-auto py-6 px-8 flex-1 bg-[#DBF5FE]">{children}</div>
+      <div className=" w-full ">
+        <div className="relative h-[100vh] py-12 overflow-y-auto bg-[#DBF5FE]">
+          <div className="relative z-50 px-8">{children}</div>
+          <div className="bg-[#0A6C9D] w-full h-[100px] rounded-lg absolute top-0"></div>
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 };

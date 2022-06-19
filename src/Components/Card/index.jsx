@@ -6,6 +6,7 @@ const Card = styled("div")`
   padding: ${props => props.padding};
   margin: ${props => props.margin};
   opacity: ${props => props.opacity};
+  max-width: ${props => props.maxWidth};
 `;
 
 Card.defaultProps = {
@@ -14,6 +15,7 @@ Card.defaultProps = {
   padding: "16px",
   opacity: null,
   margin: null,
+  maxWidth: null,
 };
 
 export default Card;

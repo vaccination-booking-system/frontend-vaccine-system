@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Layout, Sidebar } from "../../../../Components";
+import { Button, Card, Layout, Sidebar } from "../../../Components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -35,7 +35,7 @@ const AddMembers = () => {
             {/* Ini Div Header */}
             <div className="pb-[5px] pt-[20px]">
               <span className="text-xs font-normal leading-[1.4] text-[#718096]">
-                <Link to="/dashboard/add-family-member">Add Family Member</Link>
+                <Link to="/add-family-member">Add Family Member</Link>
                 <span className="text-[#0A6C9D] cursor-pointer" onClick={handleClickedContent}>
                   / Identitas
                 </span>
