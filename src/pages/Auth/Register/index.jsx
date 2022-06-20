@@ -67,18 +67,16 @@ const Register = () => {
   };
 
   const checkNama = value => {
-    const regexNama = /^[a-zA-Z ]*$/gim;
+    /* const regexNama = /^[a-zA-Z ]*$/gim;
     /* const regexTest = /^[^-\s][a-zA-Z\s-]+$/gim; */
-    const regexTest = /^(?!\s)[a-zA-Z \s-]*/gim;
-    const regexSpasi = /^(?!\s)[a-zA-Z\s-]*/gim;
+    const regexNama = /^[^-\0-9][a-zA-Z ]*$/gim;
 
-    if (value.length >= 0 && regexTest.test(value)) {
+    if (value.length > 0 && regexNama.test(value)) {
       console.log("tes1");
       setNameErroMsg("");
-    } /* else if (value > 0 && !regexTest.test(value)) {
+    } /* else if (value > 0 && !regexNama.test(value)) {
       setNameErroMsg("Nama tidak boleh ada angka");
-    } */
-    if (value.length >= 0 && !regexTest.test(value)) {
+    } */ else if (value.length > 0 && !regexNama.test(value)) {
       setNameErroMsg("Nama tidak sesuai format");
     }
 
@@ -89,27 +87,49 @@ const Register = () => {
   };
 
   const checkNumberPhone = value => {
-    const regexPhone = /^08/gim;
+    const regexPhone = /^08+[0-9]*$/;
     const regexNumber = /[0-9]/gim;
 
-    /* if (value.length > 0 && !regexNumber.test(value)) {
+    /* if (value.length > 0 && !regexPhone.test(value)) {
       setPhoneNumberErrorMsg("Inputan harus berupa angka");
+      console.log("test 1");
     } else {
       if (regexPhone.test(value)) {
         setPhoneNumberErrorMsg("");
+        console.log("test 2");
         if (value.length < 12) {
           setPhoneNumberErrorMsg("Nomor HP kurang");
+          console.log("test 3");
         }
       } else {
         if (value.length === 0) {
           setPhoneNumberErrorMsg("");
+          console.log("test 4");
         } else {
           setPhoneNumberErrorMsg("Input dimulai dengan 08");
+          console.log("test 5");
         }
       }
     } */
-    if ((value.length > 0 && !regexNumber.test(value)) || !regexPhone.test(value)) {
-      console.log("tes 1");
+
+    if (value.length > 0 && !regexPhone.test(value)) {
+      setPhoneNumberErrorMsg("Input dimulai dengan 08 & harus berupa angka");
+      console.log("test 1");
+    } else if (value.length > 1 && regexPhone.test(value)) {
+      setPhoneNumberErrorMsg("");
+      console.log("test 2");
+      if (value.length < 12) {
+        setPhoneNumberErrorMsg("Nomor HP kurang");
+        console.log("test 3");
+      }
+    }
+    if (value.length === 0) {
+      setPhoneNumberErrorMsg("");
+      console.log("test 4");
+    }
+
+    /*if ((value.length > 0 && !regexNumber.test(value)) || !regexPhone.test(value)) {
+       console.log("tes 1");
       setPhoneNumberErrorMsg("tidak valid");
     }
     if (value.length > 0 && regexNumber.test(value) && regexPhone.test(value)) {
@@ -118,7 +138,7 @@ const Register = () => {
     }
     if (value.length === 0) {
       setPhoneNumberErrorMsg("");
-    }
+    } */
   };
 
   const checkPassword = value => {
@@ -230,7 +250,7 @@ const Register = () => {
                       />
                     </div>
                     <div className="pl-2 pt-1">
-                      <div className="text-xs text-red-700">{nameErrorMsg}</div>
+                      <div className="text-xs text-red-700">{nikErrorMsg}</div>
                     </div>
                   </div>
                 </div>
