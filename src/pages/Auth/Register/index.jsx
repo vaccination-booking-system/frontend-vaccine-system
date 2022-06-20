@@ -67,19 +67,32 @@ const Register = () => {
   };
 
   const checkNama = value => {
-    const regexNama = /^[a-z ]*$/gim;
-    if ((value.length === 0 || value !== "") && regexNama.test(value)) {
+    const regexNama = /^[a-zA-Z ]*$/gim;
+    /* const regexTest = /^[^-\s][a-zA-Z\s-]+$/gim; */
+    const regexTest = /^(?!\s)[a-zA-Z \s-]*/gim;
+    const regexSpasi = /^(?!\s)[a-zA-Z\s-]*/gim;
+
+    if (value.length >= 0 && regexTest.test(value)) {
+      console.log("tes1");
       setNameErroMsg("");
-    } else if (value !== "" && !regexNama.test(value)) {
+    } /* else if (value > 0 && !regexTest.test(value)) {
       setNameErroMsg("Nama tidak boleh ada angka");
+    } */
+    if (value.length >= 0 && !regexTest.test(value)) {
+      setNameErroMsg("Nama tidak sesuai format");
+    }
+
+    if (value.length === 0) {
+      console.log("tes3");
+      setNameErroMsg("");
     }
   };
 
   const checkNumberPhone = value => {
-    const regexPhone = /^08/gm;
+    const regexPhone = /^08/gim;
     const regexNumber = /[0-9]/gim;
 
-    if (value.length > 0 && !regexNumber.test(value)) {
+    /* if (value.length > 0 && !regexNumber.test(value)) {
       setPhoneNumberErrorMsg("Inputan harus berupa angka");
     } else {
       if (regexPhone.test(value)) {
@@ -94,6 +107,17 @@ const Register = () => {
           setPhoneNumberErrorMsg("Input dimulai dengan 08");
         }
       }
+    } */
+    if ((value.length > 0 && !regexNumber.test(value)) || !regexPhone.test(value)) {
+      console.log("tes 1");
+      setPhoneNumberErrorMsg("tidak valid");
+    }
+    if (value.length > 0 && regexNumber.test(value) && regexPhone.test(value)) {
+      setPhoneNumberErrorMsg("");
+      console.log("tes 2");
+    }
+    if (value.length === 0) {
+      setPhoneNumberErrorMsg("");
     }
   };
 
@@ -149,7 +173,7 @@ const Register = () => {
           <div className="flex justify-center z-20">
             <div className="my-[65px] z-30">
               <div className="text-white text-center">
-                <div className="font-bold text-[32px]">Welcome!</div>
+                <div className="font-bold text-[32px]">Selamat Datang!</div>
                 <div className="w-[333px]">
                   <div className="text-[14px]">Silahkan Masukkan data pribadi anda untuk melakukan pendaftaran vaksin.</div>
                 </div>
@@ -165,11 +189,11 @@ const Register = () => {
               <form onSubmit={handleSubmit}>
                 <div className="flex gap-x-12 px-[50px] pt-[42px]">
                   <div>
-                    <label htmlFor="nameForm">Name</label>
+                    <label htmlFor="nameForm">Nama</label>
                     <div className="pt-[6px]">
                       <input
                         type="text"
-                        placeholder="Your Full Name"
+                        placeholder="Masukkan Nama Lengkap Anda"
                         name="nameForm"
                         className={`${
                           nameErrorMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
@@ -191,7 +215,7 @@ const Register = () => {
                     <div className="pt-[6px]">
                       <input
                         type="text"
-                        placeholder="Your NIK"
+                        placeholder="Masukkan NIK Anda"
                         name="nikForm"
                         className={`${
                           nikErrorMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
@@ -206,7 +230,7 @@ const Register = () => {
                       />
                     </div>
                     <div className="pl-2 pt-1">
-                      <div className="text-xs text-red-700">{nikErrorMsg}</div>
+                      <div className="text-xs text-red-700">{nameErrorMsg}</div>
                     </div>
                   </div>
                 </div>
@@ -217,7 +241,7 @@ const Register = () => {
                       <div className="pt-[6px]">
                         <input
                           type="text"
-                          placeholder="Your Phone Number"
+                          placeholder="Masukkan Nomor Telepon Anda"
                           name="number_phoneForm"
                           className={`${
                             phoneNumberErrorMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
@@ -240,7 +264,7 @@ const Register = () => {
                       <div className="pt-[6px] relative ">
                         <input
                           type={showPassword ? "text" : "password"}
-                          placeholder="Your Password"
+                          placeholder="Masukkan Password Anda"
                           name="passwordForm"
                           className={`${
                             passwordErrorMsg === "" ? "border-[#E2E8F0]" : "border-[#F4511E] bg-red-200"
