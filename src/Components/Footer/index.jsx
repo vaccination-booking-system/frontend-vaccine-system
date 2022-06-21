@@ -5,8 +5,8 @@ import { FaFacebookF } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <>
-      <div className="flex justify-center mt-[117px] mx-[6.5px]">
+    <div className="sticky top-[100vh] z-50">
+      <div className="flex justify-center mt-[100px]">
         <div className="bg-[#0A6C9D] w-full h-full flex justify-end  text-white">
           <div className="pt-[21px] pr-[56px]">
             {/* wrap semua quick links */}
@@ -73,7 +73,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-white w-full h-[2px] mx-[6.5px]"></div>
-      <div className="bg-[#0A6C9D] flex justify-between items-center text-white mx-[6.5px]">
+      <div className="bg-[#0A6C9D] flex justify-between items-center text-white">
         <div className="pl-[116px] pt-[23px] pb-[21px]">
           <p className="font-bold w-[250px]">Copyright &copy; 2022. All rights. reserved</p>
         </div>
@@ -92,7 +92,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
