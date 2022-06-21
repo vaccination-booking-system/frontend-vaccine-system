@@ -35,7 +35,7 @@ const AddMembers = () => {
             {/* Ini Div Header */}
             <div className="pb-[5px] pt-[20px]">
               <span className="text-xs font-normal leading-[1.4] text-[#718096]">
-                <Link to="/dashboard/add-family-member">Add Family Member</Link>
+                <Link to="/add-family-member">Add Family Member</Link>
                 <span className="text-[#0A6C9D] cursor-pointer" onClick={handleClickedContent}>
                   / Identitas
                 </span>

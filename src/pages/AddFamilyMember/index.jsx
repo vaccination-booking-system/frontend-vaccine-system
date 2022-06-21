@@ -5,6 +5,7 @@ import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Footer from "../../Components/Footer";
 
 const AddFamilyMemberPage = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -110,7 +111,7 @@ const AddFamilyMemberPage = () => {
                       </button>
                     </div> */}
               <div className="flex justify-center mt-[30px]">
-                <Link to="/dashboard/add-family-member/add">
+                <Link to="/add-family-member/add">
                   <Button btnSize="lg" fontSize="12px" bg="#0A6C9D" color="white">
                     + TAMBAH ANGGOTA
                   </Button>
