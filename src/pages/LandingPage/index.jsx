@@ -1,10 +1,14 @@
 import React from "react";
-import Welcome from "../../Components/SectionLandingPage/Welcome";
+import { Navbar } from "../../Components";
+import SectionWelcome from "../../Components/LandingPage/SectionWelcome";
+import BackgroundHomepage from "../../assets/images/background-homepage.png";
 
 function LandingPage() {
   return (
     <div>
-      <Welcome></Welcome>
+      <Navbar></Navbar>
+
+      <SectionWelcome></SectionWelcome>
     </div>
   );
 }
