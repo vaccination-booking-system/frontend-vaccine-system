@@ -7,5 +7,22 @@ import Sidebar from "./Sidebar";
 import Layout from "./Layout";
 import ProfileBar from "./ProfileBar";
 import Modal from "./Modal";
+import Breadcumb from "./Breadcumb";
 
-export { Button, Card, Logo, CubeIcon, ImageIcon, KeyIcon, ProfileIcon, Navbar, Sidebar, Layout, LogoWithoutText, LogoutIcon, ProfileBar, Modal };
+export {
+  Button,
+  Card,
+  Logo,
+  CubeIcon,
+  ImageIcon,
+  KeyIcon,
+  ProfileIcon,
+  Navbar,
+  Sidebar,
+  Layout,
+  LogoWithoutText,
+  LogoutIcon,
+  ProfileBar,
+  Modal,
+  Breadcumb,
+};

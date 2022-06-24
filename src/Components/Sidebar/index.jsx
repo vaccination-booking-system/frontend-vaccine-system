@@ -13,8 +13,8 @@ const sidebarItems = [
   {
     text: "Vaccination Bookings",
     icon: ({ color, size }) => <ChartIcon color={color} size={size} />,
-    path: "/vaccination-bookings",
-    anchor: "vaccination-bookings",
+    path: "/booking-vaccine",
+    anchor: "booking-vaccine",
   },
   {
     text: "Add Familiy Member",
