@@ -18,36 +18,40 @@ const serviceItems = [
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     imgPath: BookingVaccineImg,
     alt: "booking-vaccine-img",
-    path: "/dashboard/vaccination-bookings",
+    path: "/booking-vaccine",
   },
   {
     heading: "Add Family Member",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     imgPath: AddFamilyMemberImg,
     alt: "add-family-member-img",
-    path: "/dashboard/add-family-member",
+    path: "/add-family-member",
   },
   {
     heading: "Ticket Vaccine",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     imgPath: TicketVaccineImg,
     alt: "ticket-vaccine-img",
-    path: "/dashboard/ticket-vaccine",
+    path: "/ticket-vaccine",
   },
 ];
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
-  const { decodedToken, isExprired } = useJwt(localStorage.getItem("accessToken"));
+  const { decodedToken, isExpired } = useJwt(localStorage.getItem("accessToken"));
 
   const { getUsersLoading, getUsersResult, getUsersError } = useSelector(state => state.users);
 
-  console.log({ decodedToken, isExprired });
+  console.log({ decodedToken, isExpired });
 
   useEffect(() => {
-    dispatch(fetchUsers());
-  }, []);
+    console.log({ decodedToken });
+    if (decodedToken !== null) {
+      const userId = decodedToken.user_id;
+      dispatch(fetchUsers({ token: localStorage.getItem("accessToken"), userId }));
+    }
+  }, [decodedToken]);
 
   useEffect(() => {
     console.log({ getUsersLoading, getUsersResult, getUsersError });
