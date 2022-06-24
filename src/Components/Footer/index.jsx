@@ -8,7 +8,7 @@ const Footer = () => {
     <>
       <footer>
         <div>
-          <div className="flex justify-center mt-[117px] mx-[6.5px]">
+          <div className="flex justify-center mt-[117px] mx-[11.5px]">
             <div className="bg-[#0A6C9D] w-full h-full flex justify-end text-white">
               <div className="pt-[21px] pr-[56px]">
                 {/* wrap semua quick links */}
@@ -18,10 +18,14 @@ const Footer = () => {
                   <div className="bg-white w-11/12 h-[2px]"></div>
                 </div>
                 <div className="pb-[18px]">
-                  <span>Sign Up</span>
+                  <Link to="/">
+                    <span>Sign Up</span>
+                  </Link>
                 </div>
                 <div>
-                  <span>About Us</span>
+                  <Link to="/">
+                    <span>About Us</span>
+                  </Link>
                 </div>
               </div>
               <div className="pt-[21px] pr-[56px]">
@@ -29,19 +33,27 @@ const Footer = () => {
                 <div className="pb-[34px]">
                   {/* quick link */}
                   <span>Others</span>
-                  <div className="bg-white w-8/12 h-[2px]"></div>
+                  <div className="bg-white w-3/12 h-[2px]"></div>
                 </div>
                 <div className="pb-[18px]">
-                  <span>User FAQs</span>
+                  <Link to="/">
+                    <span>User FAQs</span>
+                  </Link>
                 </div>
                 <div className="pb-[18px]">
-                  <span>Legal</span>
+                  <Link to="/">
+                    <span>Legal</span>
+                  </Link>
                 </div>
                 <div className="pb-[18px]">
-                  <span>Privacy Policy</span>
+                  <Link to="/">
+                    <span>Privacy Policy</span>
+                  </Link>
                 </div>
                 <div className="pb-[29px]">
-                  <span>Terms and Conditions</span>
+                  <Link to="/">
+                    <span>Terms and Conditions</span>
+                  </Link>
                 </div>
               </div>
               <div className="pt-[21px] pr-[73px]">
@@ -52,13 +64,19 @@ const Footer = () => {
                   <div className="bg-white w-11/12 h-[2px]"></div>
                 </div>
                 <div className="pb-[18px]">
-                  <span>Send</span>
+                  <Link to="/">
+                    <span>Send</span>
+                  </Link>
                 </div>
                 <div className="pb-[18px]">
-                  <span>Receive</span>
+                  <Link to="/">
+                    <span>Receive</span>
+                  </Link>
                 </div>
                 <div>
-                  <span>Buy</span>
+                  <Link to="/">
+                    <span>Buy</span>
+                  </Link>
                 </div>
               </div>
               <div className="pt-[21px] pr-[86px]">
@@ -79,8 +97,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white w-full h-[2px] mx-[6.5px]"></div>
-          <div className="bg-[#0A6C9D] flex justify-between items-center text-white mx-[6.5px]">
+          <div className="bg-white w-full h-[2px] "></div>
+          <div className="bg-[#0A6C9D] flex justify-between items-center text-white mx-[11.5px]">
             <div className="pl-[116px] pt-[23px] pb-[21px]">
               <p className="font-bold w-[250px]">Copyright &copy; 2022. All rights. reserved</p>
             </div>
