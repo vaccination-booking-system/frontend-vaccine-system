@@ -8,6 +8,36 @@ const AddMembers = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [isFocus, setIfFocus] = useState(false);
 
+  /* const [nama, setNama] = useState("");
+  const [nik, setNik] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [gender, setGender] = useState("");
+  const [relation, setRelation] = useState("");
+  const [birthday, setBirthday] = useState(""); */
+
+  const [dataForm, setDataForm] = useState({
+    nama: "",
+    nik: "",
+    birthday: "",
+    phoneNumber: "",
+    gender: "",
+    relation: "",
+  });
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    /* setDataForm({
+      nama: nama,
+      nik: nik,
+      phoneNumber: phoneNumber,
+      gender: gender,
+      relation: relation,
+      birthday: birthday,
+    }); */
+    //console.log(dataForm);
+    alert("data berhasil ditambahkan");
+  };
+
   const handleClickedContent = () => {
     setIsClicked(true);
   };
@@ -27,6 +57,7 @@ const AddMembers = () => {
     }
   };
 
+  //console.log(dataForm);
   return (
     <>
       <Layout>
@@ -51,7 +82,7 @@ const AddMembers = () => {
             <div className={`${isClicked ? "animate-pulse" : ""}`}>
               <div>
                 <span className="font-bold text-[25px] leading-[32.5px]">Add Family Members</span>
-                <form action="" method="">
+                <form onSubmit={handleSubmit}>
                   <div className="pb-[50px] flex justify-between mt-[22px]">
                     {/* ini div utama contain all konten */}
                     <div className="flex-auto pr-[15px]">
@@ -69,6 +100,8 @@ const AddMembers = () => {
                               placeholder="Masukkan Nama (sesuai KTP)"
                               className="border-2 border-[black] rounded-[15px] py-[15px] px-[20px]"
                               style={{ height: 50, width: "100%" }}
+                              onChange={e => setDataForm({ ...dataForm, [e.target.name]: e.target.value })}
+                              value={dataForm.nama}
                               autoComplete="off"
                             />
                           </div>
@@ -85,6 +118,9 @@ const AddMembers = () => {
                               placeholder="Masukkan NIK"
                               className="border-2 border-[black] rounded-[15px] py-[15px] px-[20px]"
                               style={{ height: 50, width: "100%" }}
+                              onChange={e => setDataForm({ ...dataForm, [e.target.name]: e.target.value })}
+                              value={dataForm.nik}
+                              maxLength={16}
                             />
                           </div>
                         </div>
@@ -97,11 +133,13 @@ const AddMembers = () => {
                             <select
                               name="gender"
                               className="text-[#777777] border-2 border-[black] rounded-[15px] px-[20px]"
-                              style={{ height: 50, width: "100%" }}
+                              style={{ height: 50, width: "100%" }} /* onChange={() => ()} */
+                              onChange={e => setDataForm({ ...dataForm, [e.target.name]: e.target.value })}
+                              value={dataForm.gender}
                             >
-                              <option value="">Jenis Kelamin Anda</option>
-                              <option value="">Pilih</option>
-                              <option value="">Pilih</option>
+                              <option>Jenis Kelamin Anda</option>
+                              <option value="L">Laki-Laki</option>
+                              <option value="P">Wanita</option>
                             </select>
                           </div>
                         </div>
@@ -118,25 +156,30 @@ const AddMembers = () => {
                           <div>
                             <input
                               type="date"
-                              name="nama"
+                              name="birthday"
                               className={`${isFocus ? "text-[#777777]" : "text-black"} border-2 border-[black] rounded-[15px] px-[20px]`}
                               onFocus={handleOnFocus}
                               style={{ height: 50, width: "100%" }}
+                              onChange={e => setDataForm({ ...dataForm, [e.target.name]: e.target.value })}
+                              value={dataForm.birthday}
                             />
                           </div>
                         </div>
                         <div className="pb-[32px]">
                           {/* nampung no hp */}
                           <div className="pb-[6px]">
-                            <label htmlFor="nik">Nomor Telepon</label>
+                            <label htmlFor="phoneNumber">Nomor Telepon</label>
                           </div>
                           <div>
                             <input
                               type="text"
-                              name="nik"
-                              placeholder="Masukkan NIK"
+                              name="phoneNumber"
+                              placeholder="Masukkan Nomor HP"
                               className="border-2 border-[black] rounded-[15px] py-[15px] px-[20px]"
                               style={{ height: 50, width: "100%" }}
+                              onChange={e => setDataForm({ ...dataForm, [e.target.name]: e.target.value })}
+                              value={dataForm.phoneNumber}
+                              maxLength={13}
                             />
                           </div>
                         </div>
@@ -147,26 +190,27 @@ const AddMembers = () => {
                           </div>
                           <div>
                             <select
-                              name="hubungan"
+                              name="relation"
                               className="border-2 border-[black] rounded-[15px] py-[10px] px-[20px] text-[#777777]"
                               style={{ height: 50, width: "100%" }}
+                              onChange={e => setDataForm({ ...dataForm, [e.target.name]: e.target.value })}
+                              value={dataForm.relation}
                             >
-                              <option value="">Pilih</option>
+                              <option value="">Hubungan</option>
+                              <option value="keluarga">Keluarga</option>
+                              <option value="teman">Teman</option>
                             </select>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </form>
-
-                <div className="flex justify-center items-center pb-[54.5px]">
-                  <Link to="">
+                  <div className="flex justify-center items-center pb-[54.5px]">
                     <Button btnSize="lg" fontSize="12px" bg="#0A6C9D" color="white" type="submit">
                       TAMBAHKAN ANGGOTA
                     </Button>
-                  </Link>
-                </div>
+                  </div>
+                </form>
               </div>
             </div>
           </Card>
