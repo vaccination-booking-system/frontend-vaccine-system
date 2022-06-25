@@ -1,6 +1,17 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import { AddFamilyMemberPage, Dashboard, Login, Register, TicketVaccinePage, VaccinationBookingsPage, AddMembers } from "./pages";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Layout } from "./Components";
+import {
+  AddFamilyMemberPage,
+  Dashboard,
+  Login,
+  Register,
+  TicketVaccinePage,
+  VaccinationBookingsPage,
+  VaccinationBookingsSKPage,
+  VaccinationBookingsMemberPage,
+  AddMembers,
+} from "./pages";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -31,13 +42,44 @@ const App = () => {
         }
       />
       <Route
-        path="/vaccination-bookings"
+        path="/booking-vaccine"
         element={
           <AuthRoute>
-            <VaccinationBookingsPage />
+            <Layout>
+              <Outlet />
+            </Layout>
           </AuthRoute>
         }
-      />
+      >
+        <Route
+          index
+          element={
+            <AuthRoute>
+              <VaccinationBookingsPage />
+            </AuthRoute>
+          }
+        />
+        <Route path="sk">
+          <Route
+            index
+            element={
+              <AuthRoute>
+                <VaccinationBookingsSKPage />
+              </AuthRoute>
+            }
+          />
+          <Route path="member">
+            <Route
+              index
+              element={
+                <AuthRoute>
+                  <VaccinationBookingsMemberPage />
+                </AuthRoute>
+              }
+            />
+          </Route>
+        </Route>
+      </Route>
       <Route path="/add-family-member">
         <Route
           index
