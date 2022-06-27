@@ -5,7 +5,7 @@ import { useJwt } from "react-jwt";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { fetchUsers } from "../../store/slice/users/GetUsers";
+import { fetchUserById } from "../../store/slice/users/GetUsers";
 
 // Img
 import BookingVaccineImg from "../../assets/images/booking-vaccine.png";
@@ -18,7 +18,7 @@ const serviceItems = [
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     imgPath: BookingVaccineImg,
     alt: "booking-vaccine-img",
-    path: "/booking-vaccine",
+    path: "/booking-vaccine/sk",
   },
   {
     heading: "Add Family Member",
@@ -41,7 +41,7 @@ const Dashboard = () => {
 
   const { decodedToken, isExpired } = useJwt(localStorage.getItem("accessToken"));
 
-  const { getUsersLoading, getUsersResult, getUsersError } = useSelector(state => state.users);
+  const { getUserByIdLoading, getUserByIdResult, getUserByIdError } = useSelector(state => state.userId);
 
   console.log({ decodedToken, isExpired });
 
@@ -49,45 +49,51 @@ const Dashboard = () => {
     console.log({ decodedToken });
     if (decodedToken !== null) {
       const userId = decodedToken.user_id;
-      dispatch(fetchUsers({ token: localStorage.getItem("accessToken"), userId }));
+      dispatch(fetchUserById({ token: localStorage.getItem("accessToken"), userId }));
     }
   }, [decodedToken]);
 
   useEffect(() => {
-    console.log({ getUsersLoading, getUsersResult, getUsersError });
-  }, [getUsersLoading, getUsersResult, getUsersError]);
+    console.log({ getUserByIdLoading, getUserByIdResult, getUserByIdError });
+  }, [getUserByIdLoading, getUserByIdResult, getUserByIdError]);
 
   return (
     <Layout>
-      <ProfileBar name="Muhammad Ridwan" email="ridwan@gmail.com" />
-      <div className="my-4">
-        <Card>
-          <div>
-            <h1 className="font-bold text-lg">Layanan Kesehatan</h1>
-            <p>Layanan Kesehatan Terbaik</p>
+      {getUserByIdResult ? (
+        <>
+          <ProfileBar name={getUserByIdResult.data.name} />
+          <div className="my-4">
+            <Card>
+              <div>
+                <h1 className="font-bold text-lg">Layanan Kesehatan</h1>
+                <p>Layanan Kesehatan Terbaik</p>
+              </div>
+              <div className="flex mt-4">
+                {serviceItems.map((item, idx) => {
+                  return (
+                    <Card key={idx} margin={idx > 0 && idx < serviceItems.length - 1 ? "0 6rem" : null}>
+                      <div>
+                        <img src={item.imgPath} alt={item.alt} />
+                      </div>
+                      <div className="mt-8">
+                        <h1 className="font-bold text-lg">{item.heading}</h1>
+                        <p className="my-2">{item.desc}</p>
+                        <Link to={item.path}>
+                          <Button bg="white" border="1px solid #0A6C9D" btnSize="md" fontSize="14px">
+                            Click
+                          </Button>
+                        </Link>
+                      </div>
+                    </Card>
+                  );
+                })}
+              </div>
+            </Card>
           </div>
-          <div className="flex mt-4">
-            {serviceItems.map((item, idx) => {
-              return (
-                <Card key={idx} margin={idx > 0 && idx < serviceItems.length - 1 ? "0 6rem" : null}>
-                  <div>
-                    <img src={item.imgPath} alt={item.alt} />
-                  </div>
-                  <div className="mt-8">
-                    <h1 className="font-bold text-lg">{item.heading}</h1>
-                    <p className="my-2">{item.desc}</p>
-                    <Link to={item.path}>
-                      <Button bg="white" border="1px solid #0A6C9D" btnSize="md" fontSize="14px">
-                        Click
-                      </Button>
-                    </Link>
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
-        </Card>
-      </div>
+        </>
+      ) : (
+        ""
+      )}
     </Layout>
   );
 };
