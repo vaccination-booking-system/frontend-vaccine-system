@@ -37,21 +37,7 @@ const serviceItems = [
 ];
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
-
-  const { decodedToken, isExpired } = useJwt(localStorage.getItem("accessToken"));
-
   const { getUserByIdLoading, getUserByIdResult, getUserByIdError } = useSelector(state => state.userId);
-
-  console.log({ decodedToken, isExpired });
-
-  useEffect(() => {
-    console.log({ decodedToken });
-    if (decodedToken !== null) {
-      const userId = decodedToken.user_id;
-      dispatch(fetchUserById({ token: localStorage.getItem("accessToken"), userId }));
-    }
-  }, [decodedToken]);
 
   useEffect(() => {
     console.log({ getUserByIdLoading, getUserByIdResult, getUserByIdError });
