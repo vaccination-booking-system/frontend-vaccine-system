@@ -1,6 +1,17 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import { AddFamilyMemberPage, Dashboard, Login, Register, TicketVaccinePage, VaccinationBookingsPage } from "./pages";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Layout } from "./Components";
+import {
+  AddFamilyMemberPage,
+  Dashboard,
+  Login,
+  Register,
+  TicketVaccinePage,
+  VaccinationBookingsPage,
+  VaccinationBookingsSKPage,
+  VaccinationBookingsMemberPage,
+  AddMembers,
+} from "./pages";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -22,25 +33,56 @@ const App = () => {
           </PublicRoute>
         }
       />
-      <Route path="/dashboard">
+      <Route
+        path="/dashboard"
+        element={
+          <AuthRoute>
+            <Dashboard />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/booking-vaccine"
+        element={
+          <AuthRoute>
+            <Layout>
+              <Outlet />
+            </Layout>
+          </AuthRoute>
+        }
+      >
         <Route
           index
-          element={
-            <AuthRoute>
-              <Dashboard />
-            </AuthRoute>
-          }
-        />
-        <Route
-          path="vaccination-bookings"
           element={
             <AuthRoute>
               <VaccinationBookingsPage />
             </AuthRoute>
           }
         />
+        <Route path="sk">
+          <Route
+            index
+            element={
+              <AuthRoute>
+                <VaccinationBookingsSKPage />
+              </AuthRoute>
+            }
+          />
+          <Route path="member">
+            <Route
+              index
+              element={
+                <AuthRoute>
+                  <VaccinationBookingsMemberPage />
+                </AuthRoute>
+              }
+            />
+          </Route>
+        </Route>
+      </Route>
+      <Route path="/add-family-member">
         <Route
-          path="add-family-member"
+          index
           element={
             <AuthRoute>
               <AddFamilyMemberPage />
@@ -48,14 +90,22 @@ const App = () => {
           }
         />
         <Route
-          path="ticket-vaccine"
+          path="add"
           element={
             <AuthRoute>
-              <TicketVaccinePage />
+              <AddMembers />
             </AuthRoute>
           }
         />
       </Route>
+      <Route
+        path="/ticket-vaccine"
+        element={
+          <AuthRoute>
+            <TicketVaccinePage />
+          </AuthRoute>
+        }
+      />
     </Routes>
   );
 };
