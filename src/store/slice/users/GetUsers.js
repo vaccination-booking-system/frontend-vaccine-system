@@ -11,7 +11,7 @@ const fetchUserById = createAsyncThunk("users/fetchUsers", async params => {
     },
   });
   console.log(res);
-  return res.data;
+  return res.data.data;
 });
 
 const initialState = {
