@@ -10,6 +10,8 @@ import {
   VaccinationBookingsPage,
   VaccinationBookingsSKPage,
   VaccinationBookingsMemberPage,
+  VaccinationBookingsStatusPage,
+  VaccinationBookingsKategori,
   AddMembers,
 } from "./pages";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -77,6 +79,26 @@ const App = () => {
                 </AuthRoute>
               }
             />
+            <Route path="status">
+              <Route
+                index
+                element={
+                  <AuthRoute>
+                    <VaccinationBookingsStatusPage />
+                  </AuthRoute>
+                }
+              />
+              <Route path="kategori">
+                <Route
+                  index
+                  element={
+                    <AuthRoute>
+                      <VaccinationBookingsKategori />
+                    </AuthRoute>
+                  }
+                />
+              </Route>
+            </Route>
           </Route>
         </Route>
       </Route>
