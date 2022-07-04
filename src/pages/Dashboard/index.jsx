@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Layout, Card, ProfileBar, Button, Modal } from "../../Components";
+import { Layout, Card, ProfileBar, Button, Modal, LoadingAnimation } from "../../Components";
 
 import { useJwt } from "react-jwt";
 import { Link } from "react-router-dom";
@@ -47,7 +47,7 @@ const Dashboard = () => {
     <Layout>
       {getUserByIdResult ? (
         <>
-          <ProfileBar name={getUserByIdResult.data.name} />
+          <ProfileBar name={getUserByIdResult.name} />
           <div className="my-4">
             <Card>
               <div>
@@ -77,6 +77,10 @@ const Dashboard = () => {
             </Card>
           </div>
         </>
+      ) : getUserByIdLoading ? (
+        <div className="py-24">
+          <LoadingAnimation />
+        </div>
       ) : (
         ""
       )}
