@@ -1,6 +1,20 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import { AddFamilyMemberPage, Dashboard, Login, Register, TicketVaccinePage, VaccinationBookingsPage } from "./pages";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Layout } from "./Components";
+import {
+  AddFamilyMemberPage,
+  AddMembers,
+  BookingsJadwalPage,
+  BookingsKategoriPage,
+  BookingsMemberPage,
+  BookingsSKPage,
+  BookingsStatusPage,
+  Dashboard,
+  Login,
+  Register,
+  TicketVaccinePage,
+  VaccinationBookingsPage,
+} from "./pages";
 import LandingPage from "./pages/LandingPage";
 import { AuthRoute, PublicRoute } from "./routes";
 
@@ -102,7 +116,7 @@ const App = () => {
                       </AuthRoute>
                     }
                   />
-                  <Route path="identitas">
+                  {/* <Route path="identitas">
                     <Route
                       index
                       element={
@@ -111,7 +125,7 @@ const App = () => {
                         </AuthRoute>
                       }
                     />
-                  </Route>
+                  </Route> */}
                 </Route>
               </Route>
             </Route>

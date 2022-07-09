@@ -8,7 +8,6 @@ import BookingsMemberPage from "./VaccinationBookings/BookingsMember";
 import BookingsStatusPage from "./VaccinationBookings/BookingsStatus";
 import BookingsKategoriPage from "./VaccinationBookings/BookingsKategori";
 import BookingsJadwalPage from "./VaccinationBookings/BookingsJadwal";
-import BookingsIdentitasPage from "./VaccinationBookings/BookingsIdentitas";
 import AddFamilyMemberPage from "./AddFamilyMember";
 import TicketVaccinePage from "./TicketVaccine";
 import AddMembers from "./AddFamilyMember/AddMembers";
@@ -23,7 +22,6 @@ export {
   BookingsStatusPage,
   BookingsKategoriPage,
   BookingsJadwalPage,
-  BookingsIdentitasPage,
   AddFamilyMemberPage,
   TicketVaccinePage,
   AddMembers,
