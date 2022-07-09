@@ -41,7 +41,10 @@ const Breadcumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
                     {...(anchorPath === "booking-vaccine" &&
                       path !== "booking-vaccine" && {
                         onClick: () =>
-                          navigate(`/${tempPathArr.join("/")}`, anchorPath === "booking-vaccine" && path === "status" && { state: selectedUser }),
+                          navigate(
+                            `/${tempPathArr.join("/")}`,
+                            (path === "status" || path === "kategori" || path === "jadwal") && { state: { selectedUser } }
+                          ),
                       })}
                     className={`${path === selectedPath ? "text-[#0A6C9D]" : "text-slate-400"} cursor-pointer`}
                   >
