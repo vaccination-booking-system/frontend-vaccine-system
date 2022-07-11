@@ -33,8 +33,8 @@ const BookingsMemberPage = () => {
               "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
             },
           });
-          if (res.length > 0) {
-            setFamilyMember([getUserByIdResult, ...res]);
+          if (res.data.data.length > 0) {
+            setFamilyMember([getUserByIdResult, ...res.data.data]);
           } else {
             setFamilyMember([getUserByIdResult]);
           }
