@@ -3,14 +3,13 @@ import { Logo } from "../";
 import PropsTypes from "prop-types";
 
 // Navbar Icons
-import { CubeIcon, ProfileIcon, ImageIcon, KeyIcon } from "../Icons";
+import { ProfileIcon, ImageIcon, KeyIcon } from "../Icons";
 import { Link } from "react-router-dom";
 
 const navItems = [
-  { text: "Home", icon: ({ color }) => <CubeIcon color={color} />, path: "/" },
   { text: "About", icon: ({ color }) => <ProfileIcon color={color} />, path: "/about" },
-  { text: "Gallery", icon: ({ color }) => <ImageIcon color={color} />, path: "/gallery" },
-  { text: "Contact Us", icon: ({ color }) => <KeyIcon color={color} />, path: "/contact-us" },
+  { text: "Value", icon: ({ color }) => <ImageIcon color={color} />, path: "/gallery" },
+  { text: "Service", icon: ({ color }) => <KeyIcon color={color} />, path: "/contact-us" },
 ];
 
 /**

@@ -6,20 +6,18 @@ import SectionOurServices from "../../Components/LandingPage/SectionOurServices"
 import SectionOurValues from "../../Components/LandingPage/SectionOurValues";
 import Footer from "../../Components/Footer";
 import SectionSearch from "../../Components/LandingPage/SectionSearch";
+import SectionDownload from "../../Components/LandingPage/SectionDownload";
 
 function LandingPage() {
   return (
     <div>
       <Navbar></Navbar>
-      <div>
-        <SectionWelcome></SectionWelcome>
-      </div>
-      <div>
-        <SectionAboutUs></SectionAboutUs>
-      </div>
+      <SectionWelcome></SectionWelcome>
+      <SectionAboutUs></SectionAboutUs>
       <SectionOurServices></SectionOurServices>
       <SectionOurValues></SectionOurValues>
       <SectionSearch></SectionSearch>
+      <SectionDownload></SectionDownload>
       <Footer></Footer>
     </div>
   );
