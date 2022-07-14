@@ -18,6 +18,7 @@ import {
   BookingsTinjauPage,
   AddMembers,
 } from "./pages";
+import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -146,7 +147,7 @@ const App = () => {
           </Route>
         </Route>
       </Route>
-      <Route path="/add-family-member">
+      <Route path="/family-member">
         <Route
           index
           element={
@@ -160,6 +161,14 @@ const App = () => {
           element={
             <AuthRoute>
               <AddMembers />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="edit/:id"
+          element={
+            <AuthRoute>
+              <EditMembers />
             </AuthRoute>
           }
         />

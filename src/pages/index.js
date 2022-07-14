@@ -14,6 +14,7 @@ import BookingsTinjauPage from "./VaccinationBookings/BookingsTinjau";
 import AddFamilyMemberPage from "./AddFamilyMember";
 import TicketVaccinePage from "./TicketVaccine";
 import AddMembers from "./AddFamilyMember/AddMembers";
+import EditMembers from "./EditFamilyMember";
 
 export {
   Login,
@@ -31,4 +32,5 @@ export {
   AddFamilyMemberPage,
   TicketVaccinePage,
   AddMembers,
+  EditMembers,
 };
