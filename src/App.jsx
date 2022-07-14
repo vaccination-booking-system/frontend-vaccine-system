@@ -8,11 +8,15 @@ import {
   Register,
   TicketVaccinePage,
   VaccinationBookingsPage,
+  BookingsSKPage,
+  BookingsMemberPage,
+  BookingsStatusPage,
+  BookingsKategoriPage,
+  BookingsJadwalPage,
+  /* BookingsIdentitasPage, */
   AddMembers,
-  Profile,
-  VaccinationBookingsSKPage,
-  VaccinationBookingsMemberPage,
 } from "./pages";
+import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -65,7 +69,7 @@ const App = () => {
             index
             element={
               <AuthRoute>
-                <VaccinationBookingsSKPage />
+                <BookingsSKPage />
               </AuthRoute>
             }
           />
@@ -74,14 +78,47 @@ const App = () => {
               index
               element={
                 <AuthRoute>
-                  <VaccinationBookingsMemberPage />
+                  <BookingsMemberPage />
                 </AuthRoute>
               }
             />
+            <Route path="status">
+              <Route
+                index
+                element={
+                  <AuthRoute>
+                    <BookingsStatusPage />
+                  </AuthRoute>
+                }
+              />
+              <Route path="kategori">
+                <Route
+                  index
+                  element={
+                    <AuthRoute>
+                      <BookingsKategoriPage />
+                    </AuthRoute>
+                  }
+                />
+                <Route path="jadwal">
+                  <Route
+                    index
+                    element={
+                      <AuthRoute>
+                        <BookingsJadwalPage />
+                      </AuthRoute>
+                    }
+                  />
+                  <Route path="identitas">
+                    <Route index element={<AuthRoute>{/* <BookingsIdentitasPage /> */}</AuthRoute>} />
+                  </Route>
+                </Route>
+              </Route>
+            </Route>
           </Route>
         </Route>
       </Route>
-      <Route path="/add-family-member">
+      <Route path="/family-member">
         <Route
           index
           element={
@@ -95,6 +132,14 @@ const App = () => {
           element={
             <AuthRoute>
               <AddMembers />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="edit/:id"
+          element={
+            <AuthRoute>
+              <EditMembers />
             </AuthRoute>
           }
         />

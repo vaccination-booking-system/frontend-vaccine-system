@@ -1,9 +1,8 @@
-import { decodeToken } from "react-jwt";
+import { decodeToken, isExpired } from "react-jwt";
 
 const JWTHelper = {
   checkIsJWTValid(token) {
-    console.log({ token, decode: decodeToken(token) });
-    if (decodeToken(token) !== null) return true;
+    if (decodeToken(token) !== null && !isExpired(token)) return true;
     return false;
   },
 };
