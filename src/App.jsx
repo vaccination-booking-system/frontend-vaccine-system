@@ -1,6 +1,6 @@
 import React from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
 import { Layout } from "./Components";
+import { Route, Routes, Outlet } from "react-router-dom";
 import {
   AddFamilyMemberPage,
   Dashboard,
@@ -8,9 +8,10 @@ import {
   Register,
   TicketVaccinePage,
   VaccinationBookingsPage,
+  AddMembers,
+  Profile,
   VaccinationBookingsSKPage,
   VaccinationBookingsMemberPage,
-  AddMembers,
 } from "./pages";
 import { AuthRoute, PublicRoute } from "./routes";
 
@@ -103,6 +104,14 @@ const App = () => {
         element={
           <AuthRoute>
             <TicketVaccinePage />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <AuthRoute>
+            <Profile />
           </AuthRoute>
         }
       />

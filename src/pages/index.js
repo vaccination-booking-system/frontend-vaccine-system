@@ -8,15 +8,17 @@ import VaccinationBookingsMemberPage from "./VaccinationBookings/BookingsMember"
 import AddFamilyMemberPage from "./AddFamilyMember";
 import TicketVaccinePage from "./TicketVaccine";
 import AddMembers from "./AddFamilyMember/AddMembers";
+import Profile from "./Profile";
 
 export {
   Login,
   Register,
   Dashboard,
   VaccinationBookingsPage,
-  VaccinationBookingsSKPage,
-  VaccinationBookingsMemberPage,
   AddFamilyMemberPage,
   TicketVaccinePage,
   AddMembers,
+  Profile,
+  VaccinationBookingsMemberPage,
+  VaccinationBookingsSKPage,
 };
