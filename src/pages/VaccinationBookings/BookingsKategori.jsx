@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { usePath } from "../../context/PathContext";
 import { Breadcumb, Button, Card } from "../../Components";
 
-const VaccinationBookingsKategori = () => {
-  const { state: user } = useLocation();
+const BookingsKategoriPage = () => {
+  const { state } = useLocation();
+
+  const { selectedUser } = state;
+
+  const navigate = useNavigate();
 
   const { anchorPath, pathArr } = usePath();
 
@@ -47,9 +51,25 @@ const VaccinationBookingsKategori = () => {
     console.log({ name, value });
   };
 
+  const handleClickNext = () => {
+    if (selectedCategory === "" || isPregnant === null) return;
+    navigate("jadwal", {
+      state: {
+        selectedUser: {
+          ...selectedUser,
+          detail: {
+            ...selectedUser.detail,
+            category: selectedCategory,
+            isPregnant,
+          },
+        },
+      },
+    });
+  };
+
   return (
     <div>
-      <Breadcumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} selectedUser={user} />
+      <Breadcumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} selectedUser={selectedUser} />
       <div className="my-8">
         <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
           <h1 className="font-bold text-xl mb-4">Kategori</h1>
@@ -76,18 +96,18 @@ const VaccinationBookingsKategori = () => {
               <label>Apakah Anda Sedang Hamil ?</label>
               <div className="flex">
                 <div className="mx-4 flex items-center">
-                  <input type="radio" name="isPregnant" value={true} onChange={e => handleChangeIsPregnant(e)} />
-                  <label>Ya</label>
+                  <input type="radio" id="true" name="isPregnant" value={true} onChange={e => handleChangeIsPregnant(e)} />
+                  <label htmlFor="true">Ya</label>
                 </div>
                 <div className="mx-4 flex items-center">
-                  <input type="radio" name="isPregnant" value={false} onChange={e => handleChangeIsPregnant(e)} />
-                  <label>Tidak</label>
+                  <input type="radio" id="false" name="isPregnant" value={false} onChange={e => handleChangeIsPregnant(e)} />
+                  <label htmlFor="false">Tidak</label>
                 </div>
               </div>
             </div>
           </div>
           <div className="flex justify-center mt-8">
-            <Button bg="#0A6C9D" btnSize="lg" fontSize=".75rem" color="white">
+            <Button bg="#0A6C9D" btnSize="lg" fontSize=".75rem" color="white" onClick={() => handleClickNext()}>
               Selanjutnya
             </Button>
           </div>
@@ -97,4 +117,4 @@ const VaccinationBookingsKategori = () => {
   );
 };
 
-export default VaccinationBookingsKategori;
+export default BookingsKategoriPage;

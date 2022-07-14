@@ -4,9 +4,9 @@ import { usePath } from "../../context/PathContext";
 import { Card, LoadingAnimation } from "../../Components";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../../network/apis";
 
-const VaccinationBookingsMemberPage = () => {
+const BookingsMemberPage = () => {
   const { anchorPath, pathArr } = usePath();
 
   const { getUserByIdResult, getUserByIdLoading, getUserByIdError } = useSelector(state => state.userId);
@@ -17,29 +17,27 @@ const VaccinationBookingsMemberPage = () => {
 
   const navigate = useNavigate();
 
-  const getFamilyMember = async familyId => {
-    try {
-      console.log(`${process.env.REACT_APP_MOCKAPI_URL}/family_member?family_id=${familyId}`);
-      const res = await axios.get(`${process.env.REACT_APP_MOCKAPI_URL}/family_member?family_id=${familyId}`);
-      return res.data;
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
   const handleClickFamilyMember = user => {
-    navigate("status", { state: user });
+    navigate("status", { state: { selectedUser: { ...user, detail: {} } } });
   };
 
   useEffect(() => {
     (async () => {
       try {
         if (getUserByIdResult) {
+          console.log({ getUserByIdResult });
+          const { id } = getUserByIdResult;
           setGetFamilyMemberLoading(true);
-          const resUser = await axios.get(`${process.env.REACT_APP_MOCKAPI_URL}/family_member?nik=${getUserByIdResult?.nik}`);
-          const resFamilyMember = await getFamilyMember(resUser.data[0].family_id);
-          setFamilyMember(resFamilyMember);
-          console.log(resFamilyMember);
+          const res = await axiosInstance.get(`/api/v1/family-members?user_id=${id}`, {
+            headers: {
+              "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          });
+          if (res.length > 0) {
+            setFamilyMember([getUserByIdResult, ...res]);
+          } else {
+            setFamilyMember([getUserByIdResult]);
+          }
           setGetFamilyMemberLoading(false);
         }
       } catch (error) {
@@ -79,4 +77,4 @@ const VaccinationBookingsMemberPage = () => {
   );
 };
 
-export default VaccinationBookingsMemberPage;
+export default BookingsMemberPage;
