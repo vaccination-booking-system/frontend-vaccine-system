@@ -5,6 +5,7 @@ import { Card, LoadingAnimation } from "../../Components";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../network/apis";
+import CONST from "../../utils/constant";
 
 const BookingsMemberPage = () => {
   const { anchorPath, pathArr } = usePath();
@@ -18,7 +19,7 @@ const BookingsMemberPage = () => {
   const navigate = useNavigate();
 
   const handleClickFamilyMember = user => {
-    navigate("status", { state: { selectedUser: { ...user, detail: {} } } });
+    navigate("status", { state: { selectedUser: { ...user, bookingsDetail: {} } } });
   };
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const BookingsMemberPage = () => {
               "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
             },
           });
+          console.log(res);
           if (res.data.data.length > 0) {
             setFamilyMember([getUserByIdResult, ...res.data.data]);
           } else {

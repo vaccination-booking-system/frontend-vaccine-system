@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { usePath } from "../../context/PathContext";
 import { Breadcumb, Button, Card } from "../../Components";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BookingsKategoriPage = () => {
   const { state } = useLocation();
@@ -16,7 +18,7 @@ const BookingsKategoriPage = () => {
 
   const [isPregnant, setIsPregnant] = useState(null);
 
-  const optionItems = [
+  const [optionItems] = useState([
     {
       text: "Pilih Kategori Anda",
       value: "",
@@ -26,18 +28,18 @@ const BookingsKategoriPage = () => {
       value: "anak",
     },
     {
-      text: "Remaja ( 12 - 45 Tahun )",
+      text: "Remaja ( 12 - 19 Tahun )",
       value: "remaja",
     },
     {
-      text: "Lansia ( 46 - 65 Tahun )",
-      value: "lansia",
+      text: "Dewasa ( 20 - 55 Tahun )",
+      value: "dewasa",
     },
     {
-      text: "Manula ( > 65 Tahun )",
-      value: "manula",
+      text: "Lansia ( > 55 Tahun )",
+      value: "lansia",
     },
-  ];
+  ]);
 
   const handleChangeCategory = e => {
     const { name, value } = e.target;
@@ -52,19 +54,22 @@ const BookingsKategoriPage = () => {
   };
 
   const handleClickNext = () => {
-    if (selectedCategory === "" || isPregnant === null) return;
-    navigate("jadwal", {
-      state: {
-        selectedUser: {
-          ...selectedUser,
-          detail: {
-            ...selectedUser.detail,
-            category: selectedCategory,
-            isPregnant,
+    if (selectedCategory === "" || isPregnant === null) {
+      toast.error("Masukkan data dengan benar!");
+    } else {
+      navigate("jadwal", {
+        state: {
+          selectedUser: {
+            ...selectedUser,
+            bookingsDetail: {
+              ...selectedUser.bookingsDetail,
+              category: selectedCategory,
+              isPregnant,
+            },
           },
         },
-      },
-    });
+      });
+    }
   };
 
   return (
@@ -113,6 +118,17 @@ const BookingsKategoriPage = () => {
           </div>
         </Card>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

@@ -14,6 +14,8 @@ import {
   BookingsKategoriPage,
   BookingsJadwalPage,
   BookingsIdentitasPage,
+  BookingsAlamatPage,
+  BookingsTinjauPage,
   AddMembers,
 } from "./pages";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -117,6 +119,26 @@ const App = () => {
                         </AuthRoute>
                       }
                     />
+                    <Route path="alamat">
+                      <Route
+                        index
+                        element={
+                          <AuthRoute>
+                            <BookingsAlamatPage />
+                          </AuthRoute>
+                        }
+                      />
+                      <Route path="tinjau">
+                        <Route
+                          index
+                          element={
+                            <AuthRoute>
+                              <BookingsTinjauPage />
+                            </AuthRoute>
+                          }
+                        />
+                      </Route>
+                    </Route>
                   </Route>
                 </Route>
               </Route>
