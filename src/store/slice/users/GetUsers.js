@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import axiosInstance from "../../../network/apis";
 
-const fetchUserById = createAsyncThunk("users/fetchUsers", async params => {
+const fetchUserById = createAsyncThunk("userId/fetchUserId", async params => {
   const { token, userId } = params;
   console.log(token, userId);
   const res = await axiosInstance.get(`/api/v1/users/${userId}`, {
@@ -21,7 +21,7 @@ const initialState = {
 };
 
 const userIdSlice = createSlice({
-  name: "users",
+  name: "userId",
   initialState,
   reducers: {},
   extraReducers: builder => {

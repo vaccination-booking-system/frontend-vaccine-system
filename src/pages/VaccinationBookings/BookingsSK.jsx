@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { usePath } from "../../context/PathContext";
 
-const VaccinationBookingsSKPage = () => {
+const BookingsSKPage = () => {
   const { anchorPath, pathArr } = usePath();
 
   const navigate = useNavigate();
@@ -76,4 +76,4 @@ const VaccinationBookingsSKPage = () => {
   );
 };
 
-export default VaccinationBookingsSKPage;
+export default BookingsSKPage;
