@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Sidebar } from "../";
+import Footer from "../Footer";
 
 const Layout = ({ children }) => {
+  const { getUserByIdLoading, getUserByIdResult, getUserByIdError } = useSelector(state => state.userId);
+
   return (
     <div className="flex">
       <Sidebar />
-      <div className="h-[100vh] overflow-y-scroll py-12 px-8 flex-1">{children}</div>
+      <div className="w-full">
+        <div className="relative h-[100vh] overflow-y-auto bg-[#DBF5FE]">
+          <div className="relative z-50 px-8 py-12">{children}</div>
+          <div className="bg-[#0A6C9D] w-full h-[100px] rounded-lg absolute mt-[17px] top-0"></div>
+          {getUserByIdResult ? <Footer /> : ""}
+        </div>
+      </div>
     </div>
   );
 };
