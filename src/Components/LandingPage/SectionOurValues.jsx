@@ -30,9 +30,9 @@ function SectionOurValues() {
     },
   ];
   return (
-    <div>
+    <div id="value">
       <SimpleGrid columns={2} spacing={10}>
-        <Box mt="10vh" pl="10vw">
+        <Box mt="5vh" pl="10vw">
           <img src={BackgroundOurValues} alt="OurValues Background" />
         </Box>
         <Box mt="20vh" pl="10vw" px="1">

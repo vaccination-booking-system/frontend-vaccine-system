@@ -4,12 +4,12 @@ import BackgroundAboutUs from "../../assets/images/background-about-us.png";
 
 function SectionAboutUs() {
   return (
-    <div>
+    <div id="about">
       <SimpleGrid columns={2} spacing={10}>
         <Box mt="10vh" pl="10vw">
           <img src={BackgroundAboutUs} alt="AboutUS Background" />
         </Box>
-        <Box height="100px" mt="30vh" pl="10vw">
+        <Box height="100px" mt="30vh" pl="5vw">
           <b style={{ fontSize: "28px" }}>Apa itu Evizy?</b>
           <div>
             <h2 style={{ fontSize: "18px", width: "40vw" }}>

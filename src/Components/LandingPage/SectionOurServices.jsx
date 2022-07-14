@@ -12,24 +12,24 @@ export default function SectionOurServices() {
       description: "Lakukan Pendaftaran Vaksin Secara Online, Lalu Sesuaikan Jenis Vaksin Dan Jadwal Yang Anda Inginkan.",
       src: BookingVaccineImg,
       title: "Booking Vaccine",
-      path: "/",
+      path: "/login",
     },
     {
       description: "Daftarkan Keluarga Anda Cukup Dengan Menambahkan Data Diri Mereka.",
       src: AddFamilyMemberImg,
       title: "Add Family Member",
-      path: "/",
+      path: "/login",
     },
     {
       description: "Lihat Tiket Vaksin Anda Dimanapun Dan Kapanpun.",
       src: TicketVaccineImg,
       title: "Ticket Vaccine",
-      path: "/",
+      path: "/login",
     },
   ];
 
   return (
-    <div className="px-1">
+    <div id="service" className="px-1">
       <div style={{ backgroundImage: `url(${Background})`, backgroundSize: "cover", minHeight: "100vh" }}>
         <Box pl="10vw" pt="5vh" pr="30vw">
           <b style={{ fontSize: "48px", color: "#0A6C9D" }}>Layanan Evizy</b>
