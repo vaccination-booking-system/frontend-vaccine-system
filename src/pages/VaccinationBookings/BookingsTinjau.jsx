@@ -7,13 +7,14 @@ import StringHelper from "../../utils/StringHelper";
 import { useSelector } from "react-redux";
 import DateHelper from "../../utils/DateHelper";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const BookingsTinjauPage = () => {
   const { capitalizeFirstLetter } = StringHelper;
 
   const { convertMonthId, convertDayId } = DateHelper;
+
+  const { getUserByIdLoading, getUserByIdResult, getUserByIdError } = useSelector(state => state.userId);
 
   const { state } = useLocation();
 
@@ -22,6 +23,8 @@ const BookingsTinjauPage = () => {
   const navigate = useNavigate();
 
   const { anchorPath, pathArr } = usePath();
+
+  const [loopStateAddress, setLoopStateAddress] = useState(0);
 
   const [addressKtp, setAddressKtp] = useState([
     {
@@ -143,6 +146,7 @@ const BookingsTinjauPage = () => {
         }
         return address;
       });
+      console.log({ newAddressDomisili, newAddressKtp });
       setAddressKtp(newAddressKtp);
       setAddressDomisili(newAddressDomisili);
     } catch (error) {
@@ -166,6 +170,7 @@ const BookingsTinjauPage = () => {
         }
         return address;
       });
+      console.log({ newAddressDomisili, newAddressKtp });
       setAddressKtp(newAddressKtp);
       setAddressDomisili(newAddressDomisili);
     } catch (error) {
@@ -189,6 +194,7 @@ const BookingsTinjauPage = () => {
         }
         return address;
       });
+      console.log({ newAddressDomisili, newAddressKtp });
       setAddressKtp(newAddressKtp);
       setAddressDomisili(newAddressDomisili);
     } catch (error) {
@@ -212,6 +218,7 @@ const BookingsTinjauPage = () => {
         }
         return address;
       });
+      console.log({ newAddressDomisili, newAddressKtp });
       setAddressKtp(newAddressKtp);
       setAddressDomisili(newAddressDomisili);
     } catch (error) {
@@ -221,32 +228,37 @@ const BookingsTinjauPage = () => {
 
   const handleClickRegister = async () => {
     try {
+      console.log({ addressKtp, addressDomisili });
       const data = {
         vaccination_session: {
           id: selectedUser.bookingsDetail.vaccinationSessionsId,
         },
+        ...(getUserByIdResult.id !== selectedUser.id && {
+          family_member: {
+            id: selectedUser.id,
+          },
+        }),
         age_category: selectedUser.bookingsDetail.category,
         is_pregnant: selectedUser.bookingsDetail.isPregnant,
-        id_address: selectedUser.bookingsDetail.alamat.ktp.jalan,
+        id_address: selectedUser.bookingsDetail.alamat.ktp.jalan.trim(),
         id_urban_village: addressKtp[3].value.name,
         id_sub_district: addressKtp[2].value.name,
         id_city: addressKtp[1].value.name,
         id_province: addressKtp[0].value.name,
-        curr_address: selectedUser.bookingsDetail.alamat.domisili.jalan,
+        curr_address: selectedUser.bookingsDetail.alamat.domisili.jalan.trim(),
         curr_urban_village: addressDomisili[3].value.name,
         curr_sub_district: addressDomisili[2].value.name,
         curr_city: addressDomisili[1].value.name,
         curr_province: addressDomisili[0].value.name,
       };
+      console.log(data);
       await axiosInstance.post("/api/v1/vaccination-pass", data, {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
       new Promise((resolve, reject) => {
-        resolve(toast.success("Daftar vaksin berhasil"));
+        resolve(Swal.fire({ title: "SUCCESS !", text: "Berhasil booking vaksin ! ", icon: "success", showConfirmButton: false, timer: 2500 }));
       }).then(() => {
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 3000);
+        navigate("/dashboard");
       });
     } catch (error) {
       console.log(error.message);
@@ -254,16 +266,24 @@ const BookingsTinjauPage = () => {
   };
 
   useEffect(() => {
-    getVaccinationSessionsById(selectedUser.bookingsDetail.vaccinationSessionsId);
+    console.log({ loopStateAddress });
+    setLoopStateAddress(prevState => prevState + 1);
+    if (loopStateAddress === 2)
+      getKotaKabupatenById(selectedUser.bookingsDetail.alamat.ktp.kotaKabupaten, selectedUser.bookingsDetail.alamat.domisili.kotaKabupaten);
+    if (loopStateAddress === 4)
+      getKecamatanById(selectedUser.bookingsDetail.alamat.ktp.kecamatan, selectedUser.bookingsDetail.alamat.domisili.kecamatan);
+    if (loopStateAddress === 6)
+      getKelurahanById(selectedUser.bookingsDetail.alamat.ktp.kelurahan, selectedUser.bookingsDetail.alamat.domisili.kelurahan);
+  }, [addressKtp, addressDomisili]);
+
+  useEffect(() => {
     getProvinceById(selectedUser.bookingsDetail.alamat.ktp.provinsi, selectedUser.bookingsDetail.alamat.domisili.provinsi);
-    getKotaKabupatenById(selectedUser.bookingsDetail.alamat.ktp.kotaKabupaten, selectedUser.bookingsDetail.alamat.domisili.kotaKabupaten);
-    getKecamatanById(selectedUser.bookingsDetail.alamat.ktp.kecamatan, selectedUser.bookingsDetail.alamat.domisili.kecamatan);
-    getKelurahanById(selectedUser.bookingsDetail.alamat.ktp.kelurahan, selectedUser.bookingsDetail.alamat.domisili.kelurahan);
+    getVaccinationSessionsById(selectedUser.bookingsDetail.vaccinationSessionsId);
   }, []);
 
-  console.log({ addressKtp, addressDomisili });
+  // console.log({ addressKtp, addressDomisili });
 
-  console.log({ selectedUser });
+  console.log({ selectedUser, getUserByIdResult });
   return (
     <div>
       <Breadcumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} selectedUser={selectedUser} />
@@ -345,17 +365,6 @@ const BookingsTinjauPage = () => {
           </div>
         </Card>
       </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };

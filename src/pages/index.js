@@ -15,6 +15,7 @@ import AddFamilyMemberPage from "./AddFamilyMember";
 import TicketVaccinePage from "./TicketVaccine";
 import AddMembers from "./AddFamilyMember/AddMembers";
 import EditMembers from "./EditFamilyMember";
+import Profile from "./Profile";
 
 export {
   Login,
@@ -33,4 +34,5 @@ export {
   TicketVaccinePage,
   AddMembers,
   EditMembers,
+  Profile,
 };

@@ -17,6 +17,7 @@ import {
   BookingsAlamatPage,
   BookingsTinjauPage,
   AddMembers,
+  Profile,
 } from "./pages";
 import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";

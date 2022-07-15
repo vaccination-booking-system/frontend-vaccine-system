@@ -25,7 +25,7 @@ const serviceItems = [
     desc: "Daftarkan keluarga anda cukup dengan menambahkan data diri mereka.",
     imgPath: AddFamilyMemberImg,
     alt: "add-family-member-img",
-    path: "/add-family-member",
+    path: "/family-member",
   },
   {
     heading: "Ticket Vaccine",
