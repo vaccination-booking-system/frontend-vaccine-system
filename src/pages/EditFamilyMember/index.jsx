@@ -1,14 +1,19 @@
 import React from "react";
-import { Button, Card, Layout, Sidebar } from "../../../Components";
+import { Button, Card, Layout, Sidebar } from "../../Components";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import axiosInstance from "../../../network/apis";
+import axiosInstance from "../../network/apis";
 import Swal from "sweetalert2";
+import { decodeToken } from "react-jwt";
 
-const AddMembers = () => {
+const EditMembers = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [isFocus, setIfFocus] = useState(false);
+
+  const { id: memberId } = useParams();
+
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const [nama, setNama] = useState("");
   const [nik, setNik] = useState("");
@@ -42,56 +47,6 @@ const AddMembers = () => {
   };
 
   const navigate = useNavigate();
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    axiosInstance
-      .post(
-        "/api/v1/family-members",
-        {
-          name: nama,
-          date_of_birth: birthday,
-          nik,
-          gender,
-          relationship: relation,
-          phone_number: phoneNumber,
-        },
-        {
-          headers: {
-            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
-      .then(function (response) {
-        if (nama !== "" && nik !== "" && birthday !== "" && gender !== "" && relation !== "" && phoneNumber !== "") {
-          Swal.fire({
-            title: "SUCCESS !",
-            text: "Thank you for your request.",
-            icon: "success",
-            confirmButtonText: "Close",
-          });
-          setNama("");
-          setBirthday("");
-          setGender("");
-          setNik("");
-          setPhoneNumber("");
-          setRelation("");
-          navigate("/family-member");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-        if (error.response.status === 400) {
-          Swal.fire({
-            title: "Data Not Valid!",
-            text: "Please input the correct data",
-            icon: "error",
-            confirmButtonText: "Close",
-          });
-        }
-      });
-  };
 
   const checkNama = value => {
     const regexNama = /^[^-\0-9][a-zA-Z ]*$/gim;
@@ -215,6 +170,83 @@ const AddMembers = () => {
     }
   };
 
+  const fetchData = () => {
+    const token = localStorage.getItem("accessToken");
+    const claim = decodeToken(token);
+    console.log("ini claim" + claim);
+    axiosInstance
+      .get("/api/v1/family-members/" + memberId, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      })
+      .then(function (response) {
+        setNama(response.data.data.name);
+        setGender(response.data.data.gender);
+        setBirthday(response.data.data.date_of_birth);
+        setPhoneNumber(response.data.data.phone_number);
+        setNik(response.data.data.nik);
+        setRelation(response.data.data.relationship);
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData();
+    }, 3000);
+  }, []);
+
+  const handleEdit = () => {
+    const token = localStorage.getItem("accessToken");
+    const claim = decodeToken(token);
+    console.log(memberId);
+    axiosInstance
+      .put(
+        `/api/v1/family-members/${memberId}`,
+        {
+          name: nama,
+          date_of_birth: birthday,
+          nik,
+          gender,
+          relationship: relation,
+          phone_number: phoneNumber,
+        },
+        {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        }
+      )
+      .then(function (response) {
+        if (nama !== "" && nik !== "" && birthday !== "" && gender !== "" && relation !== "" && phoneNumber !== "") {
+          setTimeout(() => {
+            Swal.fire({
+              title: "SUCCESS !",
+              text: "Thank you for your request.",
+              icon: "success",
+              timer: 2000,
+              confirmButtonText: "Close",
+            });
+            navigate("/family-member");
+          }, 3000);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        if (error.response.status === 400) {
+          Swal.fire({
+            title: "Data Not Valid!",
+            text: "Please input the correct data",
+            icon: "error",
+            confirmButtonText: "Close",
+          });
+        }
+      });
+    console.log("klik edit");
+  };
   return (
     <>
       <Layout>
@@ -230,7 +262,7 @@ const AddMembers = () => {
               </span>
             </div>
             <div className="pb-[25px]">
-              <span className="text-lg font-bold">Add Family Members</span>
+              <span className="text-[20px] font-bold">Add Family Members</span>
             </div>
           </div>
         </div>
@@ -239,7 +271,7 @@ const AddMembers = () => {
             <div className={`${isClicked ? "animate-pulse" : ""}`}>
               <div>
                 <span className="font-bold text-[25px] leading-[32.5px]">Add Family Members</span>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleEdit}>
                   <div className="pb-[50px] flex justify-between mt-[22px]">
                     {/* ini div utama contain all konten */}
                     <div className="flex-auto pr-[15px]">
@@ -380,7 +412,7 @@ const AddMembers = () => {
                       fontSize="12px"
                       type="submit"
                     >
-                      TAMBAHKAN ANGGOTA
+                      EDIT
                     </Button>
                   </div>
                 </form>
@@ -393,4 +425,4 @@ const AddMembers = () => {
   );
 };
 
-export default AddMembers;
+export default EditMembers;
