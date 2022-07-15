@@ -6,6 +6,7 @@ import {
   Dashboard,
   Login,
   Register,
+  LandingPage,
   TicketVaccinePage,
   VaccinationBookingsPage,
   BookingsSKPage,
@@ -25,6 +26,14 @@ import { AuthRoute, PublicRoute } from "./routes";
 const App = () => {
   return (
     <Routes>
+      <Route
+        path="/"
+        element={
+          <PublicRoute>
+            <LandingPage />
+          </PublicRoute>
+        }
+      />
       <Route
         path="/login"
         element={

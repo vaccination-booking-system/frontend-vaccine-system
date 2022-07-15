@@ -1,5 +1,6 @@
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
+import LandingPage from "./LandingPage";
 
 import Dashboard from "./Dashboard";
 import VaccinationBookingsPage from "./VaccinationBookings";
@@ -20,6 +21,7 @@ import Profile from "./Profile";
 export {
   Login,
   Register,
+  LandingPage,
   Dashboard,
   VaccinationBookingsPage,
   BookingsSKPage,
