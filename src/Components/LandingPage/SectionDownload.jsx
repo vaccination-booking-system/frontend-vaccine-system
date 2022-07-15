@@ -4,6 +4,7 @@ import DownloadPlayStore from "../../assets/images/download-playstore.png";
 import DownloadAppStore from "../../assets/images/download-appstore.png";
 import { Box, Flex, SimpleGrid } from "@chakra-ui/core";
 import IconSend from "../../assets/images/icon-send.png";
+import { Link } from "react-router-dom";
 function SectionDownload() {
   const download = [
     {
@@ -47,15 +48,17 @@ function SectionDownload() {
               </div>
             </Box>
             <Box width="20vw">
-              <button
-                className="bg-white my-10 py-2 px-12 justify-center rounded-lg text-[#0A6C9D] text-[16px] "
-                style={{ border: "1px solid black" }}
-              >
-                <div className="flex">
-                  Login
-                  <img className="ml-3" src={IconSend} alt="iconButton" width="10vw" height="10vh" />
-                </div>
-              </button>
+              <Link to={"/login"}>
+                <button
+                  className="bg-white my-10 py-2 px-12 justify-center rounded-lg text-[#0A6C9D] text-[16px] "
+                  style={{ border: "1px solid black" }}
+                >
+                  <div className="flex">
+                    Login
+                    <img className="ml-3" src={IconSend} alt="iconButton" width="10vw" height="10vh" />
+                  </div>
+                </button>
+              </Link>
             </Box>
           </SimpleGrid>
         </Box>

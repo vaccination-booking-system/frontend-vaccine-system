@@ -6,7 +6,7 @@ function SectionAboutUs() {
   return (
     <div id="about">
       <SimpleGrid columns={2} spacing={10}>
-        <Box mt="10vh" pl="10vw">
+        <Box mt="20vh" pl="10vw">
           <img src={BackgroundAboutUs} alt="AboutUS Background" />
         </Box>
         <Box height="100px" mt="30vh" pl="5vw">
