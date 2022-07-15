@@ -1,6 +1,6 @@
 import React from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
 import { Layout } from "./Components";
+import { Route, Routes, Outlet } from "react-router-dom";
 import {
   AddFamilyMemberPage,
   AddMembers,
@@ -14,8 +14,18 @@ import {
   Register,
   TicketVaccinePage,
   VaccinationBookingsPage,
+  BookingsSKPage,
+  BookingsMemberPage,
+  BookingsStatusPage,
+  BookingsKategoriPage,
+  BookingsJadwalPage,
+  BookingsIdentitasPage,
+  BookingsAlamatPage,
+  BookingsTinjauPage,
+  AddMembers,
+  Profile,
 } from "./pages";
-import LandingPage from "./pages/LandingPage";
+import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -125,14 +135,34 @@ const App = () => {
                         </AuthRoute>
                       }
                     />
-                  </Route> */}
+                    <Route path="alamat">
+                      <Route
+                        index
+                        element={
+                          <AuthRoute>
+                            <BookingsAlamatPage />
+                          </AuthRoute>
+                        }
+                      />
+                      <Route path="tinjau">
+                        <Route
+                          index
+                          element={
+                            <AuthRoute>
+                              <BookingsTinjauPage />
+                            </AuthRoute>
+                          }
+                        />
+                      </Route>
+                    </Route>
+                  </Route>
                 </Route>
               </Route>
             </Route>
           </Route>
         </Route>
       </Route>
-      <Route path="/add-family-member">
+      <Route path="/family-member">
         <Route
           index
           element={
@@ -149,12 +179,28 @@ const App = () => {
             </AuthRoute>
           }
         />
+        <Route
+          path="edit/:id"
+          element={
+            <AuthRoute>
+              <EditMembers />
+            </AuthRoute>
+          }
+        />
       </Route>
       <Route
         path="/ticket-vaccine"
         element={
           <AuthRoute>
             <TicketVaccinePage />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <AuthRoute>
+            <Profile />
           </AuthRoute>
         }
       />
