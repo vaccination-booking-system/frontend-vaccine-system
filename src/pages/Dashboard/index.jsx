@@ -47,7 +47,7 @@ const Dashboard = () => {
     <Layout>
       {getUserByIdResult ? (
         <>
-          <ProfileBar name={getUserByIdResult.name} />
+          <ProfileBar name={getUserByIdResult.name} nik={getUserByIdResult.nik} />
           <div className="my-4">
             <Card>
               <div>

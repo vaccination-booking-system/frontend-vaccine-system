@@ -6,23 +6,18 @@ import {
   AddMembers,
   BookingsJadwalPage,
   BookingsKategoriPage,
-  BookingsMemberPage,
   BookingsSKPage,
   BookingsStatusPage,
   Dashboard,
   Login,
   Register,
+  LandingPage,
   TicketVaccinePage,
   VaccinationBookingsPage,
-  BookingsSKPage,
   BookingsMemberPage,
-  BookingsStatusPage,
-  BookingsKategoriPage,
-  BookingsJadwalPage,
   BookingsIdentitasPage,
   BookingsAlamatPage,
   BookingsTinjauPage,
-  AddMembers,
   Profile,
 } from "./pages";
 import EditMembers from "./pages/EditFamilyMember";
@@ -126,7 +121,8 @@ const App = () => {
                       </AuthRoute>
                     }
                   />
-                  {/* <Route path="identitas">
+                  /*{" "}
+                  <Route path="identitas">
                     <Route
                       index
                       element={

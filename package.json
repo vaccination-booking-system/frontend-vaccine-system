@@ -33,6 +33,9 @@
     "eject": "react-scripts eject",
     "clean": "rimraf node_modules"
   },
+  "peerDependencies": {
+    "react-spring": "^8.x"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
