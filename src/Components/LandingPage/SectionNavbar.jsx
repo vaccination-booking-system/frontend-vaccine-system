@@ -27,7 +27,7 @@ const SectionNavbar = ({ path }) => {
         }  m-6`}
       >
         <Logo {...(path === "register" && { color: "white" })} />
-        <ul className="flex mx-[400px]">
+        <ul className="flex mx-[300px]">
           {navItems.map((item, idx) => (
             <li key={idx} className="mx-2">
               <a href={item.path} className="flex items-center">

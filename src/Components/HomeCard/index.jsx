@@ -11,12 +11,14 @@ export default function HomeCard({ src, title, description, path }) {
       </div>
       <div className="p-5">
         <h1 className="font-bold text-lg">{title}</h1>
-        <p className="my-2">{description}</p>
-        <Link to={path}>
-          <Button bg="white" border="1px solid #0A6C9D" btnSize="md" fontSize="14px">
-            SEE DETAIL
-          </Button>
-        </Link>
+        <p className="my-3">{description}</p>
+        <div className="flex justify-center content-end ">
+          <Link to={path}>
+            <Button bg="white" color="#0A6C9D" border="1px solid #0A6C9D" btnSize="md" fontSize="14px">
+              DAPATKAN
+            </Button>
+          </Link>
+        </div>
       </div>
     </Box>
   );

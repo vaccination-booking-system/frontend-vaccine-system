@@ -3,6 +3,7 @@ import BackgroundDownload from "../../assets/images/background-download.png";
 import DownloadPlayStore from "../../assets/images/download-playstore.png";
 import DownloadAppStore from "../../assets/images/download-appstore.png";
 import { Box, Flex, SimpleGrid } from "@chakra-ui/core";
+import IconSend from "../../assets/images/icon-send.png";
 function SectionDownload() {
   const download = [
     {
@@ -36,6 +37,29 @@ function SectionDownload() {
           </Box>
         </Box>
       </SimpleGrid>
+      <div>
+        <Box display="flex" marginY="100px" marginX="150px" bg="#0A6C9D" width="80vw" p={4} color="white">
+          <SimpleGrid columns={2} spacing={10}>
+            <Box width="60vw">
+              <b className="text-[36px]">Siap untuk memulai ?</b>
+              <div>
+                <h2 className="text-[24px]">Silahkan Lakukan Login atau Register Untuk Mendapatkan Layanan</h2>
+              </div>
+            </Box>
+            <Box width="20vw">
+              <button
+                className="bg-white my-10 py-2 px-12 justify-center rounded-lg text-[#0A6C9D] text-[16px] "
+                style={{ border: "1px solid black" }}
+              >
+                <div className="flex">
+                  Login
+                  <img className="ml-3" src={IconSend} alt="iconButton" width="10vw" height="10vh" />
+                </div>
+              </button>
+            </Box>
+          </SimpleGrid>
+        </Box>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, SimpleGrid } from "@chakra-ui/core";
+import { Box, SimpleGrid } from "@chakra-ui/core";
 import BackgroundHomepage from "../../assets/images/background-homepage.png";
 import IconSend from "../../assets/images/icon-send.png";
 function SectionWelcome() {
