@@ -15,7 +15,6 @@ const PathContextProvider = ({ children }) => {
   const splitPathname = () => {
     let pathNameArr = pathname.split("/");
     pathNameArr.shift();
-    pathNameArr.reverse();
     setPathArr(pathNameArr);
   };
 
@@ -26,7 +25,10 @@ const PathContextProvider = ({ children }) => {
   useEffect(() => {
     if (pathArr !== []) {
       setAnchorPath(
-        pathArr.find(path => path === "dashboard" || path === "vaccination-bookings" || path === "add-family-member" || path === "ticket-vaccine")
+        pathArr.find(
+          path =>
+            path === "dashboard" || path === "booking-vaccine" || path === "add-family-member" || path === "ticket-vaccine" || path === "profile"
+        )
       );
     }
   }, [pathArr]);

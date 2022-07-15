@@ -1,6 +1,7 @@
 import React from "react";
 import { Logo } from "../";
 import PropsTypes from "prop-types";
+import { Button } from "../../Components";
 
 // Navbar Icons
 import { CubeIcon, ProfileIcon, ImageIcon, KeyIcon } from "../Icons";
@@ -42,13 +43,15 @@ const Navbar = ({ path }) => {
         </ul>
         <div>
           <Link to={path === "register" ? "/login" : "/register"}>
-            <button
-              className={`${
-                path === "register" ? "text-[#151928] bg-white" : path === "login" && "text-white bg-[#151928]"
-              } py-2 px-10 rounded-full text-[12px] font-bold`}
+            <Button
+              fontSize="12px"
+              btnSize="md"
+              rounded="999px"
+              color={path === "register" ? "#151928" : path === "login" && "white"}
+              bg={path === "register" ? "white" : path === "login" && "#151928"}
             >
               {path === "register" ? "SIGN IN" : "SIGN UP"}
-            </button>
+            </Button>
           </Link>
         </div>
       </div>
