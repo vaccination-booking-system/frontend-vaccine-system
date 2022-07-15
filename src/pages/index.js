@@ -8,11 +8,14 @@ import BookingsMemberPage from "./VaccinationBookings/BookingsMember";
 import BookingsStatusPage from "./VaccinationBookings/BookingsStatus";
 import BookingsKategoriPage from "./VaccinationBookings/BookingsKategori";
 import BookingsJadwalPage from "./VaccinationBookings/BookingsJadwal";
-/* import BookingsIdentitasPage from "./VaccinationBookings/BookingsIdentitas"; */
+import BookingsIdentitasPage from "./VaccinationBookings/BookingsIdentitas";
+import BookingsAlamatPage from "./VaccinationBookings/BookingsAlamat";
+import BookingsTinjauPage from "./VaccinationBookings/BookingsTinjau";
 import AddFamilyMemberPage from "./AddFamilyMember";
 import TicketVaccinePage from "./TicketVaccine";
 import AddMembers from "./AddFamilyMember/AddMembers";
 import EditMembers from "./EditFamilyMember";
+import Profile from "./Profile";
 
 export {
   Login,
@@ -24,9 +27,12 @@ export {
   BookingsStatusPage,
   BookingsKategoriPage,
   BookingsJadwalPage,
-  /* BookingsIdentitasPage, */
+  BookingsIdentitasPage,
+  BookingsAlamatPage,
+  BookingsTinjauPage,
   AddFamilyMemberPage,
   TicketVaccinePage,
   AddMembers,
   EditMembers,
+  Profile,
 };

@@ -13,8 +13,11 @@ import {
   BookingsStatusPage,
   BookingsKategoriPage,
   BookingsJadwalPage,
-  /* BookingsIdentitasPage, */
+  BookingsIdentitasPage,
+  BookingsAlamatPage,
+  BookingsTinjauPage,
   AddMembers,
+  Profile,
 } from "./pages";
 import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -110,7 +113,34 @@ const App = () => {
                     }
                   />
                   <Route path="identitas">
-                    <Route index element={<AuthRoute>{/* <BookingsIdentitasPage /> */}</AuthRoute>} />
+                    <Route
+                      index
+                      element={
+                        <AuthRoute>
+                          <BookingsIdentitasPage />
+                        </AuthRoute>
+                      }
+                    />
+                    <Route path="alamat">
+                      <Route
+                        index
+                        element={
+                          <AuthRoute>
+                            <BookingsAlamatPage />
+                          </AuthRoute>
+                        }
+                      />
+                      <Route path="tinjau">
+                        <Route
+                          index
+                          element={
+                            <AuthRoute>
+                              <BookingsTinjauPage />
+                            </AuthRoute>
+                          }
+                        />
+                      </Route>
+                    </Route>
                   </Route>
                 </Route>
               </Route>
