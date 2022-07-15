@@ -3,15 +3,10 @@ import { Layout } from "./Components";
 import { Route, Routes, Outlet } from "react-router-dom";
 import {
   AddFamilyMemberPage,
-  AddMembers,
-  BookingsJadwalPage,
-  BookingsKategoriPage,
-  BookingsMemberPage,
-  BookingsSKPage,
-  BookingsStatusPage,
   Dashboard,
   Login,
   Register,
+  LandingPage,
   TicketVaccinePage,
   VaccinationBookingsPage,
   BookingsSKPage,
@@ -126,7 +121,7 @@ const App = () => {
                       </AuthRoute>
                     }
                   />
-                  {/* <Route path="identitas">
+                  <Route path="identitas">
                     <Route
                       index
                       element={
