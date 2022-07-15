@@ -8,6 +8,7 @@ import Layout from "./Layout";
 import ProfileBar from "./ProfileBar";
 import Modal from "./Modal";
 import Breadcumb from "./Breadcumb";
+import LoadingAnimation from "./Loading";
 
 export {
   Button,
@@ -25,4 +26,5 @@ export {
   ProfileBar,
   Modal,
   Breadcumb,
+  LoadingAnimation,
 };
