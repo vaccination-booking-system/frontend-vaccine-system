@@ -14,6 +14,7 @@ import BookingsAlamatPage from "./VaccinationBookings/BookingsAlamat";
 import BookingsTinjauPage from "./VaccinationBookings/BookingsTinjau";
 import AddFamilyMemberPage from "./AddFamilyMember";
 import TicketVaccinePage from "./TicketVaccine";
+import TicketVaccineDetailPage from "./TicketVaccine/Detail";
 import AddMembers from "./AddFamilyMember/AddMembers";
 import EditMembers from "./EditFamilyMember";
 import Profile from "./Profile";
@@ -34,6 +35,7 @@ export {
   BookingsTinjauPage,
   AddFamilyMemberPage,
   TicketVaccinePage,
+  TicketVaccineDetailPage,
   AddMembers,
   EditMembers,
   Profile,

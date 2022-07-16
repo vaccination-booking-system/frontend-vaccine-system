@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar";
 import Layout from "./Layout";
 import ProfileBar from "./ProfileBar";
 import Modal from "./Modal";
-import Breadcumb from "./Breadcumb";
+import Breadcrumb from "./Breadcrumb";
 import LoadingAnimation from "./Loading";
 
 export {
@@ -25,6 +25,6 @@ export {
   LogoutIcon,
   ProfileBar,
   Modal,
-  Breadcumb,
+  Breadcrumb,
   LoadingAnimation,
 };
