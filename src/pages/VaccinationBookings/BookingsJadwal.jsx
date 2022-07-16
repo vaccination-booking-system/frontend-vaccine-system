@@ -199,23 +199,6 @@ const BookingsJadwalPage = () => {
               </div>
             </div>
             <div className="flex-1 pl-4">
-              {/* <div className="my-4">
-                <label className="block">Tanggal</label>
-                <input type="date" name="date" value={selectedDate} className="border-2 p-2 rounded-lg w-full" onChange={e => handleChange(e)} />
-              </div>
-              <div className="my-4">
-                <label className="block">Jam *</label>
-                <select name="clock" value={selectedClocks} className="border-2 p-2 rounded-lg w-full" onChange={e => handleChange(e)}>
-                  <option value="">Pilih Jam</option>
-                  {clocks.map((clock, idx) => {
-                    return (
-                      <option key={idx} value={clock}>
-                        {clock}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div> */}
               <div className="my-4">
                 <label className="block">Pilih Sesi Vaksin</label>
                 {vaccinationSessions ? (

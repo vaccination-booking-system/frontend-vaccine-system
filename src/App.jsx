@@ -4,6 +4,8 @@ import { Route, Routes, Outlet } from "react-router-dom";
 import {
   AddFamilyMemberPage,
   AddMembers,
+  EditMembers,
+  ViewFamilyMemberDetailPage,
   BookingsJadwalPage,
   BookingsKategoriPage,
   BookingsSKPage,
@@ -21,7 +23,6 @@ import {
   Profile,
   TicketVaccineDetailPage,
 } from "./pages";
-import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -181,6 +182,14 @@ const App = () => {
           element={
             <AuthRoute>
               <EditMembers />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="view/:id"
+          element={
+            <AuthRoute>
+              <ViewFamilyMemberDetailPage />
             </AuthRoute>
           }
         />

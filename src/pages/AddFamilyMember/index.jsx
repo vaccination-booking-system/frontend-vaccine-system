@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Card, Layout, LoadingAnimation, Sidebar } from "../../Components";
+import { Breadcrumb, Button, Card, Layout, LoadingAnimation, Sidebar } from "../../Components";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
@@ -9,8 +9,11 @@ import { useSelector } from "react-redux";
 import axiosInstance from "../../network/apis";
 import Swal from "sweetalert2";
 import { decodeToken } from "react-jwt";
+import { usePath } from "../../context/PathContext";
 
 const AddFamilyMemberPage = () => {
+  const { anchorPath, pathArr } = usePath();
+
   const [isClicked, setIsClicked] = useState(false);
 
   const [listFamilyMember, setListFamilyMember] = useState([]);
@@ -90,10 +93,10 @@ const AddFamilyMemberPage = () => {
       <Layout>
         {getUserByIdResult ? (
           <>
-            <div className="bg-white rounded-[15px]">
-              <div className="pl-[15px]">
-                {/* Ini Div Header */}
-                <div className="pb-[5px] pt-[20px]">
+            {/* <div className="bg-white rounded-[15px]">
+              <div className="pl-[15px]"> */}
+            {/* Ini Div Header */}
+            {/* <div className="pb-[5px] pt-[20px]">
                   <span className="font-normal leading-[1.4] text-[#718096] cursor-pointer" onClick={handleClickedContent}>
                     Add Family Member{" "}
                   </span>
@@ -102,9 +105,11 @@ const AddFamilyMemberPage = () => {
                   <span className="text-[20px] font-bold">Add Family Members</span>
                 </div>
               </div>
-            </div>
-            <div className="mt-[100px]">
-              <Card>
+            </div> */}
+
+            <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
+            <div className="my-8">
+              <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
                 <div className={`${isClicked ? "animate-pulse" : ""} px-[45px] my-[30px]`}>
                   {/* ini div tampung semua konten */}
                   <div className="bg-[#0A6C9D] h-[128px] rounded-[18px]">
@@ -161,12 +166,6 @@ const AddFamilyMemberPage = () => {
                       )}
                     </div>
                   </div>
-                  {/* <div className="flex justify-center">
-                      {/* ini div button }
-                      <button className="bg-black w-[370px] h-[45px] rounded-[12px]">
-                        <div className="text-white font-bold text-xs">+ TAMBAH ANGGOTA</div>
-                      </button>
-                    </div> */}
                   <div className="flex justify-center mt-[30px]">
                     <Link to="/family-member/add">
                       <Button btnSize="lg" fontSize="12px" bg="#0A6C9D" color="white">
@@ -179,7 +178,7 @@ const AddFamilyMemberPage = () => {
             </div>
           </>
         ) : getUserByIdLoading ? (
-          <div className="absolute w-full h-full flex justify-center items-center">
+          <div className="py-24">
             <LoadingAnimation />
           </div>
         ) : (

@@ -112,6 +112,7 @@ const TicketVaccineDetailPage = () => {
             )}, ${capitalizeFirstLetter(curr_city.toLowerCase())}, ${capitalizeFirstLetter(curr_province.toLowerCase())}`,
           };
         }
+        return { ...identity };
       });
       setDetailsVaccine(newDetailsVaccine);
       setIdentities(newIdentities);
