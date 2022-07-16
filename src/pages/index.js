@@ -14,8 +14,10 @@ import BookingsAlamatPage from "./VaccinationBookings/BookingsAlamat";
 import BookingsTinjauPage from "./VaccinationBookings/BookingsTinjau";
 import AddFamilyMemberPage from "./AddFamilyMember";
 import TicketVaccinePage from "./TicketVaccine";
+import TicketVaccineDetailPage from "./TicketVaccine/Detail";
 import AddMembers from "./AddFamilyMember/AddMembers";
-import EditMembers from "./EditFamilyMember";
+import EditMembers from "./AddFamilyMember/EditFamilyMember";
+import ViewFamilyMemberDetailPage from "./AddFamilyMember/ViewFamilyMemberDetail";
 import Profile from "./Profile";
 import AdminLogin from "./Auth/Login/Admin";
 export {
@@ -34,8 +36,10 @@ export {
   BookingsTinjauPage,
   AddFamilyMemberPage,
   TicketVaccinePage,
+  TicketVaccineDetailPage,
   AddMembers,
   EditMembers,
+  ViewFamilyMemberDetailPage,
   Profile,
   AdminLogin,
 };

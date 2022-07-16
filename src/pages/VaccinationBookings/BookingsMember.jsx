@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Breadcumb } from "../../Components";
+import { Breadcrumb } from "../../Components";
 import { usePath } from "../../context/PathContext";
 import { Card, LoadingAnimation } from "../../Components";
 import { useSelector } from "react-redux";
@@ -50,7 +50,7 @@ const BookingsMemberPage = () => {
 
   return (
     <div>
-      <Breadcumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
+      <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
       {getUserByIdResult ? (
         <div className="my-8">
           <Card maxWidth="700px" margin="auto" padding="2rem 3rem">

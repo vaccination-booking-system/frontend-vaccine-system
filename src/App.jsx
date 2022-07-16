@@ -4,6 +4,8 @@ import { Route, Routes, Outlet } from "react-router-dom";
 import {
   AddFamilyMemberPage,
   AddMembers,
+  EditMembers,
+  ViewFamilyMemberDetailPage,
   BookingsJadwalPage,
   BookingsKategoriPage,
   BookingsSKPage,
@@ -19,9 +21,9 @@ import {
   BookingsAlamatPage,
   BookingsTinjauPage,
   Profile,
+  TicketVaccineDetailPage,
   AdminLogin,
 } from "./pages";
-import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -184,15 +186,33 @@ const App = () => {
             </AuthRoute>
           }
         />
+        <Route
+          path="view/:id"
+          element={
+            <AuthRoute>
+              <ViewFamilyMemberDetailPage />
+            </AuthRoute>
+          }
+        />
       </Route>
-      <Route
-        path="/ticket-vaccine"
-        element={
-          <AuthRoute>
-            <TicketVaccinePage />
-          </AuthRoute>
-        }
-      />
+      <Route path="/ticket-vaccine">
+        <Route
+          index
+          element={
+            <AuthRoute>
+              <TicketVaccinePage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path=":vaccinationPassId"
+          element={
+            <AuthRoute>
+              <TicketVaccineDetailPage />
+            </AuthRoute>
+          }
+        />
+      </Route>
       <Route
         path="/profile"
         element={

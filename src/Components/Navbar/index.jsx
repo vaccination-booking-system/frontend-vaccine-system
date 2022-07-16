@@ -2,10 +2,10 @@ import React from "react";
 import { Logo } from "../";
 import PropsTypes from "prop-types";
 import { Button } from "../../Components";
+import { Link, useNavigate } from "react-router-dom";
 
 // Navbar Icons
 import { CubeIcon, ProfileIcon, ImageIcon, KeyIcon } from "../Icons";
-import { Link } from "react-router-dom";
 
 const navItems = [
   { text: "Home", icon: ({ color }) => <CubeIcon color={color} />, path: "/" },
@@ -21,6 +21,8 @@ const navItems = [
  *
  */
 const Navbar = ({ path }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex justify-center">
       <div
@@ -28,7 +30,9 @@ const Navbar = ({ path }) => {
           path === "login" ? "bg-slate-100 shadow-md border-2 border-white" : path === "register" && "text-white"
         }  m-6`}
       >
-        <Logo {...(path === "register" && { color: "white" })} />
+        <div className="cursor-pointer" onClick={() => navigate("/")}>
+          <Logo {...(path === "register" && { color: "white" })} />
+        </div>
         <ul className="flex mx-[120px]">
           {navItems.map((item, idx) => (
             <li key={idx} className="mx-2">
