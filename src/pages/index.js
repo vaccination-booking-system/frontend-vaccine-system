@@ -24,6 +24,7 @@ import AdminLogin from "./Auth/Login/Admin";
 import VaccinationBookingsAdmin from "./VaccinationBookings/Admin";
 import SessionsAvailabilityPage from "./SessionsAvailability";
 import VaccineStockPage from "./VaccineStock";
+import DetailVaccineStocks from "./VaccineStock/DetailVaccineStock";
 
 export {
   Login,
@@ -50,4 +51,5 @@ export {
   VaccinationBookingsAdmin,
   SessionsAvailabilityPage,
   VaccineStockPage,
+  DetailVaccineStocks,
 };
