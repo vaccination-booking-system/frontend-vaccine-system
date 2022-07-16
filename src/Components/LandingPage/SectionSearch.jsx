@@ -11,8 +11,8 @@ export default function SectionSearch() {
         </center>
         <div>
           <form className="pt-4 flex justify-center align-middle ">
-            <label class="relative w-1/2">
-              <span class="absolute right-0 flex items-center">
+            <label className="relative w-1/2">
+              <span className="absolute right-0 flex items-center">
                 <button className=" bg-[#0A6C9D] py-1 px-3 rounded-lg">
                   <div className="flex">
                     <img className="" src={IconSearch} alt="iconButton" width="30vw" height="30vh" />
