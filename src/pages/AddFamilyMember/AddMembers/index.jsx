@@ -1,12 +1,14 @@
 import React from "react";
-import { Button, Card, Layout, Sidebar } from "../../../Components";
+import { Breadcrumb, Button, Card, Layout, Sidebar } from "../../../Components";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axiosInstance from "../../../network/apis";
 import Swal from "sweetalert2";
+import { usePath } from "../../../context/PathContext";
 
 const AddMembers = () => {
+  const { anchorPath, pathArr } = usePath();
   const [isClicked, setIsClicked] = useState(false);
   const [isFocus, setIfFocus] = useState(false);
 
@@ -218,10 +220,10 @@ const AddMembers = () => {
   return (
     <>
       <Layout>
-        <div className="bg-white rounded-[15px]">
-          <div className="pl-[15px]">
-            {/* Ini Div Header */}
-            <div className="pb-[5px] pt-[20px]">
+        {/* <div className="bg-white rounded-[15px]">
+          <div className="pl-[15px]"> */}
+        {/* Ini Div Header */}
+        {/* <div className="pb-[5px] pt-[20px]">
               <span className=" font-normal leading-[1.4] text-[#718096]">
                 <Link to="/family-member">Add Family Member</Link>
                 <span className="text-[#0A6C9D] cursor-pointer" onClick={handleClickedContent}>
@@ -233,9 +235,10 @@ const AddMembers = () => {
               <span className="text-lg font-bold">Add Family Members</span>
             </div>
           </div>
-        </div>
-        <div className="mt-[100px]">
-          <Card padding="24px 45px 0px 45px">
+        </div> */}
+        <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
+        <div className="my-8">
+          <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
             <div className={`${isClicked ? "animate-pulse" : ""}`}>
               <div>
                 <span className="font-bold text-[25px] leading-[32.5px]">Add Family Members</span>

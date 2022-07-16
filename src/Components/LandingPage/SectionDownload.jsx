@@ -29,8 +29,8 @@ function SectionDownload() {
               Dapakan Aplikasi Evizy, dengan mendownload di store kesayangan Anda.
             </h2>
             <SimpleGrid columns={2} spacing={1} mt="10vh">
-              {download.map(item => (
-                <Box>
+              {download.map((item, idx) => (
+                <Box key={idx}>
                   <img src={item.src} />
                 </Box>
               ))}
