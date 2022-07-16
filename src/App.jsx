@@ -19,6 +19,7 @@ import {
   BookingsAlamatPage,
   BookingsTinjauPage,
   Profile,
+  TicketVaccineDetailPage,
 } from "./pages";
 import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -184,14 +185,24 @@ const App = () => {
           }
         />
       </Route>
-      <Route
-        path="/ticket-vaccine"
-        element={
-          <AuthRoute>
-            <TicketVaccinePage />
-          </AuthRoute>
-        }
-      />
+      <Route path="/ticket-vaccine">
+        <Route
+          index
+          element={
+            <AuthRoute>
+              <TicketVaccinePage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path=":vaccinationPassId"
+          element={
+            <AuthRoute>
+              <TicketVaccineDetailPage />
+            </AuthRoute>
+          }
+        />
+      </Route>
       <Route
         path="/profile"
         element={

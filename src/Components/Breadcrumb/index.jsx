@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import StringHelper from "../../utils/StringHelper";
 
-const Breadcumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
+const Breadcrumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
   const { splitStringByDash } = StringHelper;
 
   const navigate = useNavigate();
@@ -23,8 +23,13 @@ const Breadcumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
               break;
             }
           }
+          console.log(tempPathArr);
           return (
             <React.Fragment key={idx}>
+              {/**
+               * This is for path SK
+               *
+               */}
               {path.length <= 2 ? (
                 <>
                   <span
@@ -38,14 +43,17 @@ const Breadcumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
               ) : (
                 <>
                   <span
-                    {...(anchorPath === "booking-vaccine" &&
-                      path !== "booking-vaccine" && {
-                        onClick: () =>
-                          navigate(
-                            `/${tempPathArr.join("/")}`,
-                            (path === "status" || path === "kategori" || path === "jadwal") && { state: { selectedUser } }
-                          ),
-                      })}
+                    {...(anchorPath === "booking-vaccine"
+                      ? path !== "booking-vaccine" && {
+                          onClick: () =>
+                            navigate(
+                              `/${tempPathArr.join("/")}`,
+                              (path === "status" || path === "kategori" || path === "jadwal") && { state: { selectedUser } }
+                            ),
+                        }
+                      : anchorPath === "ticket-vaccine"
+                      ? path === "ticket-vaccine" && { onClick: () => navigate("/ticket-vaccine") }
+                      : "")}
                     className={`${path === selectedPath ? "text-[#0A6C9D]" : "text-slate-400"} cursor-pointer`}
                   >
                     {splitStringByDash(path)}
@@ -62,4 +70,4 @@ const Breadcumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
   );
 };
 
-export default Breadcumb;
+export default Breadcrumb;

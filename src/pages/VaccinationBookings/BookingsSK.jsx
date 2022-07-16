@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Breadcumb, Button, Card } from "../../Components";
+import { Breadcrumb, Button, Card } from "../../Components";
 
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
@@ -25,8 +25,8 @@ const BookingsSKPage = () => {
       showDesc: false,
     },
     {
-      title: "Vaksin Dosis 3/Booster",
-      desc: "Telah mendapatkan vaksinasi primer dosis lengkap minimal enam bulan sebelumnya.",
+      title: "Vaksin Dosis 1",
+      desc: "Dalam keadaan sehat dan belum melakukan vaksin",
       showDesc: false,
     },
   ]);
@@ -43,7 +43,7 @@ const BookingsSKPage = () => {
 
   return (
     <div>
-      <Breadcumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
+      <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
       <div className="my-8">
         <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
           <h1 className="font-bold text-[20px]">Syarat dan Ketentuan</h1>
