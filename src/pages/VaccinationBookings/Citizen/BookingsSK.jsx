@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Breadcrumb, Button, Card } from "../../Components";
+import { Breadcrumb, Button, Card } from "../../../Components";
 
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { usePath } from "../../context/PathContext";
+import { usePath } from "../../../context/PathContext";
 
 const BookingsSKPage = () => {
   const { anchorPath, pathArr } = usePath();

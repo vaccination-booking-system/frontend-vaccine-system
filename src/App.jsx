@@ -23,6 +23,9 @@ import {
   Profile,
   TicketVaccineDetailPage,
   AdminLogin,
+  VaccinationBookingsAdmin,
+  SessionsAvailabilityPage,
+  VaccineStockPage,
 } from "./pages";
 import { AuthRoute, PublicRoute } from "./routes";
 
@@ -62,6 +65,22 @@ const App = () => {
         }
       />
       <Route
+        path="/sessions-availability/data"
+        element={
+          <AuthRoute>
+            <SessionsAvailabilityPage />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/vaccine-stock/data"
+        element={
+          <AuthRoute>
+            <VaccineStockPage />
+          </AuthRoute>
+        }
+      />
+      <Route
         path="/booking-vaccine"
         element={
           <AuthRoute>
@@ -71,6 +90,14 @@ const App = () => {
           </AuthRoute>
         }
       >
+        <Route
+          path="data"
+          element={
+            <AuthRoute>
+              <VaccinationBookingsAdmin />
+            </AuthRoute>
+          }
+        />
         <Route
           index
           element={
