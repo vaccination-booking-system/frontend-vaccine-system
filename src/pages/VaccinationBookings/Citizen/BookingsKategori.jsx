@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { usePath } from "../../context/PathContext";
-import { Breadcrumb, Button, Card } from "../../Components";
+import { usePath } from "../../../context/PathContext";
+import { Breadcrumb, Button, Card } from "../../../Components";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

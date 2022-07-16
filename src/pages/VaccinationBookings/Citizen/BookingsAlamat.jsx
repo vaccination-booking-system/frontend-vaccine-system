@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Breadcrumb, Button, Card } from "../../Components";
-import { usePath } from "../../context/PathContext";
-import axiosInstance from "../../network/apis";
+import { Breadcrumb, Button, Card } from "../../../Components";
+import { usePath } from "../../../context/PathContext";
+import axiosInstance from "../../../network/apis";
 import FormInputIdentitas from "./components/FormInputIdentitas";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

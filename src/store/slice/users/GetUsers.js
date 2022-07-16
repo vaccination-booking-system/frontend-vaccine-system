@@ -3,15 +3,24 @@ import axios from "axios";
 import axiosInstance from "../../../network/apis";
 
 const fetchUserById = createAsyncThunk("userId/fetchUserId", async params => {
-  const { token, userId } = params;
-  console.log(token, userId);
-  const res = await axiosInstance.get(`/api/v1/users/${userId}`, {
-    headers: {
-      "Authorization": `Bearer ${token}`,
-    },
-  });
-  console.log(res);
-  return res.data.data;
+  const { token, id, isAdmin } = params;
+  console.log(token, id, isAdmin);
+  if (isAdmin) {
+    const res = await axiosInstance.get(`/api/v1/admin/${id}`, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+    console.log(res);
+    return res.data.data;
+  } else {
+    const res = await axiosInstance.get(`/api/v1/users/${id}`, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+    return res.data.data;
+  }
 });
 
 const initialState = {
