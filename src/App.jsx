@@ -27,11 +27,7 @@ import {
   SessionsAvailabilityPage,
   VaccineStockPage,
 } from "./pages";
-<<<<<<< HEAD
 import PageNotFound from "./pages/PageNotFound";
-import EditMembers from "./pages/EditFamilyMember";
-=======
->>>>>>> 9e1665e316ec085809291cdacb87646665f39900
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
