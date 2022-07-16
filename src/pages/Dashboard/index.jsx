@@ -12,6 +12,8 @@ import BookingVaccineImg from "../../assets/images/booking-vaccine.png";
 import AddFamilyMemberImg from "../../assets/images/add-family-member.png";
 import TicketVaccineImg from "../../assets/images/ticket-vaccine.png";
 
+import JWTHelper from "../../utils/JWTHelper";
+
 const serviceItems = [
   {
     heading: "Booking Vaccine",
@@ -39,9 +41,15 @@ const serviceItems = [
 const Dashboard = () => {
   const { getUserByIdLoading, getUserByIdResult, getUserByIdError } = useSelector(state => state.userId);
 
+  const { checkIsAdmin } = JWTHelper;
+
   useEffect(() => {
     console.log({ getUserByIdLoading, getUserByIdResult, getUserByIdError });
   }, [getUserByIdLoading, getUserByIdResult, getUserByIdError]);
+
+  if (checkIsAdmin(localStorage.getItem("accessToken"))) {
+    return <Layout>HaloAdmin</Layout>;
+  }
 
   return (
     <Layout>

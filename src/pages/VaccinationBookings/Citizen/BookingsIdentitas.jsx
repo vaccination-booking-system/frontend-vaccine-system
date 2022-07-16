@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Breadcrumb, Button, Card } from "../../Components";
-import { usePath } from "../../context/PathContext";
+import { Breadcrumb, Button, Card } from "../../../Components";
+import { usePath } from "../../../context/PathContext";
 
 const BookingsIdentitasPage = () => {
   const { anchorPath, pathArr } = usePath();

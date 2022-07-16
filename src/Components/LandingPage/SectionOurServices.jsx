@@ -34,8 +34,8 @@ export default function SectionOurServices() {
         <Box pl="10vw" pt="5vh" pr="30vw">
           <b style={{ fontSize: "48px", color: "#0A6C9D" }}>Layanan Evizy</b>
           <SimpleGrid columns={3} spacing={3} mt="10vh">
-            {menu.map(item => (
-              <HomeCard description={item.description} title={item.title} src={item.src} path={item.path} />
+            {menu.map((item, idx) => (
+              <HomeCard key={idx} description={item.description} title={item.title} src={item.src} path={item.path} />
             ))}
           </SimpleGrid>
         </Box>

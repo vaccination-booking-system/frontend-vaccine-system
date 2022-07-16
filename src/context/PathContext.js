@@ -26,7 +26,14 @@ const PathContextProvider = ({ children }) => {
     if (pathArr !== []) {
       setAnchorPath(
         pathArr.find(
-          path => path === "dashboard" || path === "booking-vaccine" || path === "family-member" || path === "ticket-vaccine" || path === "profile"
+          path =>
+            path === "dashboard" ||
+            path === "booking-vaccine" ||
+            path === "family-member" ||
+            path === "ticket-vaccine" ||
+            path === "profile" ||
+            path === "sessions-availability" ||
+            path === "vaccine-stock"
         )
       );
     }

@@ -43,8 +43,8 @@ function SectionOurValues() {
               Melakukan Pemerataan.
             </h2>
             <SimpleGrid columns={2} spacing={12} mt="5vh" pr="10vw">
-              {badge.map(item => (
-                <Box>
+              {badge.map((item, idx) => (
+                <Box key={idx}>
                   <img src={item.src} />
                   <b>{item.title} </b>
                   <p>{item.description} </p>

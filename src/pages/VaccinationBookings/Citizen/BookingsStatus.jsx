@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Breadcrumb, Button, Card } from "../../Components";
-import { usePath } from "../../context/PathContext";
-import StringHelper from "../../utils/StringHelper";
+import { Breadcrumb, Button, Card } from "../../../Components";
+import { usePath } from "../../../context/PathContext";
+import StringHelper from "../../../utils/StringHelper";
 
 const BookingsStatusPage = () => {
   const { state } = useLocation();

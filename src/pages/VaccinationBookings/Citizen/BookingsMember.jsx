@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Breadcrumb } from "../../Components";
-import { usePath } from "../../context/PathContext";
-import { Card, LoadingAnimation } from "../../Components";
+import { Breadcrumb } from "../../../Components";
+import { usePath } from "../../../context/PathContext";
+import { Card, LoadingAnimation } from "../../../Components";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../network/apis";
-import CONST from "../../utils/constant";
+import axiosInstance from "../../../network/apis";
+import CONST from "../../../utils/constant";
 
 const BookingsMemberPage = () => {
   const { anchorPath, pathArr } = usePath();
