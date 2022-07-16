@@ -36,7 +36,7 @@ const TicketVaccinePage = () => {
 
   return (
     <Layout>
-      <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr - 1]} />
+      <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
       <div className="my-8">
         <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
           <h1 className="font-bold text-xl">Tiket Vaksin</h1>

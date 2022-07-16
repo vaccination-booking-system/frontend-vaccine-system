@@ -24,6 +24,7 @@ const Breadcrumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
             }
           }
           console.log(tempPathArr);
+          console.log({ path, selectedPath });
           return (
             <React.Fragment key={idx}>
               {/**

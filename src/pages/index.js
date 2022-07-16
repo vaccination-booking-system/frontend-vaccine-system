@@ -19,7 +19,7 @@ import AddMembers from "./AddFamilyMember/AddMembers";
 import EditMembers from "./AddFamilyMember/EditFamilyMember";
 import ViewFamilyMemberDetailPage from "./AddFamilyMember/ViewFamilyMemberDetail";
 import Profile from "./Profile";
-
+import AdminLogin from "./Auth/Login/Admin";
 export {
   Login,
   Register,
@@ -41,4 +41,5 @@ export {
   EditMembers,
   ViewFamilyMemberDetailPage,
   Profile,
+  AdminLogin,
 };

@@ -22,6 +22,7 @@ import {
   BookingsTinjauPage,
   Profile,
   TicketVaccineDetailPage,
+  AdminLogin,
 } from "./pages";
 import { AuthRoute, PublicRoute } from "./routes";
 
@@ -218,6 +219,14 @@ const App = () => {
           <AuthRoute>
             <Profile />
           </AuthRoute>
+        }
+      />
+      <Route
+        path="/login/admin"
+        element={
+          <PublicRoute>
+            <AdminLogin />
+          </PublicRoute>
         }
       />
     </Routes>
