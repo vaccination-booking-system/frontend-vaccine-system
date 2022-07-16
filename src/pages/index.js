@@ -17,7 +17,7 @@ import TicketVaccinePage from "./TicketVaccine";
 import AddMembers from "./AddFamilyMember/AddMembers";
 import EditMembers from "./EditFamilyMember";
 import Profile from "./Profile";
-
+import AdminLogin from "./Auth/Login/Admin";
 export {
   Login,
   Register,
@@ -37,4 +37,5 @@ export {
   AddMembers,
   EditMembers,
   Profile,
+  AdminLogin,
 };

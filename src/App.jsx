@@ -19,6 +19,7 @@ import {
   BookingsAlamatPage,
   BookingsTinjauPage,
   Profile,
+  AdminLogin,
 } from "./pages";
 import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -198,6 +199,14 @@ const App = () => {
           <AuthRoute>
             <Profile />
           </AuthRoute>
+        }
+      />
+      <Route
+        path="/login/admin"
+        element={
+          <PublicRoute>
+            <AdminLogin />
+          </PublicRoute>
         }
       />
     </Routes>
