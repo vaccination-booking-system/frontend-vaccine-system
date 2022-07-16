@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Breadcumb, Button, Card } from "../../Components";
-import { usePath } from "../../context/PathContext";
-import axiosInstance from "../../network/apis";
+import { Breadcrumb, Button, Card } from "../../../Components";
+import { usePath } from "../../../context/PathContext";
+import axiosInstance from "../../../network/apis";
 import FormInputIdentitas from "./components/FormInputIdentitas";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -446,7 +446,7 @@ const BookingsAlamatPage = () => {
 
   return (
     <div>
-      <Breadcumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} selectedUser={selectedUser} />
+      <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} selectedUser={selectedUser} />
       <div className="my-8">
         <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
           <div className="my-4">

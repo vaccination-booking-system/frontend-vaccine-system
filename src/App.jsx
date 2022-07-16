@@ -4,6 +4,8 @@ import { Route, Routes, Outlet } from "react-router-dom";
 import {
   AddFamilyMemberPage,
   AddMembers,
+  EditMembers,
+  ViewFamilyMemberDetailPage,
   BookingsJadwalPage,
   BookingsKategoriPage,
   BookingsSKPage,
@@ -19,8 +21,17 @@ import {
   BookingsAlamatPage,
   BookingsTinjauPage,
   Profile,
+  TicketVaccineDetailPage,
+  AdminLogin,
+  VaccinationBookingsAdmin,
+  SessionsAvailabilityPage,
+  VaccineStockPage,
 } from "./pages";
+<<<<<<< HEAD
+import PageNotFound from "./pages/PageNotFound";
 import EditMembers from "./pages/EditFamilyMember";
+=======
+>>>>>>> 9e1665e316ec085809291cdacb87646665f39900
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -51,10 +62,34 @@ const App = () => {
         }
       />
       <Route
+        path="*"
+        element={
+          <PublicRoute>
+            <PageNotFound />
+          </PublicRoute>
+        }
+      />
+      <Route
         path="/dashboard"
         element={
           <AuthRoute>
             <Dashboard />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/sessions-availability/data"
+        element={
+          <AuthRoute>
+            <SessionsAvailabilityPage />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/vaccine-stock/data"
+        element={
+          <AuthRoute>
+            <VaccineStockPage />
           </AuthRoute>
         }
       />
@@ -68,6 +103,14 @@ const App = () => {
           </AuthRoute>
         }
       >
+        <Route
+          path="data"
+          element={
+            <AuthRoute>
+              <VaccinationBookingsAdmin />
+            </AuthRoute>
+          }
+        />
         <Route
           index
           element={
@@ -183,21 +226,47 @@ const App = () => {
             </AuthRoute>
           }
         />
+        <Route
+          path="view/:id"
+          element={
+            <AuthRoute>
+              <ViewFamilyMemberDetailPage />
+            </AuthRoute>
+          }
+        />
       </Route>
-      <Route
-        path="/ticket-vaccine"
-        element={
-          <AuthRoute>
-            <TicketVaccinePage />
-          </AuthRoute>
-        }
-      />
+      <Route path="/ticket-vaccine">
+        <Route
+          index
+          element={
+            <AuthRoute>
+              <TicketVaccinePage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path=":vaccinationPassId"
+          element={
+            <AuthRoute>
+              <TicketVaccineDetailPage />
+            </AuthRoute>
+          }
+        />
+      </Route>
       <Route
         path="/profile"
         element={
           <AuthRoute>
             <Profile />
           </AuthRoute>
+        }
+      />
+      <Route
+        path="/login/admin"
+        element={
+          <PublicRoute>
+            <AdminLogin />
+          </PublicRoute>
         }
       />
     </Routes>
