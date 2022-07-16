@@ -41,6 +41,8 @@ const SectionNavbar = ({ path }) => {
           <Link to={"/login"}>
             <b className={"text-[#151928]"}> MASUK </b>
           </Link>
+        </div>
+        <div>
           <Link to={"/register"}>
             <button className={"text-white rounded-lg p-2 bg-[#0A6C9D] ml-3 "}> DAFTAR </button>
           </Link>

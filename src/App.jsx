@@ -20,6 +20,7 @@ import {
   BookingsTinjauPage,
   Profile,
 } from "./pages";
+import PageNotFound from "./pages/PageNotFound";
 import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
 
@@ -47,6 +48,14 @@ const App = () => {
         element={
           <PublicRoute>
             <Register />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <PublicRoute>
+            <PageNotFound />
           </PublicRoute>
         }
       />
