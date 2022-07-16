@@ -7,8 +7,26 @@ const StringHelper = {
     }
     return tempArr.join(" ");
   },
+
   capitalizeFirstLetter: letter => {
-    return letter[0].toUpperCase() + letter.slice(1);
+    const arrLetter = letter.split(" ");
+    let tempArr = [];
+    for (let i = 0; i < arrLetter.length; i++) {
+      tempArr.push(arrLetter[i][0].toUpperCase() + arrLetter[i].slice(1));
+    }
+    return tempArr.join(" ");
+  },
+
+  getHideStr: (str, numHideChar) => {
+    let hideStr = "";
+    for (let i = 0; i < str.length; i++) {
+      if (i < numHideChar) {
+        hideStr += str[i];
+      } else {
+        hideStr += "*";
+      }
+    }
+    return hideStr;
   },
 };
 

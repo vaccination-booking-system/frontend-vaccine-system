@@ -5,11 +5,14 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.3.1",
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "emotion-theming": "^10.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.4.0",
@@ -29,6 +32,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rimraf node_modules"
+  },
+  "peerDependencies": {
+    "react-spring": "^8.x"
   },
   "eslintConfig": {
     "extends": [

@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
       <div className="w-full">
         <div className="relative h-[100vh] overflow-y-auto bg-[#DBF5FE]">
           <div className="relative z-50 px-8 py-12">{children}</div>
-          <div className="bg-[#0A6C9D] w-full h-[100px] rounded-lg absolute mt-[17px] top-0"></div>
+          <div className="bg-[#0A6C9D] w-full h-[100px] rounded-lg absolute  top-0"></div>
           {getUserByIdResult ? <Footer /> : ""}
         </div>
       </div>

@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Breadcumb, Button, Card } from "../../Components";
-import { usePath } from "../../context/PathContext";
+import { Breadcrumb, Button, Card } from "../../../Components";
+import { usePath } from "../../../context/PathContext";
+import StringHelper from "../../../utils/StringHelper";
 
 const BookingsStatusPage = () => {
   const { state } = useLocation();
@@ -14,27 +15,17 @@ const BookingsStatusPage = () => {
 
   const navigate = useNavigate();
 
-  const getHideNik = nik => {
-    let hideNik = "";
-    for (let i = 0; i < nik.length; i++) {
-      if (i < 8) {
-        hideNik += nik[i];
-      } else {
-        hideNik += "*";
-      }
-    }
-    return hideNik;
-  };
+  const { getHideStr } = StringHelper;
 
   return (
     <div>
-      <Breadcumb pathArr={pathArr} anchorPath={anchorPath} selectedPath={pathArr[pathArr.length - 1]} selectedUser={selectedUser} />
+      <Breadcrumb pathArr={pathArr} anchorPath={anchorPath} selectedPath={pathArr[pathArr.length - 1]} selectedUser={selectedUser} />
       <div className="my-8">
         <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
           <Card bg="#0A6C9D">
             <h1 className="text-white font-bold text-xl my-2">Status Vaksin</h1>
             <p className="text-white">{selectedUser.name}</p>
-            <p className="text-white">{getHideNik(selectedUser.nik)}</p>
+            <p className="text-white">{getHideStr(selectedUser.nik, 8)}</p>
             {/* <p className="text-white mt-12">{selectedUser.vaccine_status ? "SUDAH DIVAKSIN" : "BELUM DIVAKSIN"}</p> */}
           </Card>
           {selectedUser.vaccine_status ? (
