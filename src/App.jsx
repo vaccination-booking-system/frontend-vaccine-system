@@ -3,18 +3,23 @@ import { Layout } from "./Components";
 import { Route, Routes, Outlet } from "react-router-dom";
 import {
   AddFamilyMemberPage,
+  AddMembers,
+  BookingsJadwalPage,
+  BookingsKategoriPage,
+  BookingsSKPage,
+  BookingsStatusPage,
   Dashboard,
   Login,
   Register,
+  LandingPage,
   TicketVaccinePage,
   VaccinationBookingsPage,
-  BookingsSKPage,
   BookingsMemberPage,
-  BookingsStatusPage,
-  BookingsKategoriPage,
-  BookingsJadwalPage,
-  /* BookingsIdentitasPage, */
-  AddMembers,
+  BookingsIdentitasPage,
+  BookingsAlamatPage,
+  BookingsTinjauPage,
+  Profile,
+  AdminLogin,
 } from "./pages";
 import EditMembers from "./pages/EditFamilyMember";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -22,6 +27,14 @@ import { AuthRoute, PublicRoute } from "./routes";
 const App = () => {
   return (
     <Routes>
+      <Route
+        path="/"
+        element={
+          <PublicRoute>
+            <LandingPage />
+          </PublicRoute>
+        }
+      />
       <Route
         path="/login"
         element={
@@ -109,8 +122,36 @@ const App = () => {
                       </AuthRoute>
                     }
                   />
+                  /*{" "}
                   <Route path="identitas">
-                    <Route index element={<AuthRoute>{/* <BookingsIdentitasPage /> */}</AuthRoute>} />
+                    <Route
+                      index
+                      element={
+                        <AuthRoute>
+                          <BookingsIdentitasPage />
+                        </AuthRoute>
+                      }
+                    />
+                    <Route path="alamat">
+                      <Route
+                        index
+                        element={
+                          <AuthRoute>
+                            <BookingsAlamatPage />
+                          </AuthRoute>
+                        }
+                      />
+                      <Route path="tinjau">
+                        <Route
+                          index
+                          element={
+                            <AuthRoute>
+                              <BookingsTinjauPage />
+                            </AuthRoute>
+                          }
+                        />
+                      </Route>
+                    </Route>
                   </Route>
                 </Route>
               </Route>
@@ -158,6 +199,14 @@ const App = () => {
           <AuthRoute>
             <Profile />
           </AuthRoute>
+        }
+      />
+      <Route
+        path="/login/admin"
+        element={
+          <PublicRoute>
+            <AdminLogin />
+          </PublicRoute>
         }
       />
     </Routes>

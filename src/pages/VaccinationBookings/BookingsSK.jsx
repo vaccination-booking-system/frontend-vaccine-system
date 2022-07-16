@@ -16,17 +16,17 @@ const BookingsSKPage = () => {
     { title: "Anak Usia 6-18 Tahun", desc: "Memiliki Kartu Keluarga (KK) atau KIA (kartu Identitas Anak)", showDesc: false },
     {
       title: "Usia 17 Tahun ke Atas",
-      desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est non cupiditate, reiciendis quisquam magni iusto tempora sed nam! Itaque fugit hic accusamus voluptates voluptas ea! Ut maxime sit nihil non.",
+      desc: "Memiliki Kartu Tanda Penduduk (KTP)",
       showDesc: false,
     },
     {
       title: "Penyintas Covid-19",
-      desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est non cupiditate, reiciendis quisquam magni iusto tempora sed nam! Itaque fugit hic accusamus voluptates voluptas ea! Ut maxime sit nihil non.",
+      desc: "Penyintas atau seseorang yang pernah mengalami positif COVID-19 kini bisa disuntikkan vaksin setelah 1 bulan dinyatakan sembuh dan hasil swab negatif",
       showDesc: false,
     },
     {
       title: "Vaksin Dosis 3/Booster",
-      desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est non cupiditate, reiciendis quisquam magni iusto tempora sed nam! Itaque fugit hic accusamus voluptates voluptas ea! Ut maxime sit nihil non.",
+      desc: "Telah mendapatkan vaksinasi primer dosis lengkap minimal enam bulan sebelumnya.",
       showDesc: false,
     },
   ]);
