@@ -27,6 +27,7 @@ import {
   SessionsAvailabilityPage,
   VaccineStockPage,
 } from "./pages";
+import PageNotFound from "./pages/PageNotFound";
 import { AuthRoute, PublicRoute } from "./routes";
 
 const App = () => {
@@ -53,6 +54,14 @@ const App = () => {
         element={
           <PublicRoute>
             <Register />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <PublicRoute>
+            <PageNotFound />
           </PublicRoute>
         }
       />
