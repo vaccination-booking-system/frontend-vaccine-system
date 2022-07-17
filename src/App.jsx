@@ -28,6 +28,7 @@ import {
   VaccinationBookingsAdminViewFaskesDetail,
   SessionsAvailabilityPage,
   VaccineStockPage,
+  DetailVaccineStocks,
 } from "./pages";
 import PageNotFound from "./pages/PageNotFound";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -83,14 +84,24 @@ const App = () => {
           </AuthRoute>
         }
       />
-      <Route
-        path="/vaccine-stock/data"
-        element={
-          <AuthRoute>
-            <VaccineStockPage />
-          </AuthRoute>
-        }
-      />
+      <Route path="/vaccine-stock/data">
+        <Route
+          index
+          element={
+            <AuthRoute>
+              <VaccineStockPage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path=":id"
+          element={
+            <AuthRoute>
+              <DetailVaccineStocks />
+            </AuthRoute>
+          }
+        />
+      </Route>
       <Route path="/vaccination-bookings/daftar-faskes">
         <Route
           index
@@ -100,6 +111,7 @@ const App = () => {
             </AuthRoute>
           }
         />
+
         <Route path=":healthFacilityId">
           <Route
             index

@@ -26,6 +26,7 @@ import VaccinationBookingsListFaskes from "./VaccinationBookings/Admin/ListFaske
 import VaccinationBookingsAdminViewFaskesDetail from "./VaccinationBookings/Admin/ListFaskes/ViewFaskes";
 import SessionsAvailabilityPage from "./SessionsAvailability";
 import VaccineStockPage from "./VaccineStock";
+import DetailVaccineStocks from "./VaccineStock/DetailVaccineStock";
 
 export {
   Login,
@@ -54,4 +55,5 @@ export {
   VaccinationBookingsAdminViewFaskesDetail,
   SessionsAvailabilityPage,
   VaccineStockPage,
+  DetailVaccineStocks,
 };
