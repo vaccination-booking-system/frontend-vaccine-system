@@ -32,6 +32,7 @@ const PathContextProvider = ({ children }) => {
             path === "family-member" ||
             path === "ticket-vaccine" ||
             path === "profile" ||
+            path === "vaccination-bookings" ||
             path === "sessions-availability" ||
             path === "vaccine-stock"
         )

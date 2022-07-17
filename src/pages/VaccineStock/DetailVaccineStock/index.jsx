@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axiosInstance from "../../../network/apis";
 import { useState } from "react";
 import { usePath } from "../../../context/PathContext";
+import { HiOutlineSearch } from "react-icons/hi";
 
 const DetailVaccineStocks = () => {
   const { anchorPath, pathArr } = usePath();
@@ -44,19 +45,21 @@ const DetailVaccineStocks = () => {
     <Layout>
       <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
       <Card margin="24px 0px">
-        <div className="flex gap-x-[10px]">
-          <div className="py-6">
+        <div className="flex gap-x-[10px] py-6">
+          <div>
             <input
               type="text"
               className="border-2 rounded-[15px] pl-5 border-[#A0AEC0]"
               placeholder="Search"
               name="inputSearch"
-              value={input}
-              onChange={event => handleInput(event)}
+              /* value={input}
+              onChange={event => handleInput(event)} */
             />
           </div>
-          <button type="submit" className="hover:border-2 hover:bg-black hover:text-white hover:rounded-xl" onSubmit={handleSearch}>
-            Search
+          <button type="submit" /* onSubmit={handleSearch} */ className="text-white bg-[#0A6C9D] w-10 rounded-xl">
+            <div className="flex justify-center items-center">
+              <HiOutlineSearch />
+            </div>
           </button>
         </div>
       </Card>
