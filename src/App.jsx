@@ -24,6 +24,8 @@ import {
   TicketVaccineDetailPage,
   AdminLogin,
   VaccinationBookingsAdmin,
+  VaccinationBookingsListFaskes,
+  VaccinationBookingsAdminViewFaskesDetail,
   SessionsAvailabilityPage,
   VaccineStockPage,
 } from "./pages";
@@ -89,6 +91,34 @@ const App = () => {
           </AuthRoute>
         }
       />
+      <Route path="/vaccination-bookings/daftar-faskes">
+        <Route
+          index
+          element={
+            <AuthRoute>
+              <VaccinationBookingsAdmin />
+            </AuthRoute>
+          }
+        />
+        <Route path=":healthFacilityId">
+          <Route
+            index
+            element={
+              <AuthRoute>
+                <VaccinationBookingsListFaskes />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="view/:vaccinationPassId"
+            element={
+              <AuthRoute>
+                <VaccinationBookingsAdminViewFaskesDetail />
+              </AuthRoute>
+            }
+          />
+        </Route>
+      </Route>
       <Route
         path="/booking-vaccine"
         element={
@@ -99,14 +129,6 @@ const App = () => {
           </AuthRoute>
         }
       >
-        <Route
-          path="data"
-          element={
-            <AuthRoute>
-              <VaccinationBookingsAdmin />
-            </AuthRoute>
-          }
-        />
         <Route
           index
           element={
@@ -160,7 +182,6 @@ const App = () => {
                       </AuthRoute>
                     }
                   />
-                  /*{" "}
                   <Route path="identitas">
                     <Route
                       index
