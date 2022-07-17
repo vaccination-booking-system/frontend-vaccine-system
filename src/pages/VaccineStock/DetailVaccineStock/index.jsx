@@ -27,8 +27,6 @@ const DetailVaccineStocks = () => {
         },
       })
       .then(response => {
-        console.log(response);
-        console.log(response.data.data);
         setVaccineStocks(response.data.data);
         setIsLoading(false);
       })

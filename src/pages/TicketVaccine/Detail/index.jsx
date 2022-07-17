@@ -40,7 +40,6 @@ const TicketVaccineDetailPage = () => {
       const res = await axiosInstance.get(`/api/v1/vaccination-pass/${id}`, {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
-      console.log(res);
       setVaccinationPassDetail(res.data.data);
     } catch (error) {
       console.log(error.message);
@@ -53,7 +52,6 @@ const TicketVaccineDetailPage = () => {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
       setVaccinationSessionDetail(res.data.data);
-      console.log(res);
     } catch (error) {
       console.log(error.message);
     }

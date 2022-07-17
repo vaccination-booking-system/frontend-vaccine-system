@@ -42,7 +42,6 @@ const VaccinationBookingsAdminViewFaskesDetail = () => {
       const res = await axiosInstance.get(`/api/v1/vaccination-pass/${id}`, {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
-      console.log(res);
       const newVaccinationPassDetailVaccine = vaccinationPassDetailVaccine.map(detail => {
         if (detail.title === "Nomor Booking") {
           return { ...detail, desc: `LPA-${res.data.data.id}${new Date(res.data.data.date_of_birth) / 100000}` };
@@ -77,7 +76,6 @@ const VaccinationBookingsAdminViewFaskesDetail = () => {
         }
         return { ...identity };
       });
-      console.log(newVaccinationPassIdentity);
       setVaccinationPassDetailVaccine(newVaccinationPassDetailVaccine);
       setVaccinationPassIdentity(newVaccinationPassIdentity);
       setVaccineSessionId(res.data.data.vaccination_session.id);
@@ -106,7 +104,6 @@ const VaccinationBookingsAdminViewFaskesDetail = () => {
       });
       setVaccinationPassDetailVaccine(newVaccinationPassDetailVaccine);
       setLoading(false);
-      console.log(newVaccinationPassDetailVaccine);
     } catch (error) {
       console.log(error.message);
     }

@@ -9,8 +9,6 @@ const BookingsStatusPage = () => {
 
   const { selectedUser } = state;
 
-  console.log(selectedUser);
-
   const { pathArr, anchorPath } = usePath();
 
   const navigate = useNavigate();

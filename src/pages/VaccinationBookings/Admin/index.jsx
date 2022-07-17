@@ -36,8 +36,6 @@ const VaccinationBookingsAdmin = () => {
     if (getUserByIdResult) getHealthFacility(getUserByIdResult.id);
   }, [getUserByIdResult]);
 
-  console.log({ getUserByIdResult, healthFacilities });
-
   return (
     <Layout>
       <div>

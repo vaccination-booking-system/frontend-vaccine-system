@@ -95,10 +95,7 @@ const BookingsAlamatPage = () => {
 
   const [isAddressSameWithKtp, setIsAddressSameWithKtp] = useState(false);
 
-  // console.log({ selectedUser });
-
   const getNewFormInput = (formInput, res) => {
-    console.log({ res, formInput });
     return formInput.map(input => {
       if (input.name === "provinsi-ktp" || input.name === "provinsi-domisili") {
         return {
@@ -140,7 +137,6 @@ const BookingsAlamatPage = () => {
   };
 
   const getKotaKabupaten = async (provinceId, typeAddress) => {
-    console.log({ provinceId, typeAddress });
     try {
       const res = await axios.get(`http://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinceId}.json`);
       if (typeAddress === "ktp") {
@@ -328,8 +324,6 @@ const BookingsAlamatPage = () => {
       });
     }
   };
-
-  console.log([...formInputKtp1, ...formInputKtp2]);
 
   useEffect(() => {
     if (formInputKtp1[2].value !== "") getKotaKabupaten(formInputKtp1[2].value, "ktp");

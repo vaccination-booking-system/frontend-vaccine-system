@@ -10,8 +10,6 @@ const Breadcrumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
 
   const navigate = useNavigate();
 
-  console.log({ selectedUser });
-
   return (
     <Card>
       <p>
@@ -23,8 +21,6 @@ const Breadcrumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
               break;
             }
           }
-          console.log(tempPathArr);
-          console.log({ path, selectedPath });
           return (
             <React.Fragment key={idx}>
               {/**

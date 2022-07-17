@@ -89,8 +89,6 @@ const VaccinationBookingsListFaskes = () => {
     })();
   }, [healthFacilityId]);
 
-  console.log({ vaccinationPass });
-
   return (
     <Layout>
       <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
