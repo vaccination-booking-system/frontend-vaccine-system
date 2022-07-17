@@ -82,8 +82,6 @@ const Sidebar = () => {
     }
   }, []);
 
-  console.log(anchorPath);
-
   return (
     <section className="h-[100vh] bg-white px-4 py-8 flex flex-col justify-between">
       <div>

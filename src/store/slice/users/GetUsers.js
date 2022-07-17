@@ -4,14 +4,12 @@ import axiosInstance from "../../../network/apis";
 
 const fetchUserById = createAsyncThunk("userId/fetchUserId", async params => {
   const { token, id, isAdmin } = params;
-  console.log(token, id, isAdmin);
   if (isAdmin) {
     const res = await axiosInstance.get(`/api/v1/admin/${id}`, {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
     });
-    console.log(res);
     return res.data.data;
   } else {
     const res = await axiosInstance.get(`/api/v1/users/${id}`, {

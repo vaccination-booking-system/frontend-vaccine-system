@@ -30,7 +30,6 @@ const VaccineStockPage = () => {
         const filteredHealthFacilitiesByAdminId = response.data.data.filter(item => {
           return item.admin.id === adminId;
         });
-        console.log(response.data.data);
         setHealthFacilities(filteredHealthFacilitiesByAdminId);
         setIsLoading(false);
       })
@@ -46,41 +45,42 @@ const VaccineStockPage = () => {
   const clickedFacilities = id => {
     navigate(`${id}`);
   };
+
   return (
     <Layout>
-      <Card>
-        <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
-      </Card>
-      <Card margin="24px 0px">
-        <div className="py-4 pl-4 text-[#2D3748] font-bold">
-          <span>Pilih Fasilitas Kesehatan</span>
-        </div>
-        <div className="mx-4">
-          <div className="flex justify-around gap-x-[200px]">
-            {/* <span>JENIS VAKSIN</span>
+      <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
+      <div className="my-8">
+        <Card margin="auto" maxWidth="700px">
+          <div className="py-4 pl-4 text-[#2D3748] font-bold text-lg">
+            <span>Pilih Fasilitas Kesehatan</span>
+          </div>
+          <div className="mx-4">
+            <div className="flex justify-around gap-x-[200px]">
+              {/* <span>JENIS VAKSIN</span>
             <span>STOCK</span>
             <span>KETERANGAN</span>
             <span>AKSI</span> */}
-          </div>
-          {isLoading ? (
-            <LoadingAnimation />
-          ) : (
-            <div>
-              <ul>
-                {healthFacilites?.map((healthFacility, index) => {
-                  return (
-                    <li key={index}>
-                      <div className="p-4 border-2 rounded-2xl my-2 cursor-pointer" onClick={() => clickedFacilities(healthFacility.id)}>
-                        {healthFacility.name}
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
             </div>
-          )}
-        </div>
-      </Card>
+            {isLoading ? (
+              <LoadingAnimation />
+            ) : (
+              <div>
+                <ul>
+                  {healthFacilites?.map((healthFacility, index) => {
+                    return (
+                      <li key={index}>
+                        <div className="p-4 border-2 rounded-2xl my-2 cursor-pointer" onClick={() => clickedFacilities(healthFacility.id)}>
+                          {healthFacility.name}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </div>
+        </Card>
+      </div>
     </Layout>
   );
 };
