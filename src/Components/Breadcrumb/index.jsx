@@ -58,6 +58,8 @@ const Breadcrumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
                       ? path === "family-member" && { onClick: () => navigate("/family-member") }
                       : anchorPath === "vaccine-stock"
                       ? path === "data" && { onClick: () => navigate("/vaccine-stock/data") }
+                      : anchorPath === "vaccination-bookings"
+                      ? path === "daftar-faskes" && { onClick: () => navigate("/vaccination-bookings/daftar-faskes") }
                       : "")}
                     className={`${path === selectedPath ? "text-[#0A6C9D]" : "text-slate-400"} cursor-pointer`}
                   >
