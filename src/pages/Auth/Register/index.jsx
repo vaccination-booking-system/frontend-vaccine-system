@@ -72,7 +72,6 @@ const Register = () => {
     const regexNama = /^[^-\0-9][a-zA-Z ]*$/gim;
 
     if (value.length > 0 && regexNama.test(value)) {
-      console.log("tes1");
       setNameErroMsg("");
     } /* else if (value > 0 && !regexNama.test(value)) {
       setNameErroMsg("Nama tidak boleh ada angka");
@@ -81,7 +80,6 @@ const Register = () => {
     }
 
     if (value.length === 0) {
-      console.log("tes3");
       setNameErroMsg("");
     }
   };
@@ -90,55 +88,17 @@ const Register = () => {
     const regexPhone = /^08+[0-9]*$/;
     const regexNumber = /[0-9]/gim;
 
-    /* if (value.length > 0 && !regexPhone.test(value)) {
-      setPhoneNumberErrorMsg("Inputan harus berupa angka");
-      console.log("test 1");
-    } else {
-      if (regexPhone.test(value)) {
-        setPhoneNumberErrorMsg("");
-        console.log("test 2");
-        if (value.length < 12) {
-          setPhoneNumberErrorMsg("Nomor HP kurang");
-          console.log("test 3");
-        }
-      } else {
-        if (value.length === 0) {
-          setPhoneNumberErrorMsg("");
-          console.log("test 4");
-        } else {
-          setPhoneNumberErrorMsg("Input dimulai dengan 08");
-          console.log("test 5");
-        }
-      }
-    } */
-
     if (value.length > 0 && !regexPhone.test(value)) {
       setPhoneNumberErrorMsg("Input dimulai dengan 08 & harus berupa angka");
-      console.log("test 1");
     } else if (value.length > 1 && regexPhone.test(value)) {
       setPhoneNumberErrorMsg("");
-      console.log("test 2");
       if (value.length < 12) {
         setPhoneNumberErrorMsg("Nomor HP kurang");
-        console.log("test 3");
       }
     }
     if (value.length === 0) {
       setPhoneNumberErrorMsg("");
-      console.log("test 4");
     }
-
-    /*if ((value.length > 0 && !regexNumber.test(value)) || !regexPhone.test(value)) {
-       console.log("tes 1");
-      setPhoneNumberErrorMsg("tidak valid");
-    }
-    if (value.length > 0 && regexNumber.test(value) && regexPhone.test(value)) {
-      setPhoneNumberErrorMsg("");
-      console.log("tes 2");
-    }
-    if (value.length === 0) {
-      setPhoneNumberErrorMsg("");
-    } */
   };
 
   const checkPassword = value => {

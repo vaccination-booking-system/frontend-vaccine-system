@@ -67,10 +67,6 @@ const Dashboard = () => {
 
   const { checkIsAdmin } = JWTHelper;
 
-  useEffect(() => {
-    console.log({ getUserByIdLoading, getUserByIdResult, getUserByIdError });
-  }, [getUserByIdLoading, getUserByIdResult, getUserByIdError]);
-
   if (checkIsAdmin(localStorage.getItem("accessToken"))) {
     return (
       <Layout>

@@ -20,10 +20,6 @@ const AddFamilyMemberPage = () => {
 
   const { getUserByIdLoading, getUserByIdResult, getUserByIdError } = useSelector(state => state.userId);
 
-  useEffect(() => {
-    console.log({ getUserByIdLoading, getUserByIdResult, getUserByIdError });
-  }, [getUserByIdLoading, getUserByIdResult, getUserByIdError]);
-
   const handleClickedContent = () => {
     setIsClicked(true);
     setTimeout(isClicked => {
@@ -35,12 +31,10 @@ const AddFamilyMemberPage = () => {
 
   const [isGetData, setIsGetData] = useState(false);
 
-  //console.log(getUserByIdResult.id);
   const fetchData = () => {
     setIsGetData(true);
     const token = localStorage.getItem("accessToken");
     const claim = decodeToken(token);
-    console.log("ini claim" + claim);
     axiosInstance
       .get("/api/v1/family-members?user_id=" + claim.user_id, {
         headers: {
@@ -53,7 +47,6 @@ const AddFamilyMemberPage = () => {
           temp.push(element);
         });
         setListFamilyMember(temp);
-        console.log(response);
         setIsGetData(false);
       })
       .catch(function (error) {
@@ -73,7 +66,6 @@ const AddFamilyMemberPage = () => {
         },
       })
       .then(response => {
-        console.log(response);
         if (response.data.message === "SUCCESS") {
           Swal.fire({
             title: "SUCCESS !",
