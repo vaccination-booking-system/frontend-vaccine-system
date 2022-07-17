@@ -99,14 +99,12 @@ const AddMembers = () => {
     const regexNama = /^[^-\0-9][a-zA-Z ]*$/gim;
 
     if (value.length > 0 && regexNama.test(value)) {
-      //console.log("tes1");
       setNameErroMsg("");
     } else if (value.length > 0 && !regexNama.test(value)) {
       setNameErroMsg("Nama tidak sesuai format");
     }
 
     if (value.length === 0) {
-      console.log("tes3");
       setNameErroMsg("");
     }
   };
@@ -124,18 +122,14 @@ const AddMembers = () => {
     const regexPhone = /^08+[0-9]*$/;
     if (value.length > 0 && !regexPhone.test(value)) {
       setPhoneNumberErrorMsg("Input dimulai dengan 08 & harus berupa angka");
-      console.log("test 1");
     } else if (value.length > 1 && regexPhone.test(value)) {
       setPhoneNumberErrorMsg("");
-      console.log("test 2");
       if (value.length < 12) {
         setPhoneNumberErrorMsg("Nomor HP kurang");
-        console.log("test 3");
       }
     }
     if (value.length === 0) {
       setPhoneNumberErrorMsg("");
-      console.log("test 4");
     }
   };
 
@@ -188,32 +182,26 @@ const AddMembers = () => {
     if (name === "nama") {
       checkNama(value);
       setNama(value);
-      console.log(value);
     }
     if (name === "nik") {
       checkNikLength(value);
       setNik(value);
-      console.log(value);
     }
     if (name === "phoneNumber") {
       checkNumberPhone(value);
       setPhoneNumber(value);
-      console.log(value);
     }
     if (name === "birthday") {
       checkBirthday(value);
       setBirthday(value);
-      console.log(value);
     }
     if (name === "gender") {
       checkGender(value);
       setGender(value);
-      console.log(value);
     }
     if (name === "relation") {
       checkRelation(value);
       setRelation(value);
-      console.log(value);
     }
   };
 

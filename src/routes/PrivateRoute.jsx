@@ -19,7 +19,6 @@ const PrivateRoute = ({ children }) => {
   const { member } = useSelector(state => state.familyMember);
 
   useEffect(() => {
-    console.log({ decodedToken });
     if (decodedToken !== null) {
       const id = decodedToken.is_admin ? decodedToken.admin_id : decodedToken.user_id;
       dispatch(fetchUserById({ token: localStorage.getItem("accessToken"), id, isAdmin: decodedToken.is_admin }));

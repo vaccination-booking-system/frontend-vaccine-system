@@ -46,8 +46,8 @@ const Sidebar = () => {
     {
       text: "Vaccination Bookings",
       icon: ({ color, size }) => <ChartIcon color={color} size={size} />,
-      path: "/booking-vaccine/data",
-      anchor: "booking-vaccine",
+      path: "/vaccination-bookings/daftar-faskes",
+      anchor: "vaccination-bookings",
     },
     {
       text: "Session Availability",

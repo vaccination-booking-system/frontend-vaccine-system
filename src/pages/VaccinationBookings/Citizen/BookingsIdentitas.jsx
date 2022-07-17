@@ -31,8 +31,6 @@ const BookingsIdentitasPage = () => {
     { label: "E-mail", placeholder: "Masukkan E-mail", name: "email", value: "" },
   ]);
 
-  console.log({ selectedUser });
-
   const handleClickNext = () => {
     navigate("alamat", { state: { selectedUser: { ...selectedUser } } });
   };

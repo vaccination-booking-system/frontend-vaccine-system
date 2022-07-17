@@ -35,8 +35,6 @@ const BookingsJadwalPage = () => {
 
   const [selectedVaccinationSessionsId, setSelectedVaccinationSessionsId] = useState("");
 
-  console.log(selectedUser);
-
   const handleClickNext = () => {
     if (!vaccinationSessions) {
       toast.error("Masukkan data dengan benar!");
