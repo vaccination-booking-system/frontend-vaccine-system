@@ -70,7 +70,7 @@ const VaccineStockPage = () => {
                 {healthFacilites?.map((healthFacility, index) => {
                   return (
                     <li key={index}>
-                      <div className="border-2 p-4 my-3" onClick={() => clickedFacilities(healthFacility.id)}>
+                      <div className="p-4 border-2 rounded-2xl my-2 cursor-pointer" onClick={() => clickedFacilities(healthFacility.id)}>
                         {healthFacility.name}
                       </div>
                     </li>
