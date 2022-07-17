@@ -73,7 +73,7 @@ const TicketVaccineDetailPage = () => {
     if (vaccinationSessionDetail) {
       const newDetailsVaccine = detailsVaccine.map(detailVaccine => {
         if (detailVaccine.title === "Nomor Vaksin") {
-          return { ...detailVaccine, desc: `LPA-${vaccinationPassDetail.id}${new Date(vaccinationSessionDetail.schedule_date) / 100000}` };
+          return { ...detailVaccine, desc: `LPA-${vaccinationPassDetail.id}${new Date(vaccinationPassDetail.date_of_birth) / 100000}` };
         }
         if (detailVaccine.title === "Nama Vaksin") {
           return { ...detailVaccine, desc: vaccinationPassDetail.vaccine.name };

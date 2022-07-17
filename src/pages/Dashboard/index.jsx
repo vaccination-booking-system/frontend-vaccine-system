@@ -44,7 +44,7 @@ const serviceItemsAdmin = [
     desc: "Cek dan kelola pendaftaran vaksin.",
     imgPath: VaccinationBookingsAdminImg,
     alt: "booking-vaccine-img",
-    path: "/booking-vaccine/data",
+    path: "/vaccination-bookings/daftar-faskes",
   },
   {
     heading: "Session Availability",

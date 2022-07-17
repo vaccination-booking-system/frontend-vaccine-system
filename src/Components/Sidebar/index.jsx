@@ -46,8 +46,8 @@ const Sidebar = () => {
     {
       text: "Vaccination Bookings",
       icon: ({ color, size }) => <ChartIcon color={color} size={size} />,
-      path: "/booking-vaccine/data",
-      anchor: "booking-vaccine",
+      path: "/vaccination-bookings/daftar-faskes",
+      anchor: "vaccination-bookings",
     },
     {
       text: "Session Availability",
@@ -81,6 +81,8 @@ const Sidebar = () => {
       setSidebarItems(sidebarItemsCitizen);
     }
   }, []);
+
+  console.log(anchorPath);
 
   return (
     <section className="h-[100vh] bg-white px-4 py-8 flex flex-col justify-between">
