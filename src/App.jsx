@@ -33,6 +33,7 @@ import {
   DetailVaccineStocks,
   SessionsAvailabilityPageByFaskes,
   SessionsAvailabilityPageByFaskesDetail,
+  SessionAvailabilityEditPage,
 } from "./pages";
 import PageNotFound from "./pages/PageNotFound";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -95,6 +96,14 @@ const App = () => {
             element={
               <AuthRoute>
                 <SessionsAvailabilityPageByFaskesDetail />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="edit/:vaccinationSessionId"
+            element={
+              <AuthRoute>
+                <SessionAvailabilityEditPage />
               </AuthRoute>
             }
           />

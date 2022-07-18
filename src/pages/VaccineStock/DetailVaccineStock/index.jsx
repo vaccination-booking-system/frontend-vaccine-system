@@ -1,11 +1,14 @@
 import React from "react";
-import { Card, Layout, Breadcrumb, LoadingAnimation } from "../../../Components";
+import { Card, Layout, Breadcrumb, LoadingAnimation, Button } from "../../../Components";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axiosInstance from "../../../network/apis";
 import { useState } from "react";
 import { usePath } from "../../../context/PathContext";
 import { HiOutlineSearch } from "react-icons/hi";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const DetailVaccineStocks = () => {
   const { anchorPath, pathArr } = usePath();
@@ -16,7 +19,7 @@ const DetailVaccineStocks = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [isSearch, setSearch] = useState(false);
+  const [inputsStock, setInputsStock] = useState(null);
 
   const getFetchingData = () => {
     setIsLoading(true);
@@ -28,11 +31,49 @@ const DetailVaccineStocks = () => {
       })
       .then(response => {
         setVaccineStocks(response.data.data);
+        setInputsStock(
+          response.data.data.map((data, idx) => {
+            return { id: idx, value: "" };
+          })
+        );
         setIsLoading(false);
       })
       .catch(error => {
         console.log(error);
       });
+  };
+
+  const handleChangeInput = (idx, value) => {
+    const newInputsStocks = inputsStock.map(input => {
+      if (input.id === idx) {
+        return { ...input, value: value };
+      }
+      return { ...input };
+    });
+    setInputsStock(newInputsStocks);
+  };
+
+  const addStock = async (vaccineId, inputId) => {
+    if (inputsStock[inputId].value === "") {
+      toast.error("Masukkan data dengan benar !");
+    } else {
+      try {
+        const res = await axiosInstance.post(
+          `/api/v1/health-facilities/${pathArr[pathArr.length - 1]}/vaccines`,
+          {
+            vaccine: {
+              id: vaccineId,
+            },
+            quantity: inputsStock[inputId].value,
+          },
+          { headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` } }
+        );
+        Swal.fire({ title: "SUCCESS !", text: "Berhasil tambah stock vaksin ! ", icon: "success", showConfirmButton: false, timer: 2500 });
+        getFetchingData();
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
   };
 
   useEffect(() => {
@@ -61,47 +102,57 @@ const DetailVaccineStocks = () => {
           </button>
         </div>
       </Card>
-      <Card margin="20px 0px">
+      <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
         <span className="text-[#2D3748] font-bold">Detail Data Vaccine</span>
         {isLoading ? (
           <LoadingAnimation />
         ) : (
-          <div className="flex justify-around gap-x-[200px]">
-            <div>
-              <div>
-                <span>JENIS VAKSIN</span>
-              </div>
-              <div>
-                <ul>
-                  {vaccineStocks?.map((vaccineStock, index) => {
-                    return (
-                      <li key={index} className="pl-5 ">
-                        {vaccineStock.vaccine.name}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>STOCK</span>
-              </div>
-              <div>
-                <ul>
-                  {vaccineStocks?.map((vaccineStock, index) => {
-                    return (
-                      <li key={index} className="pl-5">
-                        {vaccineStock.stock}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </div>
-          </div>
+          <table className="table-auto mt-4 m-auto w-full">
+            <thead>
+              <tr>
+                <th className="p-4 border-2">Jenis Vaksin</th>
+                <th className="p-4 border-2">Stok</th>
+                <th className="p-4 border-2">Jumlah yang ditambahkan</th>
+                <th className="p-4 border-2">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {vaccineStocks?.map((stock, idx) => {
+                return (
+                  <tr key={idx}>
+                    <td className="p-4 border-2">{stock.vaccine.name}</td>
+                    <td className="p-4 border-2">{stock.stock}</td>
+                    <td className="p-4 border-2">
+                      <input
+                        className="p-2 rounded-md border-2"
+                        type="number"
+                        value={inputsStock[idx].value}
+                        onChange={e => handleChangeInput(idx, e.target.value)}
+                      />
+                    </td>
+                    <td className="p-4 border-2">
+                      <Button color="white" fontSize=".75rem" bg="#0A6C9D" onClick={() => addStock(stock.vaccine.id, idx)}>
+                        Tambah Stok
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         )}
       </Card>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 };

@@ -7,6 +7,8 @@ import { AiOutlineEye } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SessionsAvailabilityPageByFaskes = () => {
   const { anchorPath, pathArr } = usePath();
@@ -65,6 +67,9 @@ const SessionsAvailabilityPageByFaskes = () => {
         getFetchingData();
       }
     } catch (error) {
+      if (error.message === "Request failed with status code 400") {
+        toast.error("Tidak dapat menghapus sesi !");
+      }
       console.log(error.message);
     }
   };
@@ -122,7 +127,7 @@ const SessionsAvailabilityPageByFaskes = () => {
                             <div onClick={() => navigate(`view/${vaccineSession.id}`)} className="cursor-pointer">
                               <AiOutlineEye size={20} />
                             </div>
-                            <div>
+                            <div onClick={() => navigate(`edit/${vaccineSession.id}`)} className="cursor-pointer">
                               <BiEdit size={20} />
                             </div>
                             <div className="cursor-pointer" onClick={() => handleDelete(vaccineSession.id)}>
@@ -139,6 +144,17 @@ const SessionsAvailabilityPageByFaskes = () => {
           </Card>
         )}
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 };
