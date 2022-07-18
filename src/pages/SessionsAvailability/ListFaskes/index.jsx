@@ -65,7 +65,7 @@ const SessionsAvailabilityPageByFaskes = () => {
           </div>
         ) : (
           <Card padding="2rem 3rem">
-            <h1 className="font-bold text-xl">Daftar Vaksinasi di {healthFacility?.name}</h1>
+            <h1 className="font-bold text-xl">Daftar Sesi Vaksinasi di {healthFacility?.name}</h1>
             {vaccinationPass?.length === 0 ? (
               <p className="mt-4 text-center">Data Kosong</p>
             ) : (

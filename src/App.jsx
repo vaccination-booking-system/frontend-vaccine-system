@@ -63,14 +63,6 @@ const App = () => {
         }
       />
       <Route
-        path="*"
-        element={
-          <PublicRoute>
-            <PageNotFound />
-          </PublicRoute>
-        }
-      />
-      <Route
         path="/dashboard"
         element={
           <AuthRoute>
@@ -78,7 +70,7 @@ const App = () => {
           </AuthRoute>
         }
       />
-      <Route path="/sessions-availability/data">
+      <Route path="/sessions-availability/daftar-faskes">
         <Route
           index
           element={
@@ -106,7 +98,7 @@ const App = () => {
           />
         </Route>
       </Route>
-      <Route path="/vaccine-stock/data">
+      <Route path="/vaccine-stock/daftar-faskes">
         <Route
           index
           element={
@@ -317,6 +309,14 @@ const App = () => {
         element={
           <PublicRoute>
             <AdminLogin />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <PublicRoute>
+            <PageNotFound />
           </PublicRoute>
         }
       />

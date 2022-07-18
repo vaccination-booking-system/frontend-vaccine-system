@@ -53,9 +53,11 @@ const Breadcrumb = ({ anchorPath, pathArr, selectedPath, selectedUser }) => {
                       : anchorPath === "family-member"
                       ? path === "family-member" && { onClick: () => navigate("/family-member") }
                       : anchorPath === "vaccine-stock"
-                      ? path === "data" && { onClick: () => navigate("/vaccine-stock/data") }
+                      ? path === "daftar-faskes" && { onClick: () => navigate("/vaccine-stock/daftar-faskes") }
                       : anchorPath === "vaccination-bookings"
                       ? path === "daftar-faskes" && { onClick: () => navigate("/vaccination-bookings/daftar-faskes") }
+                      : anchorPath === "sessions-availability"
+                      ? path === "daftar-faskes" && { onClick: () => navigate("/sessions-availability/daftar-faskes") }
                       : "")}
                     className={`${path === selectedPath ? "text-[#0A6C9D]" : "text-slate-400"} cursor-pointer`}
                   >

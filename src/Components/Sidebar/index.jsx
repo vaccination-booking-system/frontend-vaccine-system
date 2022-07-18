@@ -52,13 +52,13 @@ const Sidebar = () => {
     {
       text: "Session Availability",
       icon: ({ color, size }) => <CardIcon color={color} size={size} />,
-      path: "/sessions-availability/data",
+      path: "/sessions-availability/daftar-faskes",
       anchor: "sessions-availability",
     },
     {
       text: "Vaccine Stock",
       icon: ({ color, size }) => <HelpIcon color={color} size={size} />,
-      path: "/vaccine-stock/data",
+      path: "/vaccine-stock/daftar-faskes",
       anchor: "vaccine-stock",
     },
   ]);

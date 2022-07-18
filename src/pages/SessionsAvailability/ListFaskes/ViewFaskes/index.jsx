@@ -4,8 +4,12 @@ import { Breadcrumb, Button, Card, Layout, LoadingAnimation } from "../../../../
 import { usePath } from "../../../../context/PathContext";
 import axiosInstance from "../../../../network/apis";
 import { useNavigate } from "react-router-dom";
+import DateHelper from "../../../../utils/DateHelper";
+import { RiShareBoxFill } from "react-icons/ri";
 
 const SessionsAvailabilityPageByFaskesDetail = () => {
+  const { convertDayId, convertMonthId } = DateHelper;
+
   const { anchorPath, pathArr } = usePath();
 
   const navigate = useNavigate();
@@ -30,7 +34,8 @@ const SessionsAvailabilityPageByFaskesDetail = () => {
       });
       const newVaccinationSessionDetail = vaccinationSessionDetail.map(detail => {
         if (detail.title === "Tanggal Vaksin") {
-          return { ...detail, desc: res.data.data.schedule_date };
+          const date = new Date(res.data.data.schedule_date);
+          return { ...detail, desc: `${date.getDate()} ${convertMonthId(date.getMonth())} ${date.getFullYear()}` };
         }
         if (detail.title === "Mulai") {
           return { ...detail, desc: res.data.data.schedule_time_start };
@@ -69,7 +74,10 @@ const SessionsAvailabilityPageByFaskesDetail = () => {
         ) : (
           <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
             <div>
-              <h1 className="font-bold text-xl">Data Sesi Vaksinasi</h1>
+              <div className="flex justify-between items-center">
+                <h1 className="font-bold text-xl">Data Sesi Vaksinasi</h1>
+                <RiShareBoxFill className="cursor-pointer" onClick={() => navigate(`/vaccination-bookings/daftar-faskes/${pathArr[2]}`)} />
+              </div>
               <div className="flex">
                 <div className="flex-1">
                   {vaccinationSessionDetail.slice(0, 3).map((detail, idx) => {

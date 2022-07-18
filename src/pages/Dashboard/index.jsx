@@ -51,14 +51,14 @@ const serviceItemsAdmin = [
     desc: "Cek dan kelola sesi vaksin.",
     imgPath: SessionAvailabilityAdminImg,
     alt: "session-availability-img",
-    path: "/sessions-availability/data",
+    path: "/sessions-availability/daftar-faskes",
   },
   {
     heading: "Vaccine Stock",
     desc: "Cek dan kelola stok vaksin",
     imgPath: VaccineStockAdminImg,
     alt: "vaccine-stock-img",
-    path: "/vaccine-stock/data",
+    path: "/vaccine-stock/daftar-faskes",
   },
 ];
 
