@@ -22,8 +22,13 @@ import Profile from "./Profile";
 
 import AdminLogin from "./Auth/Login/Admin";
 import VaccinationBookingsAdmin from "./VaccinationBookings/Admin";
+import VaccinationBookingsListFaskes from "./VaccinationBookings/Admin/ListFaskes";
+import VaccinationBookingsAdminViewFaskesDetail from "./VaccinationBookings/Admin/ListFaskes/ViewFaskes";
 import SessionsAvailabilityPage from "./SessionsAvailability";
 import VaccineStockPage from "./VaccineStock";
+import DetailVaccineStocks from "./VaccineStock/DetailVaccineStock";
+import SessionsAvailabilityPageByFaskes from "./SessionsAvailability/ListFaskes";
+import SessionsAvailabilityPageByFaskesDetail from "./SessionsAvailability/ListFaskes/ViewFaskes";
 
 export {
   Login,
@@ -48,6 +53,11 @@ export {
   Profile,
   AdminLogin,
   VaccinationBookingsAdmin,
+  VaccinationBookingsListFaskes,
+  VaccinationBookingsAdminViewFaskesDetail,
   SessionsAvailabilityPage,
   VaccineStockPage,
+  DetailVaccineStocks,
+  SessionsAvailabilityPageByFaskes,
+  SessionsAvailabilityPageByFaskesDetail,
 };

@@ -26,7 +26,6 @@ const BookingsMemberPage = () => {
     (async () => {
       try {
         if (getUserByIdResult) {
-          console.log({ getUserByIdResult });
           const { id } = getUserByIdResult;
           setGetFamilyMemberLoading(true);
           const res = await axiosInstance.get(`/api/v1/family-members?user_id=${id}`, {
@@ -34,7 +33,6 @@ const BookingsMemberPage = () => {
               "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
             },
           });
-          console.log(res);
           if (res.data.data.length > 0) {
             setFamilyMember([getUserByIdResult, ...res.data.data]);
           } else {

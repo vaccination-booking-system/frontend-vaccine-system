@@ -40,7 +40,6 @@ const TicketVaccineDetailPage = () => {
       const res = await axiosInstance.get(`/api/v1/vaccination-pass/${id}`, {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
-      console.log(res);
       setVaccinationPassDetail(res.data.data);
     } catch (error) {
       console.log(error.message);
@@ -53,7 +52,6 @@ const TicketVaccineDetailPage = () => {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
       setVaccinationSessionDetail(res.data.data);
-      console.log(res);
     } catch (error) {
       console.log(error.message);
     }
@@ -73,7 +71,7 @@ const TicketVaccineDetailPage = () => {
     if (vaccinationSessionDetail) {
       const newDetailsVaccine = detailsVaccine.map(detailVaccine => {
         if (detailVaccine.title === "Nomor Vaksin") {
-          return { ...detailVaccine, desc: `LPA-${vaccinationPassDetail.id}${new Date(vaccinationSessionDetail.schedule_date) / 100000}` };
+          return { ...detailVaccine, desc: `LPA-${vaccinationPassDetail.id}${new Date(vaccinationPassDetail.date_of_birth) / 100000}` };
         }
         if (detailVaccine.title === "Nama Vaksin") {
           return { ...detailVaccine, desc: vaccinationPassDetail.vaccine.name };

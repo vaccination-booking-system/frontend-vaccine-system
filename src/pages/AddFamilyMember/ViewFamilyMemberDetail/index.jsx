@@ -27,7 +27,6 @@ const ViewFamilyMemberDetailPage = () => {
       const res = await axiosInstance.get(`/api/v1/family-members/${id}`, {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
-      console.log(res);
       const newUserDetails = userDetails.map(userDetail => {
         if (userDetail.title === "Nama Lengkap") {
           return { ...userDetail, desc: res.data.data.name };

@@ -146,7 +146,6 @@ const BookingsTinjauPage = () => {
         }
         return address;
       });
-      console.log({ newAddressDomisili, newAddressKtp });
       setAddressKtp(newAddressKtp);
       setAddressDomisili(newAddressDomisili);
     } catch (error) {
@@ -170,7 +169,6 @@ const BookingsTinjauPage = () => {
         }
         return address;
       });
-      console.log({ newAddressDomisili, newAddressKtp });
       setAddressKtp(newAddressKtp);
       setAddressDomisili(newAddressDomisili);
     } catch (error) {
@@ -194,7 +192,6 @@ const BookingsTinjauPage = () => {
         }
         return address;
       });
-      console.log({ newAddressDomisili, newAddressKtp });
       setAddressKtp(newAddressKtp);
       setAddressDomisili(newAddressDomisili);
     } catch (error) {
@@ -218,7 +215,6 @@ const BookingsTinjauPage = () => {
         }
         return address;
       });
-      console.log({ newAddressDomisili, newAddressKtp });
       setAddressKtp(newAddressKtp);
       setAddressDomisili(newAddressDomisili);
     } catch (error) {
@@ -228,7 +224,6 @@ const BookingsTinjauPage = () => {
 
   const handleClickRegister = async () => {
     try {
-      console.log({ addressKtp, addressDomisili });
       const data = {
         vaccination_session: {
           id: selectedUser.bookingsDetail.vaccinationSessionsId,
@@ -251,7 +246,6 @@ const BookingsTinjauPage = () => {
         curr_city: addressDomisili[1].value.name,
         curr_province: addressDomisili[0].value.name,
       };
-      console.log(data);
       await axiosInstance.post("/api/v1/vaccination-pass", data, {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
@@ -266,7 +260,6 @@ const BookingsTinjauPage = () => {
   };
 
   useEffect(() => {
-    console.log({ loopStateAddress });
     setLoopStateAddress(prevState => prevState + 1);
     if (loopStateAddress === 2)
       getKotaKabupatenById(selectedUser.bookingsDetail.alamat.ktp.kotaKabupaten, selectedUser.bookingsDetail.alamat.domisili.kotaKabupaten);
@@ -281,9 +274,6 @@ const BookingsTinjauPage = () => {
     getVaccinationSessionsById(selectedUser.bookingsDetail.vaccinationSessionsId);
   }, []);
 
-  // console.log({ addressKtp, addressDomisili });
-
-  console.log({ selectedUser, getUserByIdResult });
   return (
     <div>
       <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} selectedUser={selectedUser} />

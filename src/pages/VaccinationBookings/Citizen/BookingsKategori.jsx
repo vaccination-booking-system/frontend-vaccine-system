@@ -44,13 +44,11 @@ const BookingsKategoriPage = () => {
   const handleChangeCategory = e => {
     const { name, value } = e.target;
     setSelectedCategory(value);
-    console.log({ name, value });
   };
 
   const handleChangeIsPregnant = e => {
     const { name, value } = e.target;
     setIsPregnant(value === "true" ? true : false);
-    console.log({ name, value });
   };
 
   const handleClickNext = () => {
