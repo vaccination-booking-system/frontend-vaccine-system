@@ -29,6 +29,8 @@ import {
   SessionsAvailabilityPage,
   VaccineStockPage,
   DetailVaccineStocks,
+  SessionsAvailabilityPageByFaskes,
+  SessionsAvailabilityPageByFaskesDetail,
 } from "./pages";
 import PageNotFound from "./pages/PageNotFound";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -76,14 +78,34 @@ const App = () => {
           </AuthRoute>
         }
       />
-      <Route
-        path="/sessions-availability/data"
-        element={
-          <AuthRoute>
-            <SessionsAvailabilityPage />
-          </AuthRoute>
-        }
-      />
+      <Route path="/sessions-availability/data">
+        <Route
+          index
+          element={
+            <AuthRoute>
+              <SessionsAvailabilityPage />
+            </AuthRoute>
+          }
+        />
+        <Route path=":healthFacilityId">
+          <Route
+            index
+            element={
+              <AuthRoute>
+                <SessionsAvailabilityPageByFaskes />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="view/:vaccinationSessionId"
+            element={
+              <AuthRoute>
+                <SessionsAvailabilityPageByFaskesDetail />
+              </AuthRoute>
+            }
+          />
+        </Route>
+      </Route>
       <Route path="/vaccine-stock/data">
         <Route
           index
