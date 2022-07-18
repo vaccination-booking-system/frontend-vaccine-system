@@ -57,7 +57,7 @@ const Sidebar = () => {
     },
     {
       text: "Vaccine Stock",
-      icon: ({ color, size }) => <HelpIcon color={color} size={size} />,
+      icon: ({ color, size }) => <KeyIcon color={color} size={size} />,
       path: "/vaccine-stock/daftar-faskes",
       anchor: "vaccine-stock",
     },

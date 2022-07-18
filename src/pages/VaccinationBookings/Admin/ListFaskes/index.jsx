@@ -7,6 +7,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
 
 const VaccinationBookingsListFaskes = () => {
   const { anchorPath, pathArr } = usePath();
@@ -140,11 +141,8 @@ const VaccinationBookingsListFaskes = () => {
                             <div onClick={() => navigate(`view/${vaccinePass.id}`)} className="cursor-pointer">
                               <AiOutlineEye size={20} />
                             </div>
-                            <div>
+                            <div onClick={() => navigate(`edit/${vaccinePass.id}`)} className="cursor-pointer">
                               <BiEdit size={20} />
-                            </div>
-                            <div onClick={() => handleDelete(vaccinePass.id)} className="cursor-pointer">
-                              <MdDelete size={20} />
                             </div>
                           </div>
                         </td>

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Breadcrumb, Card, Layout, LoadingAnimation } from "../../../Components";
+import { Breadcrumb, Button, Card, Layout, LoadingAnimation } from "../../../Components";
 import { usePath } from "../../../context/PathContext";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../network/apis";
 import { AiOutlineEye } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const SessionsAvailabilityPageByFaskes = () => {
   const { anchorPath, pathArr } = usePath();
@@ -14,7 +15,7 @@ const SessionsAvailabilityPageByFaskes = () => {
 
   const { healthFacilityId } = useParams();
 
-  const [vaccinationPass, setVaccinationPass] = useState(null);
+  const [vaccinationSessions, setVaccinationSessions] = useState(null);
 
   const [healthFacility, setHealthFacility] = useState(null);
 
@@ -29,7 +30,7 @@ const SessionsAvailabilityPageByFaskes = () => {
         },
       })
       .then(response => {
-        setVaccinationPass(response.data.data);
+        setVaccinationSessions(response.data.data);
         setLoading(false);
       })
       .catch(error => {
@@ -49,12 +50,32 @@ const SessionsAvailabilityPageByFaskes = () => {
     }
   };
 
+  const handleDelete = async id => {
+    try {
+      const res = await axiosInstance.delete(`/api/v1/vaccination-session/${id}`, {
+        headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
+      });
+      if (res.data.message === "SUCCESS") {
+        Swal.fire({
+          title: "SUCCESS !",
+          text: "Berhasil menghapus",
+          icon: "success",
+          confirmButtonText: "Close",
+        });
+        getFetchingData();
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       getHealthFacilityById(healthFacilityId);
       getFetchingData();
     })();
   }, [healthFacilityId]);
+
   return (
     <Layout>
       <Breadcrumb anchorPath={anchorPath} pathArr={pathArr} selectedPath={pathArr[pathArr.length - 1]} />
@@ -65,8 +86,13 @@ const SessionsAvailabilityPageByFaskes = () => {
           </div>
         ) : (
           <Card padding="2rem 3rem">
-            <h1 className="font-bold text-xl">Daftar Sesi Vaksinasi di {healthFacility?.name}</h1>
-            {vaccinationPass?.length === 0 ? (
+            <div className="flex justify-between items-center">
+              <h1 className="font-bold text-xl">Daftar Sesi Vaksinasi di {healthFacility?.name}</h1>
+              <Button color="white" fontSize=".75rem" bg="#0A6C9D" onClick={() => navigate("create")}>
+                Tambah Sesi
+              </Button>
+            </div>
+            {vaccinationSessions?.length === 0 ? (
               <p className="mt-4 text-center">Data Kosong</p>
             ) : (
               <table className="table-auto mt-4 m-auto w-full">
@@ -81,25 +107,25 @@ const SessionsAvailabilityPageByFaskes = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {vaccinationPass.map(vaccinePass => {
+                  {vaccinationSessions.map(vaccineSession => {
                     return (
-                      <tr key={vaccinePass.id}>
-                        <td className="p-4 border-2">{vaccinePass.schedule_date}</td>
+                      <tr key={vaccineSession.id}>
+                        <td className="p-4 border-2">{vaccineSession.schedule_date}</td>
                         <td className="p-4 border-2">
-                          {vaccinePass.schedule_time_start} - {vaccinePass.schedule_time_end}
+                          {vaccineSession.schedule_time_start} - {vaccineSession.schedule_time_end}
                         </td>
-                        <td className="p-4 border-2">{vaccinePass.vaccine.name}</td>
-                        <td className="p-4 border-2">{vaccinePass.quantity}</td>
-                        <td className="p-4 border-2">{vaccinePass.booked}</td>
+                        <td className="p-4 border-2">{vaccineSession.vaccine.name}</td>
+                        <td className="p-4 border-2">{vaccineSession.quantity}</td>
+                        <td className="p-4 border-2">{vaccineSession.booked}</td>
                         <td className="p-4 border-2">
                           <div className="flex items-center justify-center">
-                            <div onClick={() => navigate(`view/${vaccinePass.id}`)} className="cursor-pointer">
+                            <div onClick={() => navigate(`view/${vaccineSession.id}`)} className="cursor-pointer">
                               <AiOutlineEye size={20} />
                             </div>
                             <div>
                               <BiEdit size={20} />
                             </div>
-                            <div className="cursor-pointer">
+                            <div className="cursor-pointer" onClick={() => handleDelete(vaccineSession.id)}>
                               <MdDelete size={20} />
                             </div>
                           </div>
