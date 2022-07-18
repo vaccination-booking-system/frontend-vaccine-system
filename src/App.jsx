@@ -29,6 +29,8 @@ import {
   SessionsAvailabilityPage,
   VaccineStockPage,
   DetailVaccineStocks,
+  SessionsAvailabilityPageByFaskes,
+  SessionsAvailabilityPageByFaskesDetail,
 } from "./pages";
 import PageNotFound from "./pages/PageNotFound";
 import { AuthRoute, PublicRoute } from "./routes";
@@ -61,14 +63,6 @@ const App = () => {
         }
       />
       <Route
-        path="*"
-        element={
-          <PublicRoute>
-            <PageNotFound />
-          </PublicRoute>
-        }
-      />
-      <Route
         path="/dashboard"
         element={
           <AuthRoute>
@@ -76,15 +70,35 @@ const App = () => {
           </AuthRoute>
         }
       />
-      <Route
-        path="/sessions-availability/data"
-        element={
-          <AuthRoute>
-            <SessionsAvailabilityPage />
-          </AuthRoute>
-        }
-      />
-      <Route path="/vaccine-stock/data">
+      <Route path="/sessions-availability/daftar-faskes">
+        <Route
+          index
+          element={
+            <AuthRoute>
+              <SessionsAvailabilityPage />
+            </AuthRoute>
+          }
+        />
+        <Route path=":healthFacilityId">
+          <Route
+            index
+            element={
+              <AuthRoute>
+                <SessionsAvailabilityPageByFaskes />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="view/:vaccinationSessionId"
+            element={
+              <AuthRoute>
+                <SessionsAvailabilityPageByFaskesDetail />
+              </AuthRoute>
+            }
+          />
+        </Route>
+      </Route>
+      <Route path="/vaccine-stock/daftar-faskes">
         <Route
           index
           element={
@@ -295,6 +309,14 @@ const App = () => {
         element={
           <PublicRoute>
             <AdminLogin />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <PublicRoute>
+            <PageNotFound />
           </PublicRoute>
         }
       />

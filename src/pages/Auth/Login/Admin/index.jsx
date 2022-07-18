@@ -67,7 +67,7 @@ function AdminLogin() {
         <div className="w-[60%] h-[100%] flex justify-center items-center">
           <div className="w-[435px] h-[456px]">
             <h1 className="text-[32px] font-bold text-center">Selamat Datang</h1>
-            <p className="mt-[8.2px] font-bold text-neutral-400 text-center">Masukan email dan password anda untuk masuk</p>
+            <p className="mt-[8.2px] font-bold text-neutral-400 text-center">Masukan username dan password anda untuk masuk</p>
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col mt-[36.89px]">
                 <label>Username</label>
