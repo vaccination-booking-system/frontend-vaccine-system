@@ -5,6 +5,7 @@ import { usePath } from "../../../../../context/PathContext";
 import axiosInstance from "../../../../../network/apis";
 import DateHelper from "../../../../../utils/DateHelper";
 import { useNavigate } from "react-router-dom";
+import { RiShareBoxFill } from "react-icons/ri";
 
 const VaccinationBookingsAdminViewFaskesDetail = () => {
   const { anchorPath, pathArr } = usePath();
@@ -69,7 +70,8 @@ const VaccinationBookingsAdminViewFaskesDetail = () => {
           return { ...identity, desc: res.data.data.gender === "M" ? "Laki-Laki" : "Perempuan" };
         }
         if (identity.title === "Alamat Domisili") {
-          return { ...identity, desc: res.data.data.curr_address };
+          const { curr_address, curr_urban_village, curr_sub_district, curr_province, curr_city } = res.data.data;
+          return { ...identity, desc: `${curr_address}, ${curr_urban_village}, ${curr_sub_district}, ${curr_city}, ${curr_province}` };
         }
         if (identity.title === "Nomor Telepon") {
           return { ...identity, desc: res.data.data.phone_number };
@@ -143,13 +145,18 @@ const VaccinationBookingsAdminViewFaskesDetail = () => {
                     return (
                       <div key={idx} className="my-4">
                         <h3 className="text-gray-400">{detail.title}</h3>
-                        <p>
-                          {detail.title !== "Status Vaksin" ? (
-                            detail.desc
-                          ) : (
+                        {detail.title !== "Status Vaksin" ? (
+                          <p>{detail.desc}</p>
+                        ) : detail.desc ? (
+                          <p className="p-[4px] bg-green-400 font-bold text-xs rounded-xl text-white inline-block">Vaccinated</p>
+                        ) : (
+                          <div className="flex items-center">
                             <p className="p-[4px] bg-orange-500 font-bold text-xs rounded-xl text-white inline-block">Not Yet</p>
-                          )}
-                        </p>
+                            <div className="mx-2 cursor-pointer">
+                              <RiShareBoxFill onClick={() => navigate(`/vaccination-bookings/daftar-faskes/${pathArr[2]}/edit/${pathArr[4]}`)} />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     );
                   })}

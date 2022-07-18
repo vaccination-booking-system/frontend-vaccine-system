@@ -84,7 +84,7 @@ const Dashboard = () => {
                       <div className="flex-1 w-0" key={idx}>
                         <Card>
                           <div>
-                            <img src={item.imgPath} alt={item.alt} />
+                            <img src={item.imgPath} alt={item.alt} className="w-full" />
                           </div>
                           <div className="mt-8">
                             <h1 className="font-bold text-lg">{item.heading}</h1>
@@ -131,7 +131,7 @@ const Dashboard = () => {
                     <div className="flex-1 w-0" key={idx}>
                       <Card>
                         <div>
-                          <img src={item.imgPath} alt={item.alt} />
+                          <img src={item.imgPath} alt={item.alt} className="w-full" />
                         </div>
                         <div className="mt-8">
                           <h1 className="font-bold text-lg">{item.heading}</h1>

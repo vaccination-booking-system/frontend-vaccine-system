@@ -26,7 +26,9 @@ import {
   VaccinationBookingsAdmin,
   VaccinationBookingsListFaskes,
   VaccinationBookingsAdminViewFaskesDetail,
+  VaccinationBookingsEditPage,
   SessionsAvailabilityPage,
+  CreateSessionAvailabilityPage,
   VaccineStockPage,
   DetailVaccineStocks,
   SessionsAvailabilityPageByFaskes,
@@ -96,6 +98,14 @@ const App = () => {
               </AuthRoute>
             }
           />
+          <Route
+            path="create"
+            element={
+              <AuthRoute>
+                <CreateSessionAvailabilityPage />
+              </AuthRoute>
+            }
+          />
         </Route>
       </Route>
       <Route path="/vaccine-stock/daftar-faskes">
@@ -140,6 +150,14 @@ const App = () => {
             element={
               <AuthRoute>
                 <VaccinationBookingsAdminViewFaskesDetail />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="edit/:vaccinationPassId"
+            element={
+              <AuthRoute>
+                <VaccinationBookingsEditPage />
               </AuthRoute>
             }
           />
