@@ -126,7 +126,6 @@ const BookingsAlamatPage = () => {
   const getProvinceData = async () => {
     try {
       const res = await axios.get("http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json");
-      console.log(res);
       const newFormInputKtp1 = getNewFormInput(formInputKtp1, res);
       const newFormInputDomisili1 = getNewFormInput(formInputDomisili1, res);
       setFormInputKtp1(newFormInputKtp1);
