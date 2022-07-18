@@ -31,6 +31,7 @@ import VaccineStockPage from "./VaccineStock";
 import DetailVaccineStocks from "./VaccineStock/DetailVaccineStock";
 import SessionsAvailabilityPageByFaskes from "./SessionsAvailability/ListFaskes";
 import SessionsAvailabilityPageByFaskesDetail from "./SessionsAvailability/ListFaskes/ViewFaskes";
+import SessionAvailabilityEditPage from "./SessionsAvailability/ListFaskes/EditFaskes";
 
 export {
   Login,
@@ -64,4 +65,5 @@ export {
   DetailVaccineStocks,
   SessionsAvailabilityPageByFaskes,
   SessionsAvailabilityPageByFaskesDetail,
+  SessionAvailabilityEditPage,
 };
