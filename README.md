@@ -14,6 +14,6 @@ This is our project about Frontend of Vaccination Booking System. Vaccination Bo
 
 ### Health Faciliies Page
 
-:white_check_mark: Show data booking vaccine <br>
-:white_check_mark: Show data vaccine stock <br>
-:white_check_mark: Show data vaccine session <br>
+:white_check_mark: Manage booking vaccine <br>
+:white_check_mark: Manage vaccine stock <br>
+:white_check_mark: Manage vaccine session <br>
