@@ -43,7 +43,7 @@ const VaccinationBookingsAdmin = () => {
         <div className="my-8">
           {getUserByIdResult ? (
             <Card maxWidth="700px" margin="auto" padding="2rem 3rem">
-              <h2 className="font-bold text-lg">Pilih Faskes</h2>
+              <h2 className="font-bold text-lg">Pilih Fasilitas Kesehatan</h2>
               <div className="mt-4">
                 {loading ? (
                   <LoadingAnimation />
