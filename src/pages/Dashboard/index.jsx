@@ -41,21 +41,21 @@ const serviceItemsCitizen = [
 const serviceItemsAdmin = [
   {
     heading: "Vaccination Bookings",
-    desc: "Cek dan kelola pendaftaran vaksin.",
+    desc: "Admin dapat mengelola data pemesanan vaksinasi",
     imgPath: VaccinationBookingsAdminImg,
     alt: "booking-vaccine-img",
     path: "/vaccination-bookings/daftar-faskes",
   },
   {
     heading: "Session Availability",
-    desc: "Cek dan kelola sesi vaksin.",
+    desc: "Admin dapat mengelola ketersediaan sesi vaksinasi",
     imgPath: SessionAvailabilityAdminImg,
     alt: "session-availability-img",
     path: "/sessions-availability/daftar-faskes",
   },
   {
     heading: "Vaccine Stock",
-    desc: "Cek dan kelola stok vaksin",
+    desc: "Admin dapat mengelola ketersediaan stok vaksin",
     imgPath: VaccineStockAdminImg,
     alt: "vaccine-stock-img",
     path: "/vaccine-stock/daftar-faskes",
@@ -78,17 +78,17 @@ const Dashboard = () => {
             <div className="my-4">
               <Card>
                 <h1 className="font-bold text-lg">Fitur Faskes</h1>
-                <div className="flex mt-8">
+                <div className="flex">
                   {serviceItemsAdmin.map((item, idx) => {
                     return (
-                      <div className="flex-1 w-0" key={idx}>
+                      <div className="flex-1" key={idx}>
                         <Card>
                           <div>
                             <img src={item.imgPath} alt={item.alt} className="w-full" />
                           </div>
                           <div className="mt-8">
                             <h1 className="font-bold text-lg">{item.heading}</h1>
-                            <p className="my-2 min-h-[1rem]">{item.desc}</p>
+                            <p className="my-2 min-h-[2.5rem]">{item.desc}</p>
                             <Link to={item.path}>
                               <Button bg="white" border="1px solid #0A6C9D" btnSize="full" fontSize="14px">
                                 Dapatkan

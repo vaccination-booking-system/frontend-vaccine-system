@@ -14,10 +14,6 @@ const PrivateRoute = ({ children }) => {
 
   const { decodedToken } = useJwt(localStorage.getItem("accessToken"));
 
-  const { getUserByIdResult } = useSelector(state => state.userId);
-
-  const { member } = useSelector(state => state.familyMember);
-
   useEffect(() => {
     if (decodedToken !== null) {
       const id = decodedToken.is_admin ? decodedToken.admin_id : decodedToken.user_id;

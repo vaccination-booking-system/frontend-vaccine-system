@@ -70,34 +70,6 @@ const BookingsJadwalPage = () => {
     if (name === "vaccinationSessions") setSelectedVaccinationSessionsId(value);
   };
 
-  // const getHealthFacilities = async () => {
-  //   try {
-  //     const res = await axiosInstance.get("/api/v1/health-facilities", {
-  //       headers: {
-  //   "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
-  // },
-  //     });
-  //     setHealthFacilities(res.data.data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
-  // const getHealthFaciliyVaccineStocks = async () => {
-  //   try {
-  //     if (selectedHealthFacilityId !== "") {
-  //       const res = await axiosInstance.get(`/api/v1/health-facilities/${selectedHealthFacilityId}/vaccines`, {
-  //         headers: {
-  //   "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
-  // },
-  //       });
-  //       setVaccineStocks(res.data.data);
-  //     }
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
   const getcities = async () => {
     try {
       const res = await axiosInstance.get("/api/v1/cities", {
