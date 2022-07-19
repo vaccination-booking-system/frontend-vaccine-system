@@ -24,6 +24,7 @@ const TicketVaccineDetailPage = () => {
     { title: "Lokasi Vaksin", desc: "" },
     { title: "Tanggal Vaksin", desc: "" },
     { title: "Waktu Vaksin", desc: "" },
+    { title: "Status Vaksin", desc: "" },
   ]);
 
   const [identities, setIdentities] = useState([
@@ -40,6 +41,7 @@ const TicketVaccineDetailPage = () => {
       const res = await axiosInstance.get(`/api/v1/vaccination-pass/${id}`, {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
+      console.log(res);
       setVaccinationPassDetail(res.data.data);
     } catch (error) {
       console.log(error.message);
@@ -51,6 +53,7 @@ const TicketVaccineDetailPage = () => {
       const res = await axiosInstance.get(`/api/v1/vaccination-session/${id}`, {
         headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
       });
+      console.log(res);
       setVaccinationSessionDetail(res.data.data);
     } catch (error) {
       console.log(error.message);
@@ -84,6 +87,9 @@ const TicketVaccineDetailPage = () => {
         }
         if (detailVaccine.title === "Waktu Vaksin") {
           return { ...detailVaccine, desc: `${vaccinationSessionDetail.schedule_time_start} - ${vaccinationSessionDetail.schedule_time_end}` };
+        }
+        if (detailVaccine.title === "Status Vaksin") {
+          return { ...detailVaccine, desc: vaccinationPassDetail.is_vaccinated };
         }
         return { ...detailVaccine };
       });
@@ -145,7 +151,15 @@ const TicketVaccineDetailPage = () => {
                       return (
                         <div key={idx} className="my-2">
                           <h3 className="text-gray-400">{detailVaccine.title}</h3>
-                          <p>{detailVaccine.desc}</p>
+                          <p>
+                            {detailVaccine.title !== "Status Vaksin" ? (
+                              detailVaccine.desc
+                            ) : detailVaccine.desc ? (
+                              <p className="inline-block p-[4px] bg-green-400 font-bold text-xs rounded-xl text-white">Vaccinated</p>
+                            ) : (
+                              <p className="inline-block p-[4px] bg-orange-500 font-bold text-xs rounded-xl text-white">Not Yet</p>
+                            )}
+                          </p>
                         </div>
                       );
                     })}
